@@ -4,22 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic"
+    />
     <style>
-      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(
-        https://fonts.googleapis.com/css?family=Droid+Serif:400,
-        700,
-        400italic
-      );
-      @import url(
-        https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,
-        700,
-        400italic
-      );
-
       body {
         font-family: "Droid Serif";
+        position: relative;
       }
       h1,
       h2,
@@ -31,20 +32,125 @@
       .remark-inline-code {
         font-family: "Ubuntu Mono";
       }
+      nav {
+        position: absolute;
+        z-index: 10;
+        width: 20%;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      ul {
+        list-style-type: none;
+      }
+      /* Style the buttons that are used to open and close the accordion panel */
+      .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        font-size: 1rem;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+      }
+
+      /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+      .active,
+      .accordion:hover {
+        background-color: #ccc;
+      }
+
+      /* Style the accordion panel. Note: hidden by default */
+      .panel {
+        padding: 0 18px;
+        background-color: white;
+        display: none;
+        overflow: hidden;
+      }
+      .remark-slide-container {
+        left: 8%;
+      }
     </style>
   </head>
   <body>
+    <nav>
+      <button class="accordion">Price Dashboard</button>
+      <div class="panel">
+        <ul>
+          <li>Features</li>
+          <li>Tech Details</li>
+          <li>Development Process</li>
+          <li>Problems</li>
+        </ul>
+      </div>
+      <button class="accordion">Upgraded Email Sender</button>
+      <div class="panel">
+        <ul>
+          <li>Tech Details</li>
+          <li>Refractor Front-End</li>
+          <li>Refractor Back-End</li>
+          <li>Dev-Ops and CI</li>
+          <li>Different from Price Dashboard</li>
+        </ul>
+      </div>
+      <button class="accordion">Personal Website as Works</button>
+      <div class="panel">
+        <ul>
+          <li>Introduction</li>
+          <li>Front-End</li>
+          <li>Back-End</li>
+        </ul>
+      </div>
+      <button class="accordion">Working Experience @PG</button>
+      <div class="panel">
+        <ul>
+          <li>Git Flow</li>
+          <li>Layout Works</li>
+          <li>CRM Tools</li>
+          <li>Product Card</li>
+          <li>Promotion Bar</li>
+        </ul>
+      </div>
+      <button class="accordion">Python Crawler</button>
+      <div class="panel">
+        <ul>
+          <li>Introduction</li>
+          <li>Refractor to a well-organization structure.</li>
+        </ul>
+      </div>
+    </nav>
     <textarea id="source">
         class: center, middle
 
-        # Daniel Lin's Protroflio
-        
-        # Agenda 
+        # Daniel Lin's Portfolio
     
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
     <script>
       var slideshow = remark.create();
+    </script>
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
     </script>
   </body>
 </html>
