@@ -39,6 +39,9 @@
       .remark-inline-code {
         font-family: "Ubuntu Mono";
       }
+      p {
+        font-size: 1rem;
+      }
       nav {
         position: absolute;
         z-index: 10;
@@ -143,7 +146,7 @@ class: center, middle
 ###### Work Experience @PG
 ### Layout work
 
-<p>Build a brand new website for Positive Grid by a ecommerce solution called Bigcommerce.</p>
+<p>Build a brand new website for Positive Grid by a ecommerce solution called Bigcommerce that mainly focus on front-end.</p>
 
 ##### Header
 <div style="display:inline-block;">
@@ -170,7 +173,7 @@ class: center, middle
 ---
 ###### Work Experience @PG
 ### Layout work
-##### Find A Store/Store Page/
+##### Find A Store / Store Page / Cart Mobile
 <div style="display:inline-block;">
   <img style="width:30%;" src="./statics/img/PG/find-store.png" alt="find-store">
   <img style="width:33%;vertical-align: top;" src="./statics/img/PG/store1.jpg" alt="store1">
@@ -186,13 +189,13 @@ class: center, middle
 
 ##### Situation:
 <p style="font-size:1rem;margin-bottom:0;">
-  - Feature development is one per feature.
+  - Single feature should have their own developing branch.
 </p>
 <p style="font-size:1rem;margin-bottom:0;">
-  - Some features had been developed but never going live until the idea has been approved by marketing team member.
+  - Some features had been developed but not going live soon until the idea has been approved by marketing team member.
 </p>
 <p style="font-size:1rem;margin-bottom:0;">
-  - Website needs to be updated as fast as possible.
+  - Website needs to be updated and deployed as fast as possible.
 </p>
 
 
@@ -203,15 +206,18 @@ class: center, middle
 ### Git Flow
 
 ##### Idea:
-<p style="font-size:1rem;margin-bottom:0;">
+<p style="margin-bottom:0;">
   - First step is always checkouting a new branch from master.
 </p>
-<p style="font-size:1rem;margin-bottom:0;">
-  - Before merge feaute into stage/prod, must run rebase prod first 
-  </p>
-
-
-
+<p style="margin-bottom:0;">
+  - Run `git rebase prod-branch` before merging feature branch into stage branch or prod. branch. 
+</p>
+<p style="margin-bottom:0;">
+  - Don't directly merge stage branch into prod. branch. 
+</p>
+<p style="margin-bottom:0;">
+  - You can treat stage branch as a pre-prod. branch, but one thing you should be noticed that not all features which has been merged into stage are becoming part of our official release. 
+</p>
 
 <img src="./statics/img/PG/customized-git-workflow.jpg" alt="git-flow">
 
@@ -219,14 +225,21 @@ class: center, middle
 
 ###### Work Experience @PG
 ### CRM Tools
+<p>
+  In order to increase purchase, we had to find a way that our customers can access our web store easily inside app. 
+</p>
 <img style="width:100%;" src="./statics/img/PG/crm.gif" alt="crm">
 
 ---
 ###### Work Experience @PG
 ### Product Card
+<p>
+  A code which is written in sub-pub pattern to match a maximum height value of individual product item in the same row.
+</p>
+
 <div style="display:inline-block;text-align: center;">
-  <img style="width:69%;" src="./statics/img/PG/product-card-old.png" alt="product-card-old">
-  <img style="width:69%;vertical-align: top;" src="./statics/img/PG/product-card.png" alt="product-card">
+  <img style="width:65%;" src="./statics/img/PG/product-card-old.png" alt="product-card-old">
+  <img style="width:65%;vertical-align: top;" src="./statics/img/PG/product-card.png" alt="product-card">
 </div>
 
 ---
@@ -234,7 +247,7 @@ class: center, middle
 ### Promotion Bar
 
 ##### Dynamic render: 
-A marketing member can access BC backstage and just edit some imperative text and click save, then the promotion bar will be up-to-date without additional depolyment.
+A marketing member can access BC's backstage and just edit some imperative texts and click save, then the promotion bar will be up-to-date without additional deployment. This is not an original feature in BC.
 <div>
   <img style="width:100%;" src="./statics/img/PG/promotion-bar.png" alt="promotion-bar">
 </div>
@@ -242,9 +255,18 @@ A marketing member can access BC backstage and just edit some imperative text an
 ---
 ###### Work Experience @PG
 ### Price Dashboard
-Marketing team needs a tool that can monitor and quickly set and update company's product price during every promotion era.
+Marketing team needs a tool that can quickly read, set and update company's product price during every promotion era.
 
-###### I draw this sketch: 
+###### I draw this sketch as begin of this project: 
+<div>
+  <img style="width:100%;" src="./statics/img/PG/price-dashboard-mockup.png" alt="price-dashboard-mockup">
+</div>
+
+---
+
+###### Work Experience @PG
+### Price Dashboard
+ 
 <div>
   <img style="width:100%;" src="./statics/img/PG/price-dashboard-mockup.png" alt="price-dashboard-mockup">
 </div>
@@ -252,13 +274,120 @@ Marketing team needs a tool that can monitor and quickly set and update company'
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Features
+<p style="margin-bottom:0;margin-bottom:0.2rem;">
+  - The state is always up-to-date with backend even when create/update/delete operation has been triggered.
+</p>  
+<p style="margin-bottom:0;margin-bottom:0.2rem;">
+  - Allow user to auto sign in if browser has been permitted to store his/her password.
+</p>
+<p style="margin-bottom:0;margin-bottom:0.2rem;">
+  - Power visual for understanding which promotion is on live and what is next promotion.
+</p>
+<p style="margin-bottom:0;">
+  - You can easily calculate a product price for a user who could has any combination of company's early product before.
+</p>
+    
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Tech Details
+#### Front-End (Web service)
+
+##### Structure:
+<p style="margin-top:0;margin-bottom:0.2rem;">
+  - Take advantage of the power of Webpack for packaging web service in dev and prod. environment instead of directly using CRA.
+</p>
+<p style="margin-top:0;margin-bottom:0.2rem;">
+  - React-Redux best practice (e.g. layout, route and page as component for more flexibility.)
+</p>
+<p style="margin-top:0;">  
+  - Separate Redux's mapStateToProps and mapDispatchToProps from every component in order to make it easy to understand.
+</p>
+
+##### Design pattern:
+<p style="margin-top:0;margin-bottom:0.2rem;">  
+  - Implement React's design pattern such as compound, render-props and context api to build reuseable and clear component.
+</p>
+<p style="margin-top:0;">  
+  - Use module pattern for Redux.
+</p>
+
+##### API:
+<p style="margin-top:0;margin-bottom:0.2rem;">
+  - Auto sign in with Credential Management API.
+</p>
+<p style="margin-top:0;">
+  - Encapsulate axios
+</p>
+
+##### Server:
+<p style="margin-top:0;margin-bottom:0.2rem;">  
+  - Use nginx as static file server in production environment.
+</p>
+<p style="margin-top:0;">  
+  - JSON-server for serving a mock data.
+</p>
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Tech Details
+#### Back-End (User / Promotions / Prices / Upgrade-rules Services)
+##### Auth:
+<p style="margin-top:0;">
+  - Google OAuth
+</p>
+
+##### Structure:
+<p style="margin-top:0;margin-bottom:0.2rem;">
+  - Best practice of Node/Express with ES6 syntax(e.g. self-contained components as file structure, bind API at router level).
+</p>
+<p style="margin-top:0;">
+  - Every route has implemented Redis as cache server to reduce DB's query operation.
+</p>
+
+##### Cache:
+<p style="margin-top:0;">
+  - Thanks to Redis, no extra DB query command is executed when post/update/delete router has been called and still can return a full list of promotion.
+</p>
+
+##### Proxy:
+<p style="margin-top:0;">
+  - Use NGINX as a reverse proxy.
+</p>
+
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-### Development Process
+### Tech Details
+#### Dev-ops
+##### Container:
+<p style="margin-top:0;margin-bottom:0.2rem;">
+  - Use Docker-compose to run dev on local
+</p>
+<p style="margin-top:0;margin-bottom:0.2rem;">
+  - Multi-container structure
+</p>
+<p style="margin-top:0;margin-bottom:0.2rem;">
+  - Use $(git rev-parse HEAD) to tag container in order to track version.
+</p>
+<p style="margin-top:0;">
+  - K8S
+</p>
+
+##### CI:
+<p style="margin-top:0;">
+  - Travis
+</p>
+
+##### Cloud:
+<p style="margin-top:0;margin-bottom:0.2rem;">
+  - AWS ECS
+</p>
+<p style="margin-top:0;">
+  - GCP GKE
+</p>
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Developing Process
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
