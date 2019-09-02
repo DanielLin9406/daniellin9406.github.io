@@ -27,6 +27,13 @@
       h3 {
         font-family: "Yanone Kaffeesatz";
         font-weight: normal;
+        margin: 1rem 0;
+      }
+      h5 {
+        margin: 0.3rem 0;
+      }
+      h6 {
+        margin: 0.5rem 0;
       }
       .remark-code,
       .remark-inline-code {
@@ -70,7 +77,8 @@
       .panel {
         padding: 0 18px;
         background-color: white;
-        display: none;
+        height: 0;
+        display: block;
         overflow: hidden;
       }
       .remark-slide-container {
@@ -80,6 +88,17 @@
   </head>
   <body>
     <nav>
+      <button class="accordion">Work Experience @PG</button>
+      <div class="panel">
+        <ul>
+          <li><a href="#2">Layout Works</a></li>
+          <li><a href="#6">Git Flow</a></li>
+          <li><a href="#8">CRM Tools</a></li>
+          <li><a href="#9">Product Card</a></li>
+          <li><a href="#10">Promotion Bar</a></li>
+          <li><a href="#11">Price Dashboard</a></li>
+        </ul>
+      </div>
       <button class="accordion">Price Dashboard</button>
       <div class="panel">
         <ul>
@@ -89,12 +108,12 @@
           <li>Problems</li>
         </ul>
       </div>
-      <button class="accordion">Upgraded Email Sender</button>
+      <button class="accordion">Revised Email Sender</button>
       <div class="panel">
         <ul>
           <li>Tech Details</li>
-          <li>Refractor Front-End</li>
-          <li>Refractor Back-End</li>
+          <li>Refractoring Front-End</li>
+          <li>Refractoring Back-End</li>
           <li>Dev-Ops and CI</li>
           <li>Different from Price Dashboard</li>
         </ul>
@@ -107,29 +126,194 @@
           <li>Back-End</li>
         </ul>
       </div>
-      <button class="accordion">Working Experience @PG</button>
-      <div class="panel">
-        <ul>
-          <li>Git Flow</li>
-          <li>Layout Works</li>
-          <li>CRM Tools</li>
-          <li>Product Card</li>
-          <li>Promotion Bar</li>
-        </ul>
-      </div>
-      <button class="accordion">Python Crawler</button>
+      <button class="accordion">Crawler</button>
       <div class="panel">
         <ul>
           <li>Introduction</li>
-          <li>Refractor to a well-organization structure.</li>
+          <li>Refractoring to a well-organized structure.</li>
         </ul>
       </div>
     </nav>
     <textarea id="source">
-        class: center, middle
+class: center, middle
 
-        # Daniel Lin's Portfolio
-    
+# Daniel Lin's Portfolio
+
+---
+###### Work Experience @PG
+### Layout work
+
+<p>Build a brand new website for Positive Grid by a ecommerce solution called Bigcommerce.</p>
+
+##### Header
+<div style="display:inline-block;">
+  <img style="width:68%;" src="./statics/img/PG/header.gif" alt="header">
+  <img style="width:28%;" src="./statics/img/PG/header-mobile.gif" alt="header-mobile">
+</div>
+---
+
+###### Work Experience @PG
+### Layout work
+##### Demo Page
+<div style="display:inline-block;">
+  <img style="width:78%;" src="./statics/img/PG/demo-resize.gif" alt="demo-resize">
+  <img style="width:78%;" src="./statics/img/PG/demo-fullpage.png" alt="demo-fullpage">
+  <img style="width:20%;vertical-align: top;" src="./statics/img/PG/demo-mobile.png" alt="demo-mobile">
+</div>
+
+---
+###### Work Experience @PG
+### Layout work
+##### Login Page
+<img style="width:100%;" src="./statics/img/PG/login.png" alt="login">
+
+---
+###### Work Experience @PG
+### Layout work
+##### Find A Store/Store Page/
+<div style="display:inline-block;">
+  <img style="width:30%;" src="./statics/img/PG/find-store.png" alt="find-store">
+  <img style="width:33%;vertical-align: top;" src="./statics/img/PG/store1.jpg" alt="store1">
+  <div style="width:33%;vertical-align: top;display: inline-block;">
+    <!-- <img style="width:100%;" src="./statics/img/PG/cart.png" alt="cart"> -->
+    <img style="width:100%;" src="./statics/img/PG/cart-mobile.png" alt="cart-mobile">
+  </div>
+</div>
+
+---
+###### Work Experience @PG
+### Git Flow
+
+##### Situation:
+<p style="font-size:1rem;margin-bottom:0;">
+  - Feature development is one per feature.
+</p>
+<p style="font-size:1rem;margin-bottom:0;">
+  - Some features had been developed but never going live until the idea has been approved by marketing team member.
+</p>
+<p style="font-size:1rem;margin-bottom:0;">
+  - Website needs to be updated as fast as possible.
+</p>
+
+
+<img src="./statics/img/PG/customized-git-workflow.jpg" alt="git-flow">
+
+---
+###### Work Experience @PG
+### Git Flow
+
+##### Idea:
+<p style="font-size:1rem;margin-bottom:0;">
+  - First step is always checkouting a new branch from master.
+</p>
+<p style="font-size:1rem;margin-bottom:0;">
+  - Before merge feaute into stage/prod, must run rebase prod first 
+  </p>
+
+
+
+
+<img src="./statics/img/PG/customized-git-workflow.jpg" alt="git-flow">
+
+---
+
+###### Work Experience @PG
+### CRM Tools
+<img style="width:100%;" src="./statics/img/PG/crm.gif" alt="crm">
+
+---
+###### Work Experience @PG
+### Product Card
+<div style="display:inline-block;text-align: center;">
+  <img style="width:69%;" src="./statics/img/PG/product-card-old.png" alt="product-card-old">
+  <img style="width:69%;vertical-align: top;" src="./statics/img/PG/product-card.png" alt="product-card">
+</div>
+
+---
+###### Work Experience @PG
+### Promotion Bar
+
+##### Dynamic render: 
+A marketing member can access BC backstage and just edit some imperative text and click save, then the promotion bar will be up-to-date without additional depolyment.
+<div>
+  <img style="width:100%;" src="./statics/img/PG/promotion-bar.png" alt="promotion-bar">
+</div>
+
+---
+###### Work Experience @PG
+### Price Dashboard
+Marketing team needs a tool that can monitor and quickly set and update company's product price during every promotion era.
+
+###### I draw this sketch: 
+<div>
+  <img style="width:100%;" src="./statics/img/PG/price-dashboard-mockup.png" alt="price-dashboard-mockup">
+</div>
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Features
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Tech Details
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Development Process
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Problems
+
+---
+###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
+### Tech Details
+
+---
+###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
+### Refractoring Front-End
+
+---
+###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
+### Refractoring Back-End
+
+---
+###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
+### Dev-Ops and CI
+
+---
+###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
+### Different from Price Dashboard
+
+---
+###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
+### Different from Price Dashboard
+
+---
+###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
+### Introduction
+
+---
+###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
+### Front-End
+
+---
+###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
+### Back-End
+
+---
+###### Crawler [[source]](https://github.com/DanielLin9406/crawler-python-voicetube)
+### Introduction
+
+---
+###### Crawler [[source]](https://github.com/DanielLin9406/crawler-python-voicetube)
+### Refractoring to a well-organized structure
+
+---
+
+<div style="display: flex;justify-content: center;align-items: center;height: 100%;">
+  <h2 style="text-align: center;">Thank you!!!!!!</h2>
+</div>
+
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
     <script>
@@ -144,10 +328,10 @@
           this.classList.toggle("active");
 
           var panel = this.nextElementSibling;
-          if (panel.style.display === "block") {
-            panel.style.display = "none";
+          if (panel.style.height === "auto") {
+            panel.style.height = "0";
           } else {
-            panel.style.display = "block";
+            panel.style.height = "auto";
           }
         });
       }
