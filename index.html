@@ -53,9 +53,6 @@
         flex-direction: column;
         justify-content: center;
       }
-      ul {
-        list-style-type: none;
-      }
       /* Style the buttons that are used to open and close the accordion panel */
       .accordion {
         background-color: #eee;
@@ -105,20 +102,23 @@
       <button class="accordion">Price Dashboard</button>
       <div class="panel">
         <ul>
-          <li>Features</li>
-          <li>Tech Details</li>
-          <li>Development Process</li>
-          <li>Problems</li>
+          <li><a href="#12">Preview</a></li>
+          <li><a href="#14">Features</a></li>
+          <li><a href="#15">Demo</a></li>
+          <li><a href="#22">Front-End</a></li>
+          <li><a href="#23">Back-End</a></li>
+          <li><a href="#24">Dev-Ops</a></li>
+          <li><a href="#2">Development Process</a></li>
+          <li><a href="#2">Problems</a></li>
         </ul>
       </div>
       <button class="accordion">Revised Email Sender</button>
       <div class="panel">
         <ul>
-          <li>Tech Details</li>
-          <li>Refractoring Front-End</li>
-          <li>Refractoring Back-End</li>
-          <li>Dev-Ops and CI</li>
           <li>Different from Price Dashboard</li>
+          <li>Refractor Front-End</li>
+          <li>Refractor Back-End</li>
+          <li>Dev-Ops and CI</li>
         </ul>
       </div>
       <button class="accordion">Personal Website as Works</button>
@@ -133,7 +133,7 @@
       <div class="panel">
         <ul>
           <li>Introduction</li>
-          <li>Refractoring to a well-organized structure.</li>
+          <li>Refractor to a well-organized structure.</li>
         </ul>
       </div>
     </nav>
@@ -257,19 +257,25 @@ A marketing member can access BC's backstage and just edit some imperative texts
 ### Price Dashboard
 Marketing team needs a tool that can quickly read, set and update company's product price during every promotion era.
 
-###### I draw this sketch as begin of this project: 
+###### I drew this sketch as begin of this project: 
 <div>
   <img style="width:100%;" src="./statics/img/PG/price-dashboard-mockup.png" alt="price-dashboard-mockup">
 </div>
 
 ---
-
-###### Work Experience @PG
-### Price Dashboard
- 
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Preview
+By the way, I also do the design job since it was an internal tool.
 <div>
-  <img style="width:100%;" src="./statics/img/PG/price-dashboard-mockup.png" alt="price-dashboard-mockup">
-</div>
+  <img style="width:100%;" src="./statics/img/Price-Dashboard/price-dashboard-preview-1.png" alt="price-dashboard-preview-1">
+</div> 
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Preview (continued)
+<div>
+  <img style="width:100%;" src="./statics/img/Price-Dashboard/price-dashboard-preview-2.png" alt="price-dashboard-preview-2">
+</div> 
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
@@ -289,8 +295,48 @@ Marketing team needs a tool that can quickly read, set and update company's prod
     
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-### Tech Details
-#### Front-End (Web service)
+### Demo
+#### Auto sign in
+<img style="width:100%;" src="./statics/img/Price-Dashboard/auto-sign-in.gif" alt="auto-sign-in">
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo
+#### Create a promotion
+<img style="width:100%;" src="./statics/img/Price-Dashboard/create-promotion.gif" alt="create-promotion">
+---
+
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo
+#### Update a promotion
+<img style="width:100%;" src="./statics/img/Price-Dashboard/update-promotion.gif" alt="update-promotion">
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo
+#### Remove a promotion
+<img style="width:100%;" src="./statics/img/Price-Dashboard/remove-promotion.gif" alt="remove-promotion">
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo
+#### Create a promotion and push it on live.
+<img style="width:100%;" src="./statics/img/Price-Dashboard/create-promotion-go-live.gif" alt="create-promotion-go-live">
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo
+#### Create a promotion and push it on live while there is another promotion on live.
+<img style="width:100%;" src="./statics/img/Price-Dashboard/create-promotion-go-live-replace.gif" alt="create-promotion-go-live-replace">
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo
+#### Price updated when different products in bundles
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Front-End (Web service)
 
 ##### Structure:
 <p style="margin-top:0;margin-bottom:0.2rem;">
@@ -329,11 +375,10 @@ Marketing team needs a tool that can quickly read, set and update company's prod
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-### Tech Details
-#### Back-End (User / Promotions / Prices / Upgrade-rules Services)
+### Back-End (User / Promotions / Prices / Upgrade-rules Services)
 ##### Auth:
 <p style="margin-top:0;">
-  - Google OAuth
+  - Google OAuth 2.0
 </p>
 
 ##### Structure:
@@ -356,8 +401,7 @@ Marketing team needs a tool that can quickly read, set and update company's prod
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-### Tech Details
-#### Dev-ops
+### Dev-ops
 ##### Container:
 <p style="margin-top:0;margin-bottom:0.2rem;">
   - Use Docker-compose to run dev on local
@@ -395,47 +439,138 @@ Marketing team needs a tool that can quickly read, set and update company's prod
 
 ---
 ###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
-### Tech Details
+### Role:
+Upgraded version of a email promotion and monitor system based on Stephergrinder's email sender.
+
+[Email Sender by Stepher Grinder](https://github.com/StephenGrider/FullstackReactCode)
+
+<div>  
+  <img style="width:100%;" src="./statics/img/Email-Sender/preview.png" alt="email-sender-preview">
+</div>
 
 ---
 ###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
-### Refractoring Front-End
+### Refractor Front-End
+
+|                             | Original           | Revised            |
+|-----------------------------|--------------------|--------------------|
+| Scaffold                    | Create React APP   | My own Webpack     |
+| Redux pattern               | Reducer Pattern    | Module Pattern     |
+| New React feature           |  X                 | Hooks              |
+| Websocket                   |  X                 | socket.io          |
+| Webpack dev/prod            |  X                 | yes                |
+| Sign out                    | Page Reload        | Ajax               |
+| Dev. server                 | webpack-dev-server | webpack-dev-server | 
+| Static file server in prod. |         X          | Express            | 
 
 ---
 ###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
-### Refractoring Back-End
+### Refractor Back-End
+
+|                             | Original           | Revised            |
+|-----------------------------|--------------------|--------------------|
+| Node syntax                 |     Common.js      |       import       |
+| Separate ‘server’ and ‘app’ module              |  X    |  yes     |
+| Router attaching level           |  App level                 |  Router level              |
+| Structure                   |  Technical role  | Self-contained components   |
+| Graphql server            |  X              | Both apollo-server and graphqlExpress        |
+| Mocha + Chi Testing                   | Restful API  | GraphQL API    |
+| Websocket |         X          | socket.io            | 
+| API + Connection type |         Restful        | Restful+Graphql+Websocket            | 
 
 ---
 ###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
 ### Dev-Ops and CI
 
----
-###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
-### Different from Price Dashboard
+|                      | Original           | Revised            |
+|----------------------|--------------------|--------------------|
+| Container            |     X      |       Docker, docker-compose       |
+| CI/CD                |     heroku      |       travis       |
+| Nginx                |     X      |       As reverse-proxy       |
 
----
-###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
-### Different from Price Dashboard
+
 
 ---
 ###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
 ### Introduction
+
+Refractor my first website with modern packing tool, webpack.
+<div>
+  <img style="width: 100%;" src="./statics/img/Persional-Website/preview.jpg" alt="preview of my personal website">
+</div>
 
 ---
 ###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
 ### Front-End
+##### Multi-pug template
+<img style="width:100%;" src="./statics/img/Persional-Website/multi-pug.png" alt="multi-pug-template">
+
+---
+###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
+### Front-End
+##### Webpack dynamic import
+<img style="width:100%;" src="./statics/img/Persional-Website/webpack-dynamic-import.png" alt="webpack-dynamic-import">
+
+---
+###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
+### Front-End
+##### Webpack plugin
+<div style="text-align: center;">
+  <img style="width:70%;" src="./statics/img/Persional-Website/webpack-plugin.png" alt="webpack-plugin">
+</div>
+
+---
+###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
+### Front-End
+<span style="font-size:1rem;">Please ignore a awful color which is way much deviated from the original one.</span>
+##### Layout and animations
+<video autoplay loop muted style="width:100%;">
+  <source type="video/mp4" src="./statics/img/Persional-Website/layout-animations.mp4"> 
+</video>
 
 ---
 ###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
 ### Back-End
+Use API keys and OAuth2.0 to authorized user.
+##### Google Spread Sheet API
+<video autoplay loop muted style="width:100%;">
+  <source type="video/mp4" src="./statics/img/Persional-Website/google-spread-sheet-api.mp4">
+  Your browser does not support the video tag.
+</video>
 
 ---
 ###### Crawler [[source]](https://github.com/DanielLin9406/crawler-python-voicetube)
 ### Introduction
+A simple python crawler transfer a given HTML file into a .csv file.
+##### From web html -> Excel 
+
+<div>
+  <img style="width:48%;vertical-align: middle;" src="./statics/img/Crawler/from.png" alt="from.png">
+  <img style="width:48%;vertical-align: middle;" src="./statics/img/Crawler/Dist.png" alt="Dist.png">
+</div> 
+<br/>
+##### Tech Details 
+
+<p style="margin-top:0;;margin-bottom:0.2rem;">
+  - Python 3
+</p> 
+<p style="margin-top:0;;margin-bottom:0.2rem;">
+  - Requests
+</p> 
+<p style="margin-top:0;;margin-bottom:0.2rem;">
+  - BS4
+</p> 
+<p style="margin-top:0;">
+  - csv
+</p> 
 
 ---
 ###### Crawler [[source]](https://github.com/DanielLin9406/crawler-python-voicetube)
-### Refractoring to a well-organized structure
+### Refractor python code to a well-organized structure
+<div>
+  <img style="width:48%;" src="./statics/img/Crawler/python-before.png" alt="python-before.png">
+  <img style="width:48%;vertical-align: top;" src="./statics/img/Crawler/python-after.png" alt="python-after.png">
+</div> 
 
 ---
 
