@@ -22,6 +22,9 @@
         font-family: "Droid Serif";
         position: relative;
       }
+      .remark-container {
+        background-color: rgba(40, 40, 40, 0.8);
+      }
       h1,
       h2,
       h3 {
@@ -42,6 +45,19 @@
       p {
         font-size: 1rem;
       }
+      li {
+        margin: 5px 0;
+      }
+      li > a {
+        color: #000;
+      }
+      a {
+        color: #898989;
+      }
+      .closet {
+        color: red;
+        font-weight: bold;
+      }
       nav {
         position: absolute;
         z-index: 10;
@@ -52,6 +68,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        border-radius: 4px;
       }
       /* Style the buttons that are used to open and close the accordion panel */
       .accordion {
@@ -108,32 +125,33 @@
           <li><a href="#22">Front-End</a></li>
           <li><a href="#23">Back-End</a></li>
           <li><a href="#24">Dev-Ops</a></li>
-          <li><a href="#2">Development Process</a></li>
-          <li><a href="#2">Problems</a></li>
+          <li><a href="#25">Development Process</a></li>
+          <li><a href="#36">Problems Solved</a></li>
+          <li><a href="#37">Plan for Project Expansion</a></li>
         </ul>
       </div>
       <button class="accordion">Revised Email Sender</button>
       <div class="panel">
         <ul>
-          <li>Different from Price Dashboard</li>
-          <li>Refractor Front-End</li>
-          <li>Refractor Back-End</li>
-          <li>Dev-Ops and CI</li>
+          <li><a href="#38">Role</a></li>
+          <li><a href="#39">Refractor Front-End</a></li>
+          <li><a href="#40">Refractor Back-End</a></li>
+          <li><a href="#41">Dev-Ops and CI</a></li>
         </ul>
       </div>
       <button class="accordion">Personal Website as Works</button>
       <div class="panel">
         <ul>
-          <li>Introduction</li>
-          <li>Front-End</li>
-          <li>Back-End</li>
+          <li><a href="#42">Introduction</a></li>
+          <li><a href="#43">Front-End</a></li>
+          <li><a href="#47">Back-End</a></li>
         </ul>
       </div>
       <button class="accordion">Crawler</button>
       <div class="panel">
         <ul>
-          <li>Introduction</li>
-          <li>Refractor to a well-organized structure.</li>
+          <li><a href="#48">Introduction</a></li>
+          <li><a href="#49">Refractor to a well-organized structure.</a></li>
         </ul>
       </div>
     </nav>
@@ -333,6 +351,7 @@ By the way, I also do the design job since it was an internal tool.
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Demo
 #### Price updated when different products in bundles
+<img style="width:100%;" src="./statics/img/Price-Dashboard/price-update-in-bundle.gif" alt="price-update-in-bundle">
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
@@ -791,14 +810,21 @@ A simple python crawler transfer a given HTML file into a .csv file.
       var slideshow = remark.create();
     </script>
     <script>
-      var acc = document.getElementsByClassName("accordion");
-      var i;
+      const acc = document.getElementsByClassName("accordion");
+      const onArray = [];
+      let panel = "";
 
-      for (i = 0; i < acc.length; i++) {
+      for (let i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function() {
-          this.classList.toggle("active");
+          if (onArray.length > 0) {
+            onArray[0].style.height = "0";
+            onArray.splice(0);
+            console.log("After Remove", onArray);
+          }
+          panel = this.nextElementSibling;
+          onArray.push(panel);
+          console.log("After Add", onArray);
 
-          var panel = this.nextElementSibling;
           if (panel.style.height === "auto") {
             panel.style.height = "0";
           } else {
@@ -806,6 +832,39 @@ A simple python crawler transfer a given HTML file into a .csv file.
           }
         });
       }
+    </script>
+    <script>
+      const pan = document.getElementsByClassName("panel");
+      let distance = 0;
+      const current = Number(window.location.hash.slice(1));
+      let closest = current;
+      let closestNode = "";
+      function getClosestNode(node) {
+        const item = Number(node.getAttribute("href").slice(1));
+        distance = Math.abs(current - item);
+        console.log("distance", distance);
+        console.log("closest", closest);
+        if (distance < closest) {
+          closest = distance;
+          closestNode = node;
+        }
+      }
+      function allDescendants(node) {
+        for (let i = 0; i < node.children.length; i++) {
+          let child = node.children[i];
+          let dom = "";
+          if (child.getAttribute("href")) {
+            getClosestNode(child);
+            console.log(closestNode);
+          } else {
+            allDescendants(child);
+          }
+        }
+      }
+      allDescendants(pan[0]);
+      closetNode.
+      // for (let i = 0; i < pan.length; i++) {}
+      // window.location.hash;
     </script>
   </body>
 </html>
