@@ -432,10 +432,217 @@ By the way, I also do the design job since it was an internal tool.
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
+#### Step 1: Understand Business Requirement
+#### Step 2: Planning Phase
+##### Build UI Phase
+  - Present at least twice your sketch and features to team leader in order to prevent misunderstandings.
+<div>
+  <img style="width:80%;" src="./statics/img/PG/price-dashboard-mockup.png" alt="price-dashboard-mockup">
+</div>
+
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-### Problems
+### Developing Process
+#### Step 2: Planning Phase
+##### Build Data Structure
+- According to sketch, build a redux data structure 
+<div>
+  <img style="width:50%;vertical-align: top;" src="./statics/img/Price-Dashboard/redux-structure-2.png" alt="redux-structure-2">
+  <img style="width:30%;vertical-align: top;" src="./statics/img/Price-Dashboard/redux-structure-1.png" alt="redux-structure-1">
+</div>
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Developing Process
+#### Step 2: Planning Phase
+
+##### Sequence Diagrams
+<p style="font-size: 1rem;">
+  - Check existing API and define new API spec.
+</p>
+<p style="font-size: 1rem;">
+  - Define a API response's data structure.
+</p>
+<p style="font-size: 1rem;">
+  - Deal with Authorization.
+</p>
+
+<div>
+  <img style="width:80%;" src="./statics/img/Price-Dashboard/sequence-diagram.png" alt="sequence-diagram">
+</div>
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Developing Process
+#### Step 3: Implementation Phase
+##### Implement entry point
+<br />
+##### 1. Back-end API
+<p style="margin-top:0;margin-bottom:0.2rem;">
+  -> database
+</p>
+<p style="margin-top:0;margin-bottom:0.2rem;">
+  -> front-end
+</p>
+<br />
+##### 2. Front-end with mock data server
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Developing Process
+#### Step 3: Implementation Phase
+##### Develop back-end API
+Although complexity of individual API may be different from case to case, I take an API as unit.
+<p style="margin-top:0;margin-bottom:0.2rem;">
+- Build API router based on sequence diagram (Write schema and resolve to create graphql-server)
+</p>
+<p style="margin-top:0">
+- Build a mock data and return response.
+</p>
+<p style="margin-top:0">
+- Integrate 3rd API if needed.
+</p>
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Developing Process
+#### Step 3: Implementation Phase
+
+##### Connect back-end API to DB
+<p>
+  - Setup DB
+</p>
+<p style="margin-top:0">
+  - Connect to dev/prod DB
+</p>
+<p style="margin-top:0">
+  - Build model classes
+</p>
+<p style="margin-top:0">
+- Write seed data into DB
+</p>
+<p style="margin-top:0">
+- Access data @API level and replace mock data
+</p>
+<p style="margin-top:0">
+- Run unit test to api
+</p>
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Developing Process
+#### Step 3: Implementation Phase
+##### Develop front-end data model
+<p>
+  - Build Webpack
+</p>
+<p style="margin-top:0">
+  - Build Redux Store to host state
+</p>
+<p style="margin-top:0">
+  - Build Reducer and Set initial state
+</p>
+<p style="margin-top:0">
+  - Build Action and connect to backend API(or Mock data)
+</p>
+<p style="margin-top:0">
+  - Display data in component
+</p>
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Developing Process
+#### Step 3: Implementation Phase
+##### Develop front-end UI from the bottom up.
+<p>
+- Build unit component Button, Progress
+</p>
+<p style="margin-top:0">
+- Define Props Parameter
+</p>
+<p style="margin-top:0">
+- Decide where to call redux dispatch function
+</p>
+<p style="margin-top:0">
+- Based on design pattern to write component
+</p>
+<p style="margin-top:0">
+- Build a functional component
+</p>
+<p style="margin-top:0">
+- Start to build state inside component
+</p>
+<p style="margin-top:0">
+- Run unit test
+</p>
+
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Developing Process
+#### Step 3: Implementation Phase
+##### Dockerize your application
+<p>
+- Build dockerfile in dev and prod
+</p>
+<p style="margin-top:0">
+- Build docker-compose in dev and prod
+</p>
+
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Developing Process
+#### Step 4: Functional Test Phase
+<p>
+- E.g. test login, test post article
+</p>
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Developing Process
+#### Step 5: Deployment Phase
+<p>
+- Set up CI tools
+</p>
+<p>
+- Run Integration Test
+</p>
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Problem Solved
+##### 1. Communication is important but hard to be done well.
+##### 2. Tools
+<p style="margin-bottom:0.2rem;">
+  - API Doc
+</p>
+<p style="margin-top:0">
+  - Screen shot of chrome dev tools
+</p>
+
+##### 3. Priority order
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Plan for Project Expansion 
+<p>
+- Finish Test
+</p>
+<p>
+- Service Worker
+</p>
+<p>
+- SSR
+</p>
+<p>
+- Add logging system
+</p>
+<p>
+- Authentication with FIDO2
+</p>
+
 
 ---
 ###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
