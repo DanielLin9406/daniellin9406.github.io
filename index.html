@@ -62,6 +62,7 @@
         position: absolute;
         z-index: 10;
         width: 20%;
+        max-width: 240px;
         top: 0;
         bottom: 0;
         margin: auto;
@@ -750,8 +751,9 @@ Refractor my first website with modern packing tool, webpack.
 ### Front-End
 <span style="font-size:1rem;">Please ignore a awful color which is way much deviated from the original one.</span>
 ##### Layout and animations
-<video autoplay loop muted style="width:100%;">
-  <source type="video/mp4" src="./statics/img/Persional-Website/layout-animations.mp4"> 
+<video autoplay muted style="width:100%;">
+  <source type="video/mp4" src="./statics/img/Persional-Website/layout-animations.mp4">
+    Your browser does not support the video tag. 
 </video>
 
 ---
@@ -759,7 +761,7 @@ Refractor my first website with modern packing tool, webpack.
 ### Back-End
 Use API keys and OAuth2.0 to authorized user.
 ##### Google Spread Sheet API
-<video autoplay loop muted style="width:100%;">
+<video autoplay muted style="width:100%;">
   <source type="video/mp4" src="./statics/img/Persional-Website/google-spread-sheet-api.mp4">
   Your browser does not support the video tag.
 </video>
@@ -810,61 +812,96 @@ A simple python crawler transfer a given HTML file into a .csv file.
       var slideshow = remark.create();
     </script>
     <script>
-      const acc = document.getElementsByClassName("accordion");
-      const onArray = [];
-      let panel = "";
+      function updatePanel(onArray, panel) {
+        if (onArray.length > 0) {
+          onArray[0].style.height = "0";
+          onArray.splice(0);
+        }
+        onArray.push(panel);
 
-      for (let i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-          if (onArray.length > 0) {
-            onArray[0].style.height = "0";
-            onArray.splice(0);
-            console.log("After Remove", onArray);
-          }
-          panel = this.nextElementSibling;
-          onArray.push(panel);
-          console.log("After Add", onArray);
-
-          if (panel.style.height === "auto") {
-            panel.style.height = "0";
-          } else {
-            panel.style.height = "auto";
-          }
-        });
-      }
-    </script>
-    <script>
-      const pan = document.getElementsByClassName("panel");
-      let distance = 0;
-      const current = Number(window.location.hash.slice(1));
-      let closest = current;
-      let closestNode = "";
-      function getClosestNode(node) {
-        const item = Number(node.getAttribute("href").slice(1));
-        distance = Math.abs(current - item);
-        console.log("distance", distance);
-        console.log("closest", closest);
-        if (distance < closest) {
-          closest = distance;
-          closestNode = node;
+        if (panel.style.height === "auto") {
+          panel.style.height = "0";
+        } else {
+          panel.style.height = "auto";
         }
       }
-      function allDescendants(node) {
-        for (let i = 0; i < node.children.length; i++) {
-          let child = node.children[i];
-          let dom = "";
-          if (child.getAttribute("href")) {
-            getClosestNode(child);
-            console.log(closestNode);
-          } else {
-            allDescendants(child);
-          }
+
+      function listenClickEventinNav() {
+        const acc = document.getElementsByClassName("accordion");
+        let panel = "";
+        const onArray = [];
+
+        for (let i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function() {
+            updatePanel(onArray, this.nextElementSibling);
+          });
         }
       }
-      allDescendants(pan[0]);
-      closetNode.
-      // for (let i = 0; i < pan.length; i++) {}
-      // window.location.hash;
+
+      function highLightClosestContent() {
+        const pan = document.getElementsByClassName("panel");
+        function createGetClosetNode() {
+          const storedHash = "#1";
+          return function() {
+            if (window.location.hash === storedHash) return;
+            const current = Number(window.location.hash.slice(1));
+            let distance = 0;
+            let closest = current;
+            let closestNode = "";
+
+            function getClosestNode(node) {
+              const item = Number(node.getAttribute("href").slice(1));
+              distance = current - item;
+              if (distance < closest && distance >= 0) {
+                closest = distance;
+                closestNode = node;
+              }
+            }
+
+            function allDescendants(node) {
+              for (let i = 0; i < node.children.length; i++) {
+                let child = node.children[i];
+                let dom = "";
+                if (child.getAttribute("href")) {
+                  getClosestNode(child);
+                } else {
+                  allDescendants(child);
+                }
+              }
+            }
+
+            for (let i = 0; i < pan.length; i++) {
+              allDescendants(pan[i]);
+            }
+            return closestNode;
+          };
+        }
+
+        const getClosetNode = createGetClosetNode();
+        let closestNode = getClosetNode();
+        const onArray = [];
+
+        window.setInterval(function() {
+          if (closestNode) {
+            closestNode.classList.remove("closet");
+          }
+          closestNode = getClosetNode();
+          if (closestNode) {
+            closestNode.classList.add("closet");
+            updatePanel(
+              onArray,
+              closestNode.parentElement.parentElement.parentElement
+            );
+          }
+        }, 1000);
+
+        if (closestNode) {
+          closestNode.classList.add("closet");
+        }
+      }
+
+      listenClickEventinNav();
+      highLightClosestContent();
     </script>
   </body>
 </html>
