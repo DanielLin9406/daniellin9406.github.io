@@ -152,7 +152,13 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "UA-147253639-1", { page_path: "/" });
+      gtag("config", "UA-147253639-1", {
+        page_path: "/",
+        campaign: {
+          source: "google", // utm_source
+          medium: "search engine" // utm medium
+        }
+      });
     </script>
   </head>
   <body>
