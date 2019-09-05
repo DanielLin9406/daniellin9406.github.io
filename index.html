@@ -81,6 +81,7 @@
         justify-content: center;
         border-radius: 4px;
       }
+
       /* Style the buttons that are used to open and close the accordion panel */
       .accordion {
         background-color: #eee;
@@ -111,6 +112,26 @@
       }
       .remark-slide-container {
         left: 8%;
+      }
+      @media only screen and (max-width: 551px) {
+        nav {
+          left: 0;
+          width: 100%;
+          max-width: none;
+          top: 50%;
+          z-index: 30;
+          overflow: auto;
+          justify-content: flex-start;
+        }
+        .panel {
+          overflow: unset;
+        }
+        .remark-slide-scaler {
+          top: 1.5% !important;
+        }
+        .remark-slide-container {
+          left: 0;
+        }
       }
     </style>
   </head>
