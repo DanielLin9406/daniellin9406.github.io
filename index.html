@@ -151,15 +151,22 @@
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
-      gtag("config", "UA-147253639-1", {
-        page_path: "/",
-        campaign: {
-          source: "google", // utm_source
-          medium: "search engine", // utm_medium
-          name: "general" //utm_name
-        }
+      const query = window.location.search;
+      if (!query) {
+        gtag("set", {
+          campaign: {
+            source: "direct", // utm_source
+            medium: "none", // utm_medium
+            name: "general" //utm_name
+          }
+        });
+      }
+
+      gtag("set", {
+        page_path: "/"
       });
+      gtag("js", new Date());
+      gtag("config", "UA-147253639-1");
     </script>
   </head>
   <body>
