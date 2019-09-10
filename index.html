@@ -154,7 +154,8 @@
       function getCampaignEvent() {
         const query = window.location.search;
         let campaignObj = {};
-        if (query === "myself=true") {
+        const pattern = new RegExp("([\?+])?(myself=true)");
+        if (pattern.test(query)) {
           campaignObj = {
             source: "myself", // utm_source
             medium: "myself", // utm_medium
