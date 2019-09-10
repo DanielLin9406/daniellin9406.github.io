@@ -161,12 +161,13 @@
           }
         });
       }
-
-      gtag("set", {
-        page_path: "/"
-      });
-      gtag("js", new Date());
-      gtag("config", "UA-147253639-1");
+      if (query !== "myself=true") {
+        gtag("set", {
+          page_path: "/"
+        });
+        gtag("js", new Date());
+        gtag("config", "UA-147253639-1");
+      }
     </script>
   </head>
   <body>
