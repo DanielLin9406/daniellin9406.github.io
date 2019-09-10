@@ -151,23 +151,38 @@
       function gtag() {
         dataLayer.push(arguments);
       }
-      const query = window.location.search;
-      if (!query) {
-        gtag("set", {
-          campaign: {
+      function getCampaignEvent() {
+        const query = window.location.search;
+        let campaignObj = {};
+        if (query === "myself=true") {
+          campaignObj = {
+            source: "myself", // utm_source
+            medium: "myself", // utm_medium
+            name: "general" //utm_name
+          };
+        }
+
+        if (!query) {
+          campaignObj = {
             source: "direct", // utm_source
             medium: "none", // utm_medium
             name: "general" //utm_name
-          }
-        });
+          };
+        }
+
+        return campaignObj;
       }
-      if (query !== "myself=true") {
+
+      function sendGAEvent() {
         gtag("set", {
-          page_path: "/"
+          page_path: "/",
+          campaign: getCampaignEvent()
         });
         gtag("js", new Date());
         gtag("config", "UA-147253639-1");
       }
+
+      sendGAEvent();
     </script>
   </head>
   <body>
