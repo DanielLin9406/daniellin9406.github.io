@@ -153,17 +153,6 @@
       }
       function getCampaignEvent() {
         const query = window.location.search;
-        let campaignObj = {};
-        const pattern = new RegExp("([\?+])?(myself=true)");
-
-        if (pattern.test(query)) {
-          campaignObj = {
-            source: "myself", // utm_source
-            medium: "myself", // utm_medium
-            name: "general" //utm_name
-          };
-        }
-
         if (!query) {
           campaignObj = {
             source: "direct", // utm_source
@@ -175,7 +164,18 @@
         return campaignObj;
       }
 
+      function testSendGa() {
+        let campaignObj = {};
+        const pattern = new RegExp("([\?+])?(myself=true)");
+        if (pattern.test(query)) {
+          return false;
+        }
+        return true;
+      }
+
       function sendGAEvent() {
+        if (!testSendGa()) return;
+
         gtag("set", {
           page_path: "/",
           campaign: getCampaignEvent()
