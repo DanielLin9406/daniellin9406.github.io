@@ -188,7 +188,7 @@
     </script>
   </head>
   <body>
-    <nav>
+    <nav style="display: none;">
       <button class="accordion">Work Experience @PG</button>
       <div class="panel">
         <ul>
@@ -239,7 +239,7 @@
         </ul>
       </div>
     </nav>
-    <textarea id="source">
+    <textarea id="source" style="display:none;">
 class: center, middle
 
 # Daniel Lin's Portfolio
@@ -918,6 +918,10 @@ A simple python crawler transfer a given HTML file into a .csv file.
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
     <script>
       var slideshow = remark.create();
+      console.log(slideshow);
+      if (slideshow) {
+        document.querySelector("nav").style.display = "flex";
+      }
     </script>
     <script>
       function updatePanel(onArray, panel) {
