@@ -158,7 +158,7 @@
           campaignObj = {
             source: "direct", // utm_source
             medium: "none", // utm_medium
-            name: "general" //utm_name
+            name: "general", //utm_name
           };
         }
 
@@ -179,7 +179,7 @@
 
         gtag("set", {
           page_path: "/",
-          campaign: getCampaignEvent()
+          campaign: getCampaignEvent(),
         });
         gtag("js", new Date());
         gtag("config", "UA-147253639-1");
@@ -189,7 +189,7 @@
     </script>
   </head>
   <body>
-    <nav style="display: none;">
+    <nav style="display: none">
       <button class="accordion">Work Experience @PG</button>
       <div class="panel">
         <ul>
@@ -240,7 +240,7 @@
         </ul>
       </div>
     </nav>
-    <textarea id="source" style="display:none;">
+    <textarea id="source" style="display: none">
 class: center, middle
 
 # Daniel Lin's Portfolio
@@ -411,8 +411,9 @@ By the way, I also do the design job since it was an internal tool.
 ### Demo
 #### Auto sign in
 <video autoplay muted preload="auto" style="width:100%;">
-  <source type="video/mp4" src="./statics/img/Price-Dashboard/auto-sign-in.mp4">
+  <source type="video/mp4" src="https://drive.google.com/uc?export=download&id=1MfJkwjx5fU85Ca_3hsb1aLgXJ1jSblzl">
 </video>
+
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
@@ -420,7 +421,7 @@ By the way, I also do the design job since it was an internal tool.
 #### Create a promotion
 
 <video autoplay muted preload="auto" style="width:100%;">
-  <source type="video/mp4" src="./statics/img/Price-Dashboard/create-promotion.mp4">
+  <source type="video/mp4" src="https://drive.google.com/uc?export=download&id=1MfJkwjx5fU85Ca_3hsb1aLgXJ1jSblzl">
 </video>
 ---
 
@@ -428,7 +429,7 @@ By the way, I also do the design job since it was an internal tool.
 ### Demo
 #### Update a promotion
 <video autoplay muted preload="auto" style="width:100%;">
-  <source type="video/mp4" src="./statics/img/Price-Dashboard/update-promotion.mp4">
+  <source type="video/mp4" src="https://drive.google.com/uc?export=download&id=1JHEo9ef-JNSqW_Yc42PI-1HwOlMVRtTF">
 </video>
 
 ---
@@ -436,7 +437,7 @@ By the way, I also do the design job since it was an internal tool.
 ### Demo
 #### Remove a promotion
 <video autoplay muted preload="auto" style="width:100%;">
-  <source type="video/mp4" src="./statics/img/Price-Dashboard/remove-promotion.mp4">
+  <source type="video/mp4" src="https://drive.google.com/uc?export=download&id=1eCkpOXmtVa9SUODw_JKDzSzBzXZdMo2K">
 </video>
 
 ---
@@ -444,7 +445,7 @@ By the way, I also do the design job since it was an internal tool.
 ### Demo
 #### Create a promotion and push it on live.
 <video autoplay muted preload="auto" style="width:100%;">
-  <source type="video/mp4" src="./statics/img/Price-Dashboard/create-promotion-go-live.mp4">
+  <source type="video/mp4" src="https://drive.google.com/uc?export=download&id=15AazG9LvzGTS2FS0mbPB_tVORzcktJyo">
 </video>
 
 ---
@@ -452,7 +453,7 @@ By the way, I also do the design job since it was an internal tool.
 ### Demo
 #### Create a promotion and push it on live while there is another promotion on live.
 <video autoplay muted preload="auto" style="width:100%;">
-  <source type="video/mp4" src="./statics/img/Price-Dashboard/create-promotion-go-live-replace.mp4">
+  <source type="video/mp4" src="https://drive.google.com/uc?export=download&id=1rYWyt-o05Cu7dpJtHIsawbZiKxeqB_4x">
 </video>
 
 ---
@@ -460,7 +461,7 @@ By the way, I also do the design job since it was an internal tool.
 ### Demo
 #### Price updated when different products in bundles
 <video autoplay muted preload="auto" style="width:100%;">
-  <source type="video/mp4" src="./statics/img/Price-Dashboard/price-update-in-bundle.mp4">
+  <source type="video/mp4" src="https://drive.google.com/uc?export=download&id=1ENl9Mo-NgGKwLdmYsHvCKuKq_UsvLn_k">
 </video>
 
 ---
@@ -944,7 +945,7 @@ A simple python crawler transfer a given HTML file into a .csv file.
         const onArray = [];
 
         for (let i = 0; i < acc.length; i++) {
-          acc[i].addEventListener("click", function() {
+          acc[i].addEventListener("click", function () {
             updatePanel(onArray, this.nextElementSibling);
           });
         }
@@ -954,7 +955,7 @@ A simple python crawler transfer a given HTML file into a .csv file.
         const pan = document.getElementsByClassName("panel");
         function createGetClosetNode() {
           const storedHash = "#1";
-          return function() {
+          return function () {
             if (window.location.hash === storedHash) return;
             const current = Number(window.location.hash.slice(1));
             let distance = 0;
