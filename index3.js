@@ -26,7 +26,7 @@ titleArr.forEach((ele) => {
   titleObj[ele.l2Title] = { parent: ele.l1Title, pageIndex: ele.pageIndex };
   titleObj[ele.l1Title] = { parent: "root", pageIndex: ele.pageIndex };
 });
-console.log("titleObj", titleObj);
+// console.log("titleObj", titleObj);
 
 var titleArr2 = Object.keys(titleObj).map((ele, index) => {
   return {

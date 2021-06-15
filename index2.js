@@ -5,7 +5,7 @@ function accordionView(activePanelArr, panelTarget) {
     activePanelArr.splice(0);
   }
   panelTarget.style.height = "auto";
-  panelTarget.style.overflow = "scroll";
+  panelTarget.style.overflowY = "scroll";
   activePanelArr.push(panelTarget);
 }
 
