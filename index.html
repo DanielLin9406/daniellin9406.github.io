@@ -311,12 +311,10 @@ class: center, middle
   - SPA Price Dashboard (React+Redux+SASS)
 
 #### Freelancer:
-  - Refractored SPA Price Dashboard <br/> (React+Redux+SASS+Nginx+Docker)
-  - SPA Lazy-Stock-Screener <br/> (React Hooks+Redux+StyleComponent+SSR+Docker)
-
----
-###### Lazy Stock Screener
-### dd
+  - Refractored SPA Price Dashboard <br/> (React+Redux+SASS+Nginx+Docker) <br/>
+    (react-redux-connect + Render Props) <br />
+  - SPA Lazy-Stock-Screener <br/> (React Hooks + Redux + StyleComponent + SSR + Docker)
+  <br/>(MVP pattern)<br/>(HOC: Route + Fetching Data)
 
 ---
 ###### Work Experience @PG
@@ -537,9 +535,9 @@ class: center, middle
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-### Front-End (Web service)
+#### Front End (Web service):
 
-##### Structure:
+- Structure:
 <p style="margin-top:0;margin-bottom:0.2rem;">
   - Take advantage of the power of Webpack for packaging web service in dev and prod. environment instead of directly using CRA.
 </p>
@@ -550,7 +548,7 @@ class: center, middle
   - Separate Redux's mapStateToProps and mapDispatchToProps from every component in order to make it easy to understand.
 </p>
 
-##### Design pattern:
+- Design pattern:
 <p style="margin-top:0;margin-bottom:0.2rem;">  
   - Implement React's design pattern such as compound, render-props and context api to build reuseable and clear component.
 </p>
@@ -558,7 +556,7 @@ class: center, middle
   - Use module pattern for Redux.
 </p>
 
-##### API:
+- API:
 <p style="margin-top:0;margin-bottom:0.2rem;">
   - Auto sign in with Credential Management API.
 </p>
@@ -566,7 +564,7 @@ class: center, middle
   - Encapsulate axios
 </p>
 
-##### Server:
+- Server:
 <p style="margin-top:0;margin-bottom:0.2rem;">  
   - Use nginx as static file server in production environment.
 </p>
@@ -576,13 +574,13 @@ class: center, middle
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-### Back-End (User / Promotions / Prices / Upgrade-rules Services)
-##### Auth:
+#### Back End (User / Promotions / Prices / Upgrade-rules Services):
+- Auth:
 <p style="margin-top:0;">
   - Google OAuth 2.0
 </p>
 
-##### Structure:
+- Structure:
 <p style="margin-top:0;margin-bottom:0.2rem;">
   - Best practice of Node/Express with ES6 syntax(e.g. self-contained components as file structure, bind API at router level).
 </p>
@@ -590,20 +588,20 @@ class: center, middle
   - Every route has implemented Redis as cache server to reduce DB's query operation.
 </p>
 
-##### Cache:
+- Cache:
 <p style="margin-top:0;">
   - Thanks to Redis, no extra DB query command is executed when post/update/delete router has been called and still can return a full list of promotion.
 </p>
 
-##### Proxy:
+- Proxy:
 <p style="margin-top:0;">
   - Use NGINX as a reverse proxy.
 </p>
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-### Dev-ops
-##### Container:
+#### DevOps:
+- Container
 <p style="margin-top:0;margin-bottom:0.2rem;">
   - Use Docker-compose to run dev on local
 </p>
@@ -617,12 +615,12 @@ class: center, middle
   - K8S
 </p>
 
-##### CI:
+- CI:
 <p style="margin-top:0;">
   - Travis
 </p>
 
-##### Cloud:
+- Cloud:
 <p style="margin-top:0;margin-bottom:0.2rem;">
   - AWS ECS
 </p>
@@ -634,8 +632,12 @@ class: center, middle
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
 #### Step 1: Understand Business Requirement
-#### Step 2: Planning Phase
-##### Build UI Phase
+
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Developing Process
+#### Step 2: Build UI
   - Present at least twice your sketch and features to team leader in order to prevent misunderstandings:
 <div>
   <img style="width:80%;" src="./statics/img/PG/price-dashboard-mockup.png" alt="price-dashboard-mockup">
@@ -645,8 +647,7 @@ class: center, middle
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
-#### Step 2: Planning Phase
-##### Build Data Structure:
+#### Step 2: Build Data Structure:
 - According to sketch, build a redux data structure 
 <div>
   <img style="width:50%;vertical-align: top;" src="./statics/img/Price-Dashboard/redux-structure-2.png" alt="redux-structure-2">
@@ -656,9 +657,8 @@ class: center, middle
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
-#### Step 2: Planning Phase
+#### Step 2: Planning Sequence Diagrams
 
-##### Sequence Diagrams:
 <p style="font-size: 1rem;">
   - Check existing API and define new API spec.
 </p>
@@ -676,10 +676,8 @@ class: center, middle
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
-#### Step 3: Implementation Phase
-##### Implement entry point:
-<br />
-##### Back-end API
+#### Step 3: Implement entry point:
+- Back-end API
 <p style="margin-top:0;margin-bottom:0.2rem;">
   -> database
 </p>
@@ -687,13 +685,13 @@ class: center, middle
   -> front-end
 </p>
 <br />
-##### Front-end with mock data server
+- Front-end with mock data server
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
-#### Step 3: Implementation Phase:
-##### Develop back-end API
+#### Step 3: Develop back end API:
+
 Although complexity of individual API may be different from case to case, I take an API as unit.
 <p style="margin-top:0;margin-bottom:0.2rem;">
 - Build API router based on sequence diagram (Write schema and resolve to create graphql-server)
@@ -708,9 +706,8 @@ Although complexity of individual API may be different from case to case, I take
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
-#### Step 3: Implementation Phase:
+#### Step 3: Connect backEnd API to DB:
 
-##### Connect back-end API to DB
 <p>
   - Setup DB
 </p>
@@ -733,8 +730,8 @@ Although complexity of individual API may be different from case to case, I take
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
-#### Step 3: Implementation Phase
-##### Develop front-end data model
+#### Step 3: Develop front end data model
+
 <p>
   - Build Webpack
 </p>
@@ -754,8 +751,7 @@ Although complexity of individual API may be different from case to case, I take
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
-#### Step 3: Implementation Phase
-##### Develop front-end UI from the bottom up.
+#### Step 3: Develop front end UI from the bottom up
 <p>
 - Build unit component Button, Progress
 </p>
@@ -782,8 +778,7 @@ Although complexity of individual API may be different from case to case, I take
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
-#### Step 3: Implementation Phase
-##### Dockerize your application
+#### Step 3: Dockerize your application
 <p>
 - Build dockerfile in dev and prod
 </p>
@@ -825,24 +820,8 @@ Although complexity of individual API may be different from case to case, I take
 ##### Priority order
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-### Plan for Project Expansion 
-<p>
-- Finish Test
-</p>
-<p>
-- Service Worker
-</p>
-<p>
-- SSR
-</p>
-<p>
-- Add logging system
-</p>
-<p>
-- Authentication with FIDO2
-</p>
-
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo/customer-web)
+### dd
 
 ---
 ###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
