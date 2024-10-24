@@ -14,9 +14,12 @@ pageArr.forEach((pageText, index) => {
   );
   var result = regx.exec(pageText);
   contentObj.pageIndex = index + 2;
-  contentObj.l1Title = result.groups.l1Title;
-  contentObj.l2Title = result.groups.l2Title;
-  contentObj.l3Title = result.groups.l3Title;
+  contentObj.l1Title = result?.groups?.l1Title;
+  contentObj.l2Title = result?.groups?.l2Title;
+
+  if (result?.groups?.l3Title) {
+    contentObj.l3Title = result?.groups?.l3Title;
+  }
   titleArr.push(contentObj);
 });
 
