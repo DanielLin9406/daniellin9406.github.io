@@ -9,7 +9,7 @@ var titleArr = [];
 pageArr.forEach((pageText, index) => {
   var contentObj = {};
   var regx = RegExp(
-    /(?<l1Title>[\w@\s\.\-]*)(\[\[source\]\].*)*###\s*(?<l2Title>[\w/\s]*):*(<p>.*<\/p>)*(#####)*\s*(?<l3Title>[\w\s/]*)*:*.*/,
+    /(?<l1Title>[\w@\s\.\-]*)(\[\[source\]\].*)*###\s*(?<l2Title>[\w/\s]*):*(<p>.*<\/p>)*(####)*\s*(?<l3Title>[\w\s/]*)*:*.*/,
     "g"
   );
   var result = regx.exec(pageText);

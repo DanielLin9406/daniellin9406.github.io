@@ -7,7 +7,7 @@
     <meta name="keywords" content="Portfolio" />
     <meta name="author" content="Daniel Lin" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- <link rel="icon" href="http://example.com/favicon.png"> -->
+    <link rel="icon" href="./statics/img/favicon.png">
     <meta property="og:title" content="Daniel Lin's Portfolio" />
     <meta
       property="og:description"
@@ -301,6 +301,19 @@ class: center, middle
 # Daniel Lin's Portfolio
 
 ---
+###### Skills
+### Planning <br/>
+
+
+#### From Seneca
+- System Design
+- Database Design
+- Testing Project
+
+#### From Portfolios
+- Lazy-Stock-Screener (DDD)
+
+---
 
 ###### Skills
 ### Front End<br/>
@@ -313,8 +326,8 @@ Feature + Tech
  - (@Pickupp) Websocket serice (React hooks)
 
 #### From Portfolios
- - Lazy-Stock-Screener (React+jotai)
  - Price Dashboard (React+Redux+SASS)
+ - Lazy-Stock-Screener (React+Jotai)
 
 ---
 
@@ -322,47 +335,155 @@ Feature + Tech
 ### Back End<br/>
 Feature + Tech + Performance tuning
 #### From Work Experience
- - Feature Toggle Library
- - gRPC Cache Library
- - Websocket serice
- - Log library with asynLocalStorage
- - Migrate to new Order system
- - Performance tuning with SQL plan
+ - Feature Toggle Library (Node.js+Golang)
+ - gRPC Cache Library (Node.js)
+ - Websocket serice (Node.js)
+ - Log library with asynLocalStorage (Node.js)
+ - Migrate to new Order system (Node.js+Golang)
+ - Performance tuning with SQL plan (PostgreSQL)
 
 #### From Portfolios
-- Lazy-Stock-Screener
-- Price Dashboard
-- Revised Email Sender
+- Lazy-Stock-Screener (GoLang+MongoDriver&Gorm)
+- Price Dashboard (Node.js+Mongoose)
+- Revised Email Sender (Node.js+Mongoose)
 
 ---
 ###### Skills
 ### Data<br/>
 Leverage ETL process
 #### Portfolios
-- SEC Data Pipeline
-- Lazy-Stock-Screener
+- SEC Data Pipeline (Pandas+Python)
+- Lazy-Stock-Screener (Pandas+Python)
 
 ---
 ###### Work Experience @Pickupp
-### Refractor Order service
-- order status
-- multiple table join
-- index missing hit
-- event queue availiability
-- event sequence
-- fetch to get or maintain two copy of data
-- fault fault tolerance
-- system migration
+### Summary<br/>
+Filled with fulfilling experiences in 2 years
+<img style="width:100%;" src="./statics/img/Pickupp/PR.jpg" alt="db_load">
 
 ---
 ###### Work Experience @Pickupp
-### Refractor Order detail page
+### Tech Part: Feature Toggle Lib. <br/>
+##### Websocket Service + Feature Toggle:
+
+- Service Dispatchs Event (Node.js/Golang) <br/>
+- -> Message Queue (Nats) <br/>
+- -> Websocket Service (Node.js) <br/>
+- -> Push to Front-End (React)
+
 
 ---
 ###### Work Experience @Pickupp
-### Tech
-Feature toggle library
-Log library
+### Tech Part: Log Lib.
+
+Leverage AsyncLocalStorage to create a independent context for a series of asynchronous operations in native way.
+<div style="text-align:center;">
+  <img style="width:80%;" src="./statics/img/Pickupp/logLib.jpg" alt="log_lib">
+</div>
+
+---
+###### Work Experience @Pickupp
+
+### New Order Service
+- Latest Event as Order Status
+- Many Join among Tables
+- Index Missing Hit
+- Performance or SSOT
+- System Migration
+- Event sequence
+- Fault Tolerance
+
+This is everything I’ve done at Pickupp, but after returning to school and studying more about system design, I believe my initial approach can be improved as an optimal approach if there is one.
+
+---
+###### Work Experience @Pickupp
+### New Order Service: Latest Event as Order Status
+
+#### Initial Approach: Latest Event
+<div style="text-align:center;">
+  <img style="width:60%;" src="./statics/img/Pickupp/orderStatusTimeline.jpg" alt="timeline">
+</div>
+
+#### Optimal Approach: Apply Event to Single State
+<img style="width:100%;" src="./statics/img/Pickupp/orderStatus.jpg" alt="event_sourcing">
+<div style="text-align:center;">
+  <img style="width:60%;" src="./statics/img/Pickupp/orderStatusInOrder.jpg" alt="event_sourcing">
+</div>
+---
+###### Work Experience @Pickupp
+### New Order Service: Key Value Pairs in RDB
+
+#### Initial Approach: Key-Value in SQL
+<div style="text-align:center;">
+  <img style="width:50%;" src="./statics/img/Pickupp/keyValuePair.jpg" alt="key_value_pair">
+</div>
+
+#### Pain points: 
+- Lack of referential integrity constraints
+- Lack of advantages in structured queries
+- Challenges in maintenance and scalability
+  - Application logic may need to be updated if new attributes added or changed
+- Difficulty in reporting and analysis
+- Data redundancy and inconsistency
+- Find item from array instead of key in object
+
+
+---
+###### Work Experience @Pickupp
+### New Order Service: Index Missing Hit <br>
+Fix SQL queries without proper indexing
+<img style="width:100%;" src="./statics/img/Pickupp/dbLoad.png" alt="db_load">
+
+---
+###### Work Experience @Pickupp
+### New Order Service: Performance or Single Source of Truth<br/>
+Choice between Performance or Single Source of Truth is always hard.
+<div style="text-align:center;">
+  <img style="width:50%;" src="./statics/img/Pickupp/SSOT.jpg" alt="ssot">
+</div>
+
+---
+###### Work Experience @Pickupp
+### New Order Service: System Migration<br/>
+Build a transformation layer between new and old system
+<div style="text-align:center;">
+  <img style="width:50%;" src="./statics/img/Pickupp/migration.jpg" alt="migration">
+</div>
+
+---
+###### Work Experience @Pickupp
+### New Order Service: Event Sourcing
+#### Initial Approach: 
+<div style="text-align:center;">
+  <img style="width:80%;" src="./statics/img/Pickupp/eventChain.jpg" alt="migration">
+</div>
+
+#### Optimal Approach: Distributed Transaction
+- TC/C or Saga
+  - Rollback
+  - Parallel or Linear Execution (Depends)
+- Fault Tolerance
+  - Raft Node Group
+
+---
+###### Work Experience @Pickupp
+### Build Order Detail Page<br/>
+Native Reducer + useContext/useState Hooks
+<div style="text-align:center;">
+  <img style="width:60%;" src="./statics/img/Pickupp/orderDetailPage.jpg" alt="order_detail_page">
+</div>
+
+---
+###### Work Experience @Pickupp
+### Fat Controller<br/>
+#### Initial Approach:
+- gRPC call
+- ORM call
+- business logic
+- service call
+
+#### Optimal Approach: 
+- Clean Architecture
 
 ---
 ###### Work Experience @PG
@@ -493,102 +614,8 @@ Log library
 </div>
 
 ---
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo/customer-web)
-#### Early Preview: Main Page
-<div>
-  <img style="width:100%;" src="https://drive.google.com/uc?export=view&id=1r_cfaEr3M4nOh8xdoudBT5bAxlB_STqc" alt="main_page_demo">
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo/customer-web)
-#### Early Preview: Analyze Page 
-<div>
-  <img style="width:100%;" src="https://drive.google.com/uc?export=view&id=1DgGJ5C3JgS5K7ORlkVMMACGLa8Kwy-dl" alt="analyze_page_demo">
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo/customer-web)
-#### Early Preview: Setting Page 
-<div>
-  <img style="width:100%;" src="https://drive.google.com/uc?export=view&id=1hcxiLGWoFCLYaJ4z4be8H-L9l5BoJGjg" alt="setting_page_demo">
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo/customer-web)
-#### Early Demo : Login Form
-- Without Material UI here
-<video autoplay loop muted preload="auto" style="width:100%;">
-  <source type="video/mp4" src="https://drive.google.com/uc?export=download&id=11_XbYHVkz0HGnXNedfNVE2Oqn7jEXN4B">
-  Your browser does not support the video tag.
-</video>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo/customer-web)
-#### Early Demo : Access Dashboard 
-<video autoplay loop muted preload="auto" style="width:100%;">
-  <source type="video/mp4" src="https://drive.google.com/uc?export=download&id=1bcDCw4bq6QAka_E7IYBh58cYmjeQWIx7">
-  Your browser does not support the video tag.
-</video>
-
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo/customer-web)
-#### Structure: MVP pattern
-<a href="https://khalilstemmler.com/articles/client-side-architecture/introduction/">Client-Side Architecture by Khalil Stemmler</a>
-<div>
-  <img style="width:80%;" src="https://drive.google.com/uc?export=view&id=1Jexsxyet-Sr8iRHcqt58ViTUPC7wfyNa" alt="MVP_pattern">
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo/customer-web)
-#### Structure: Model
-
-<div>
-  <img style="width:100%;" src="https://drive.google.com/uc?export=view&id=10HYyu8pSwc3amz1OvJOMnjtKxBODcaW3" alt="Model in MVP">
-</div>
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo/customer-web)
-#### Structure: Presenter
-
-<div>
-  <img style="width:100%;" src="https://drive.google.com/uc?export=view&id=1vA52sMDTYEIzo3GMtf4597t5aLibVUDt" alt="Presenter in MVP">
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo/customer-web)
-#### Structure: View
-
-<div>
-  <img style="width:100%;" src="https://drive.google.com/uc?export=view&id=1qJJnyPAqL62bLiV9kIm-K11yfzm3M6LH" alt="View in MVP">
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo/customer-web)
-#### Structure: Page
-
-<div>
-  <img style="width:100%;" src="https://drive.google.com/uc?export=view&id=13_X6IwewZ-BpXQ6Q9HhiHkuYipGPtjQ2" alt="Page in MVP">
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo/customer-web)
-#### Code Example: API Facade
-- Encapsulate actions
-<div>
-  <img style="width:100%;" src="https://drive.google.com/uc?export=view&id=13Om8Sny0cZBDN_yk0ONIcRt-S7XurdK8" alt="API Facade">
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo/customer-web)
-#### Code Example: HOC
-- Combine global state, actions and loading UI as HOC
-<div>
-  <img style="width:100%;" src="https://drive.google.com/uc?export=view&id=1ixHLCJayoSR0pJs11LME40FtfHqMg4Nm" alt="HOC Demo">
-</div>
-
----
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Preview: 1:
+#### UI: Part 1
 <p>By the way, I also do the design job since it was an internal tool.</p>
 <div>
   <img style="width:100%;" src="./statics/img/Price-Dashboard/price-dashboard-preview-1.png" alt="price-dashboard-preview-1">
@@ -596,7 +623,7 @@ Log library
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Preview: 2:
+#### UI: Part 2
 <div>
   <img style="width:100%;" src="./statics/img/Price-Dashboard/price-dashboard-preview-2.png" alt="price-dashboard-preview-2">
 </div> 
@@ -619,16 +646,9 @@ Log library
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Code Demo: Render Props
-<div>
-  <img style="width:80%;" src="https://drive.google.com/uc?export=view&id=1_5QrTQ6GnqLLs4gBb8uh_8_T1qpzQRQd" alt="render_props_demo">
-</div>
-
----
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 #### Demo: Auto sign in:
 <video autoplay muted preload="auto" style="width:100%;">
-  <source type="video/mp4" src="https://drive.google.com/uc?export=download&id=1MfJkwjx5fU85Ca_3hsb1aLgXJ1jSblzl">
+  <source type="video/mp4" src="./statics/img/Price-Dashboard/auto-sign-in.mp4">
 </video>
 
 
@@ -637,7 +657,7 @@ Log library
 #### Demo: Create a promotion:
 
 <video autoplay loop muted preload="auto" style="width:100%;">
-  <source type="video/mp4" src="https://drive.google.com/uc?export=download&id=1rYWyt-o05Cu7dpJtHIsawbZiKxeqB_4x">
+  <source type="video/mp4" src="./statics/img/Price-Dashboard/create-promotion.mp4">
 </video>
 ---
 
@@ -649,7 +669,7 @@ Log library
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Demo: Remove a promotion:
+### Demo: Remove a promotion:
 <video autoplay loop muted preload="auto" style="width:100%;">
   <source type="video/mp4" src="https://drive.google.com/uc?export=download&id=1eCkpOXmtVa9SUODw_JKDzSzBzXZdMo2K">
 </video>
@@ -677,7 +697,7 @@ Log library
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Front End (Web service):
+#### Tech: Front End (Web service):
 
 - Structure:
 <p style="margin-top:0;margin-bottom:0.2rem;">
@@ -716,7 +736,7 @@ Log library
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Back End (User / Promotions / Prices / Upgrade-rules Services):
+#### Tech: Back End (User / Promotions / Prices / Upgrade-rules Services):
 - Auth:
 <p style="margin-top:0;">
   - Google OAuth 2.0
@@ -742,7 +762,7 @@ Log library
 
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### DevOps:
+#### Tech: DevOps
 - Container
 <p style="margin-top:0;margin-bottom:0.2rem;">
   - Use Docker-compose to run dev on local
@@ -773,7 +793,7 @@ Log library
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
-#### Step 1: Understand Business Requirement
+#### Step 1: Business Requirement <br/>
 
 
 ---
@@ -949,22 +969,9 @@ Although complexity of individual API may be different from case to case, I take
 </p>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-### Problem Solved
-##### Communication is important but hard to be done well.
-##### Tools
-<p style="margin-bottom:0.2rem;">
-  - API Doc
-</p>
-<p style="margin-top:0">
-  - Screen shot of chrome dev tools
-</p>
-##### Priority order
-
----
-###### Financial Report Data Pipeline [[source]](https://github.com/DanielLin9406/worker-financialReportScreenr/tree/master/companyScreener)
+###### Financial Data Pipeline [[source]](https://github.com/DanielLin9406/worker-financialReportScreenr/tree/master/companyScreener)
 ### Company Screener
-- Input is a raw financial report.
+- Input are three financial report files exported from morningstar and location is under ~/FinancialData/{ticker}
 - output is custom report on Google Excel.
 
 <div>
@@ -972,14 +979,155 @@ Although complexity of individual API may be different from case to case, I take
 </div>
 
 ---
-###### Financial Report Data Pipeline [[source]](https://github.com/DanielLin9406/worker-financialReportScreenr/tree/master/secFinancialReportScraper)
+###### Financial Data Pipeline [[source]](https://github.com/DanielLin9406/worker-financialReportScreenr/tree/master/secFinancialReportScraper)
 ### SEC Financial Report Scraper
-- Input is a cik, date of that stock.
+- Input is a ticker, date of that stock.
 - Output is custom report on Google Excel.
 
 <div>
   <img style="width:100%;" src="./statics/img/RPipelines/indicator.png" alt="financial-indicator-dump">
 </div>
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### Introduction
+- DDD: Domain-Driven Design
+- Clean Architecture
+
+### Purpose
+- A practice pertaining to the goal of implementing concrete domain models and translating business logic into efficient technical solutions. 
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### System Context Diagram
+<div>
+  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/System Context Diagram.jpg" alt="system_context_diagram">
+</div>
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### Strategic Design: How to Proceed?
+
+#### Start from Big Ball of Mud
+- Big Ball of Mud -> Domain Model
+#### Start from Domain Model
+- Domain Model -> Big Ball of Mud 
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### Strategic Design: Domain Model
+<div style="display:inline-block;text-align: center;">
+  <img style="width:48%;" src="./statics/img/Lazy-Stock-Screener/SubDomain.jpg" alt="sub_domain">
+  <img style="width:48%;" src="./statics/img/Lazy-Stock-Screener/Domain Models.jpg" alt="domain_model">
+</div>
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### UI Design
+<div>
+  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/UI Design.jpg" alt="ui-design">
+</div> 
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### Strategic Design: Big Ball of Mud
+<div>
+  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/Big Ball of Mud.jpg" alt="big_ball_of_mud">
+</div> 
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### Strategic Design: Bounded Contexts
+<div>
+  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/Bounded Contexts.jpg" alt="bounded_contexts">
+</div> 
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### Strategic Design: Context Mapping
+<div>
+  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/Context Mapping.jpg" alt="context_mapping">
+</div> 
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### Strategic Design: Ubiquitous Language
+#### Stock
+- Metric
+- Symbol
+
+#### Customer
+- Role
+- Identity
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### Strategic Design: User Story + Use Case
+
+<div>
+  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/user story+use cases.jpg" alt="user_story_use_cases">
+</div> 
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### Strategic Design: Domain Events<br/>
+Dispatching events through messaging mechanism
+<div style="text-align: center;">
+  <img style="width:70%;" src="./statics/img/Lazy-Stock-Screener/Domain Events.jpg" alt="domain_events">
+</div> 
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### Tactical Design: Layered Architecture
+<div style="text-align: center;">
+  <img style="width:20%;" src="./statics/img/Lazy-Stock-Screener/Layered Arch.jpg" alt="layered_arch">
+</div>
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### Tactical Design: Clean Architecture
+
+<div style="display:inline-block;text-align: center;">
+  <img style="width:80%;" src="./statics/img/Lazy-Stock-Screener/Clean Architecture.jpg" alt="clean_architecture">
+  <img style="width:80%;" src="./statics/img/Lazy-Stock-Screener/Clean Architecture Code.jpg" alt="clean_architecture_code">
+</div> 
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+### Tactical Design: Repositories
+<div style="text-align: center;">
+  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/Repo.jpg" alt="repo">
+</div>
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+#### Early Demo: Login Form
+- Without Material UI here
+<div style="display:inline-block; text-align: center;">
+  <video autoplay loop muted preload="auto" style="width:100%;">
+    <source type="video/mp4" src="./statics/img/Lazy-Stock-Screener/Login.mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+#### Early Demo: Access Dashboard with Google Auth
+<div style="display:inline-block; text-align: center;">
+  <video autoplay loop muted preload="auto" style="width:100%;">
+    <source type="video/mp4" src="./statics/img/Lazy-Stock-Screener/Google.mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+---
+###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
+#### Early Demo: Auto Complete
+<video autoplay loop muted preload="auto" style="width:100%;">
+  <source type="video/mp4" src="./statics/img/Lazy-Stock-Screener/autocomplete.mp4">
+  Your browser does not support the video tag.
+</video>
+
+
 
 ---
 ###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
