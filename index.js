@@ -63,7 +63,7 @@ const render = (root, dom) => {
     return `
       <ul>
         ${node.children.map((n) => `
-          <li><a href="#${n.pageIndex}">${n.name}</a>${renderUList(n)}</li>
+          <li><a href="#${n.pageIndex}" onclick="event.stopPropagation();">${n.name}</a>${renderUList(n)}</li>
         `).join('')}
       </ul>
     `
@@ -145,6 +145,7 @@ const bindPanelClickEvent = (activePanelArr) => {
   document.querySelector("#navIndex").addEventListener("click", function (e) {
     // console.log(e.target);
   });
+
   // prevent go-to-next page action on nav
   document.querySelector("#navIndex").addEventListener("touchend", function (e) {
     e.stopPropagation()
