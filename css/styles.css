@@ -78,11 +78,12 @@ li {
 		}
 	}
 }
-li > a {
+/* li > a {
   color: #000;
-}
+} */
 a {
-  color: #898989;
+  color: #4C5768;
+  text-decoration: none;
 }
 
 
