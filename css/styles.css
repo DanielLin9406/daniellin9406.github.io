@@ -40,9 +40,8 @@ ul {
 	ul ::marker {
 		content: ">>";
 	}
-
-
 }
+
 li {
   margin: 5px 0;
 	position: relative;
@@ -85,6 +84,27 @@ li > a {
 a {
   color: #898989;
 }
+
+
+.scroll-con::-webkit-scrollbar-track
+{
+	border: 1px solid #4C576B;
+	background-color: #F5F5F5;
+}
+
+.scroll-con::-webkit-scrollbar
+{
+	width: 15px;
+	background-color: #F5F5F5;
+}
+
+.scroll-con::-webkit-scrollbar-thumb
+{
+  border: 1px solid #4C576B;
+	background-color: #1A2551;	
+}
+
+
 .closet {
   color: red;
   font-weight: bold;
