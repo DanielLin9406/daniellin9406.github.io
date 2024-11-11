@@ -29,9 +29,55 @@ ul {
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 20px;
+	padding-inline-start: 1.5em;
+	font-weight: 400;
+
+	::marker {
+		content: ">";
+		color: #48b;
+	}
+
+	ul ::marker {
+		content: ">>";
+	}
+
+
 }
 li {
   margin: 5px 0;
+	position: relative;
+	padding-inline-start: 0.5em;
+	padding-top: 0.5em;
+	/* border-bottom: 1px solid #48b2; */
+	cursor: default;
+	transition: color 0.4s;
+
+	&::after {
+		content: attr(theLittleDetails);
+		position: absolute;
+		left: 15%; bottom: calc(100% - 1.5em);
+		/* background-image: conic-gradient(from 10deg at 1em 100%, #fff 30deg, #fff0 30deg),
+			linear-gradient(0deg, #fff0 1.5em, #fff 1.5em); */
+		color: #246;
+		font-weight: 700;
+		padding: 1em 2em 2.5em;
+		pointer-events: none;
+		opacity: 0;
+		filter: drop-shadow(1px 2px 4px #0003);
+		transition: opacity 0.4s;
+	}
+
+	&:hover {
+		color: #48b;
+		
+		&::marker {
+			font-weight: 700;
+		}
+		&::after {
+			opacity: 1;
+			transition-delay: 0.2s;
+		}
+	}
 }
 li > a {
   color: #000;
@@ -87,7 +133,7 @@ nav {
 }
 
 .panel > .scroll-con {
-  padding: 0 18px;
+  padding: 0 10px;
   height: 0;
   max-height: 20vh;
   display: block;

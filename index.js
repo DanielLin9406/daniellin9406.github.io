@@ -150,6 +150,9 @@ const bindPanelClickEvent = (activePanelArr) => {
   document.querySelector("#navIndex").addEventListener("touchend", function (e) {
     e.stopPropagation()
   });  
+  // document.querySelector("#navIndex").addEventListener("onscroll", function (e) {
+  //   e.preventDefault()
+  // });  
 }
 
 function main() {
