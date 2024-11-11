@@ -18,6 +18,7 @@ const getPage = () => {
 }
 
 const generateOutline = () => {
+  console.log('getPage()', getPage())
   const titleObj = getPage().reduce((acc, cur, i) => {
     acc[cur.l3Title] = { parent: cur.l2Title, pageIndex: cur.pageIndex };
     acc[cur.l2Title] = { parent: cur.l1Title, pageIndex: cur.pageIndex };
@@ -53,7 +54,6 @@ const generateOutline = () => {
     }
     return acc;
   }, { root: null });
-  console.log('root', root)
   return root
 }
 
@@ -70,7 +70,7 @@ const render = (root, dom) => {
   }
 
   dom.innerHTML = root.children.map((node) => `
-  <div class="panel">
+    <div class="panel">
       <button class="accordion">${node.name}</button>
       <div class="scroll-con" data-id=${node.pageIndex}>${renderUList(node)}</div>
     </div>
