@@ -17,33 +17,6 @@ const getPage = () => {
   }, [])
 }
 
-
-// const getPage3 = () => {
-//   const sourceInnerText = document.getElementById("source").innerText
-//   const pageArr = sourceInnerText.replace(/^\s+|\n/gm, "").split("###### ").slice(1)
-
-//   // ### [l1Title]
-//   // #### [l2Title]
-//   // #### [l2Title]: [l3Title]
-//   return pageArr.reduce((acc, pageText, i) => {
-//     const result = /(?<l1Title>[\w@\s\.\-]*)(\[\[source\]\].*)*###\s*(?<l2Title>[\w/\s]*):*(<p>.*<\/p>)*(####)*\s*(?<l3Title>[\w\s/]*)*:*.*/g.exec(pageText);
-//     acc.push({
-//       pageIndex: i + 2,
-//       name,
-//       parent,
-//       pageIndex: i + 2,
-//       l1Title: result?.groups?.l1Title,
-//       l2Title: result?.groups?.l2Title,
-//       l3Title: result?.groups?.l3Title
-//     });
-//     return acc
-//   }, [{
-//     pageIndex: undefined,
-//     name: "root",
-//     parent: undefined,    
-//   }])
-// }
-
 const generateOutline = () => {
   const titleObj = getPage().reduce((acc, cur, i) => {
     acc[cur.l3Title] = { parent: cur.l2Title, pageIndex: cur.pageIndex };
@@ -164,13 +137,18 @@ const highLightItem = (node) => {
 const bindPanelClickEvent = (activePanelArr) => {
   const targetHash = "#1";
   window.addEventListener("hashchange", function (e) {
-    highLightItem(e.newURL.split("#")[1]);
-    console.log("e hash change");
+    // highLightItem(e.newURL.split("#")[1]);
+    // console.log("e hash change");
   });
 
+  
   document.querySelector("#navIndex").addEventListener("click", function (e) {
-    console.log(e.target);
+    // console.log(e.target);
   });
+  // prevent go-to-next page action on nav
+  document.querySelector("#navIndex").addEventListener("touchend", function (e) {
+    e.stopPropagation()
+  });  
 }
 
 function main() {
