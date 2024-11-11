@@ -53,7 +53,7 @@ const generateOutline = () => {
     }
     return acc;
   }, { root: null });
-
+  console.log('root', root)
   return root
 }
 
