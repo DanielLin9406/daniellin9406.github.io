@@ -9,14 +9,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="icon" href="./statics/img/favicon.png">
     <link rel="stylesheet" href="css/styles.css">
-    <meta property="og:title" content="Daniel Lin's Portfolio" />
+    <meta property="og:title" content="Daniel Lin's Works" />
     <meta
       property="og:description"
       content="A introduction of Daniel Lin's full-stack works."
     />
     <meta property="og:image" content="http://daniellin.app/thumbnail.png" />
     <meta property="og:url" content="http://daniellin.app/" />
-    <title>Portfolio | Daniel Lin</title>
+    <title>Works | Daniel Lin</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz"
@@ -81,7 +81,7 @@
     <textarea id="source" style="display: none">
 class: center, middle
 
-# Daniel Lin's Portfolio
+# Daniel Lin's Works
 
 ---
 ###### Skills
@@ -94,7 +94,7 @@ class: center, middle
 - Testing Project
 
 #### From Portfolios
-- Lazy-Stock-Screener (DDD)
+- LZStock (Lazy-Stock-Screener) with DDD (Domain-Driven Design)
 
 ---
 
@@ -102,15 +102,15 @@ class: center, middle
 ### Front End<br/>
 Feature + Tech
 #### From Work Experience
- - (@Blue) Website as product (JS+CSS)
- - (@PG) eCommence website for music technology company (JS+SASS)
- - (@Pickupp) Admin Order detail page (React hooks)
- - (@Pickupp) Feature toggle library (React hooks)
- - (@Pickupp) Websocket serice (React hooks)
+- (@Pickupp) Admin Order detail page (React hooks)
+- (@Pickupp) Feature toggle library (React hooks)
+- (@Pickupp) Websocket serice (React hooks)
+- (@PG) eCommence website for music technology company (JS+SASS)
+- (@Blue) Website as product (JS+CSS)
 
 #### From Portfolios
+ - LZStock (React+Jotai+TailwindCSS+RadixUI+TanStack)
  - Price Dashboard (React+Redux+SASS)
- - Lazy-Stock-Screener (React+Jotai)
 
 ---
 
@@ -126,7 +126,7 @@ Feature + Tech + Performance tuning
  - Performance tuning with SQL plan (PostgreSQL)
 
 #### From Portfolios
-- Lazy-Stock-Screener (GoLang+MongoDriver&Gorm)
+- LZStock (GoLang+Gorm)
 - Price Dashboard (Node.js+Mongoose)
 - Revised Email Sender (Node.js+Mongoose)
 
@@ -136,7 +136,7 @@ Feature + Tech + Performance tuning
 Leverage ETL process
 #### Portfolios
 - SEC Data Pipeline (Pandas+Python)
-- Lazy-Stock-Screener (Pandas+Python)
+<!-- - LZStock (Pandas+Python) -->
 
 ---
 ###### Work Experience @Pickupp
@@ -176,7 +176,7 @@ Leverage AsyncLocalStorage to create a independent context for a series of async
 - Event sequence
 - Fault Tolerance
 
-This is everything I’ve done at Pickupp, but after returning to school and studying more about system design, I believe my initial approach can be improved as an optimal approach if there is one.
+This is everything I did at Pickupp. After returning to school and studying more about system design, I now believe my initial approach could be improved and that there might be a more optimal solution.
 
 ---
 ###### Work Experience @Pickupp
@@ -405,6 +405,367 @@ Native Reducer + useContext/useState Hooks
 <p>
 Be assigned as a pioneer to manage the integration task for our latest system among other projects, handling both the front-end implementation and its integration with the back-end. </p>
 
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Enterprise-Grade DDD Architecture
+
+#### From Strategic Design to Production-Ready Deployment
+- Building Scalable Financial Systems with Domain-Driven Design, Microservices, and Kubernetes Infrastructure
+- Spent 100 Days to build on this project <br/>(Mainly during April 2025 - August 2025)
+<div style="display:inline-block;text-align: center;width:100%">
+  <img style="width:50%;" src="./statics/img/LZStock/gitlab100days.jpg" alt="gitlab100days">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Enterprise-Grade DDD Architecture
+
+#### Abilitys to be demonstrated:
+- Strategic Domain Modeling & Bounded Context Design
+- Tactical DDD Implementation with Golang
+- Microservices Architecture & Inter-Service Communication
+- Production Kubernetes Deployment with CI/CD
+- Real-World Financial Application Case Study
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Outlines: DDD Core + Extended Architecture Layers
+- Business Analysis & Use Case Development (Pre-DDD)
+- Strategic Design (DDD Core)
+- Tactical Design (DDD Core)
+- Application Architecture (Beyond DDD)
+- Infrastructure Architecture (Beyond DDD)
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Outlines: DDD Core + Extended Architecture Layers
+<div style="display:inline-block;text-align: center;">
+  <img style="width:90%;" src="./statics/img/LZStock/DDD Strategic Modeling - DDD Core + Extended Architecture Layers.jpg" alt="DDD_Core_+_Extended_Architecture_Layers">
+</div>
+
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Requirements Analysis: Create Dashboard Use Case P1
+
+<div style="display:inline-block;text-align: center;">
+  <img style="width:80%;" src="./statics/img/LZStock/CreateDashboardUseCaseP1.jpg" alt="create_dashboard_user_story_use_cases">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Requirements Analysis: Create Dashboard Use Case P2
+
+<div style="display:inline-block;text-align: center;">
+  <img style="width:80%;" src="./statics/img/LZStock/CreateDashboardUseCaseP2.jpg" alt="create_dashboard_user_story_use_cases">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Strategic Design: System Context Diagram
+<div>
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - System Context Diagram.jpg" alt="system_context_diagram">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Strategic Design: How to Proceed?
+#### Start from Big Ball of Mud (Bottom-Up)
+- Big Ball of Mud -> Domain Model
+
+#### Start from Domain Model (Top-Down)
+- Form Domain Model Directly
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Strategic Design (Bottom-Up): Big Ball of Mud
+<div>
+  <img style="width:100%;" src="./statics/img/LZStock/Big Ball of Mud.jpg" alt="big_ball_of_mud">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Strategic Design (Bottom-Up): Bounded Contexts
+<div>
+  <img style="width:100%;" src="./statics/img/LZStock/Bounded Contexts.jpg" alt="bounded_contexts">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Strategic Design (Bottom-Up): Context Mapping
+<div>
+  <img style="width:100%;" src="./statics/img/LZStock/Context Mapping.jpg" alt="context_mapping">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Strategic Design (Top-Down): Domain Model
+<div style="display:inline-block;text-align: center;">
+  <img style="width:75%;" src="./statics/img/LZStock/DDD Strategic Modeling - Domain.jpg" alt="domain_and_sub_domain">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Strategic Design (Top-Down): Bounded Context and Context Mapping
+<div style="display:inline-block;text-align: center;">
+  <img style="width:75%;" src="./statics/img/LZStock/DDD Strategic Modeling - SubDomain to BC and Context Mapping.jpg" alt="sub_domain_to_bc_and_context_mapping">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Strategic Design (Top-Down): With Ubiquitous Language
+<div style="display:inline-block;text-align: center;">
+  <img style="width:75%;" src="./statics/img/LZStock/DDD Strategic Modeling - BC.jpg" alt="domain_and_sub_domain">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Strategic Design (Top-Down): Context Mapping Types
+
+| Abbreviation | Full Name | Communication Method | Purpose |
+|-------------|-----------|---------------------|---------|
+| **C/S** | Customer/Supplier | NATS | Direct dependency with supplier providing services |
+| **OHS with PL** | Open Host Service with Published Language | gRPC | Standardized API for multiple consumers |
+| **CL** | Conformist | gRPC | Customer adapts to supplier's model |
+| **ACL** | Anti-Corruption Layer | gRPC | Translation layer to protect domain model |
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Tactical Design: Domain Model Design
+<div style="text-align: center;">
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Domain Model Design.jpg" alt="domain_model_design">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Tactical Design: Scope for Domain Object Validation
+<div style="text-align: center;">
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Domain Object.jpg" alt="domain_object">
+</div>
+
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Tactical Design: Validation Layer & Business Rules
+<div style="text-align: center;">
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Validation & Business Rules.jpg" alt="domain_model_design">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Tactical Design: Dashboard Aggregate
+<div style="text-align: center;">
+  <img style="width:50%;" src="./statics/img/LZStock/Code Example AG.jpg" alt="code_example_ag">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Tactical Design: Entity
+<div style="display:inline-block;text-align: center;">
+  <img style="width:37%;vertical-align:top;" src="./statics/img/LZStock/Code Example Entity p1.jpg" alt="code_example_entity_p1">
+  <img style="width:60%;vertical-align:top;" src="./statics/img/LZStock/Code Example Entity p2.jpg" alt="code_example_entity_p2">  
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Tactical Design: Value Object
+<div style="text-align: center;">
+  <img style="width:70%;" src="./statics/img/LZStock/Code Example Value Object.jpg" alt="code_example_value_object">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Application Architecture: UI Design
+<div>
+  <img style="width:100%;" src="./statics/img/LZStock/New UI Design.jpg" alt="ui-design">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Application Architecture: Front End Structure
+<div style="display:inline-block;text-align: center;">
+  <img style="width:60%;" src="./statics/img/LZStock/DDD Strategic Modeling - Front End Flow.jpg" alt="front_end_flow">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Application Architecture: Clean Architecture
+
+<div style="display:inline-block;text-align: center;">
+  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Clean Architecture.jpg" alt="clean_architecture">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Application Architecture: Back End Service Structure
+<div>
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Back End Flow.jpg" alt="back_end_flow">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Application Architecture: Back End Use Case Code
+<div style="display:inline-block;text-align: center;">
+  <img style="width:70%;" src="./statics/img/LZStock/Code Example UseCase p1.jpg" alt="back_end_flow_usecase_p1">
+  <img style="width:45%;" src="./statics/img/LZStock/Code Example UseCase p2.jpg" alt="back_end_flow_usecase_p2">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Application Architecture: Back End Repository Code
+<div style="display:inline-block;text-align: center;">
+  <img style="width:65%;" src="./statics/img/LZStock/Code Example AG Repository.jpg" alt="back_end_flow_ag_repository">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Application Architecture: Back End Worker Structure
+<div>
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Worker Flow.jpg" alt="back_end_flow_worker">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Application Architecture: Back End Gateway Structure
+<div style="display:inline-block;text-align: center;">
+  <img style="width:60%;" src="./statics/img/LZStock/DDD Strategic Modeling - Gateway Flow.jpg" alt="back_end_flow_gateway">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Application Architecture: Testing Focus
+<div style="display:inline-block;text-align: center;">
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Testing Focus.jpg" alt="back_end_flow_testing_focus">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Application Architecture: Trigger Methods
+<div style="display:inline-block;text-align: center;">
+  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Trigger Method.jpg" alt="back_end_flow_trigger_method">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Application Architecture: Error Chain
+<div style="display:inline-block;text-align: center;">
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Error Chain.jpg" alt="back_end_flow_error_chain">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Application Architecture: Error Chain Code
+<div style="display:inline-block;text-align: center;">
+  <img style="width:80%;" src="./statics/img/LZStock/Code Example ErrorChain1.jpg" alt="back_end_flow_error_chain_code_1">
+  <img style="width:40%; vertical-align:top;" src="./statics/img/LZStock/Code Example ErrorChain2.jpg" alt="back_end_flow_error_chain_code_2">
+  <img style="width:58%; vertical-align:top;" src="./statics/img/LZStock/Code Example ErrorChain3.jpg" alt="back_end_flow_error_chain_code_3">
+  <img style="width:50%;" src="./statics/img/LZStock/Code Example ErrorChain4.jpg" alt="back_end_flow_error_chain_code_4">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Infrastructure Architecture: Service Communication
+<div style="display:inline-block;text-align: center;">
+  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Services Communication.jpg" alt="infrastructure_service_communication">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Infrastructure Architecture: Service Registry
+<div style="display:inline-block;text-align: center;">
+  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Service Registry.jpg" alt="infrastructure_service_registry">
+</div> 
+
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Infrastructure Architecture: Running on K8S Cluster
+<div style="display:inline-block;text-align: center;">
+  <img style="width:100%;" src="./statics/img/LZStock/K8S Pod.jpg" alt="infrastructure_k8s_cluster">
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+### Infrastructure Architecture: Complete Architecture (For Now)
+<div style="display:inline-block;text-align: center;">
+  <img style="width:88%;" src="./statics/img/LZStock/DDD Strategic Modeling - Complete Deployment.jpg" alt="infrastructure_complete_deployment">
+</div> 
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+#### First Stage Demo: Auto Signin After Signup
+<div style="display:inline-block; text-align: center;">
+  <video autoplay loop muted preload="auto" style="width:100%;">
+    <source type="video/mp4" src="./statics/img/LZStock/Demo Auto Signin After Signup.mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+#### First Stage Demo: Create Dashboard and Watchlist
+<div style="display:inline-block; text-align: center;">
+  <video autoplay loop muted preload="auto" style="width:100%;">
+    <source type="video/mp4" src="./statics/img/LZStock/Demo Create Dashboard and Watchlist.mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+#### First Stage Demo: Add Company into Watchlist
+<div style="display:inline-block; text-align: center;">
+  <video autoplay loop muted preload="auto" style="width:100%;">
+    <source type="video/mp4" src="./statics/img/LZStock/Demo Add Company with Two Methods.mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+#### First Stage Demo: CreateMultiple Watchlists
+<div style="display:inline-block; text-align: center;">
+  <video autoplay loop muted preload="auto" style="width:100%;">
+    <source type="video/mp4" src="./statics/img/LZStock/Demo Multiple Watchlists.mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+#### First Stage Demo: Autocomplete Search
+<div style="display:inline-block; text-align: center;">
+  <video autoplay loop muted preload="auto" style="width:100%;">
+    <source type="video/mp4" src="./statics/img/LZStock/Demo Autocomplete.mp4"> 
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+#### First Stage Demo: Update User Profile
+<div style="display:inline-block; text-align: center;">
+  <video autoplay loop muted preload="auto" style="width:100%;">
+    <source type="video/mp4" src="./statics/img/LZStock/Demo Update User Profile.mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+---
+###### LZStock [[blog]](https://blog.lzstock.app)
+#### First Stage Demo: Logout and Signin Again
+<div style="display:inline-block; text-align: center;">
+  <video autoplay loop muted preload="auto" style="width:100%;">
+    <source type="video/mp4" src="./statics/img/LZStock/Demo Logout and Signin Again.mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+---
+###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+#### First Full-Stack Project
+<p>This is my first one full-stack project</p>
 ---
 ###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 #### UI: Part 1
@@ -779,147 +1140,6 @@ Although complexity of individual API may be different from case to case, I take
 <div>
   <img style="width:100%;" src="./statics/img/RPipelines/indicator.png" alt="financial-indicator-dump">
 </div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### Introduction
-- DDD: Domain-Driven Design
-- Clean Architecture
-
-### Purpose
-- A practice pertaining to the goal of implementing concrete domain models and translating business logic into efficient technical solutions. 
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### System Context Diagram
-<div>
-  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/System Context Diagram.jpg" alt="system_context_diagram">
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### Strategic Design: How to Proceed?
-
-#### Start from Big Ball of Mud
-- Big Ball of Mud -> Domain Model
-#### Start from Domain Model
-- Domain Model -> Big Ball of Mud 
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### Strategic Design: Domain Model
-<div style="display:inline-block;text-align: center;">
-  <img style="width:48%;" src="./statics/img/Lazy-Stock-Screener/SubDomain.jpg" alt="sub_domain">
-  <img style="width:48%;" src="./statics/img/Lazy-Stock-Screener/Domain Models.jpg" alt="domain_model">
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### UI Design
-<div>
-  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/UI Design.jpg" alt="ui-design">
-</div> 
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### Strategic Design: Big Ball of Mud
-<div>
-  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/Big Ball of Mud.jpg" alt="big_ball_of_mud">
-</div> 
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### Strategic Design: Bounded Contexts
-<div>
-  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/Bounded Contexts.jpg" alt="bounded_contexts">
-</div> 
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### Strategic Design: Context Mapping
-<div>
-  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/Context Mapping.jpg" alt="context_mapping">
-</div> 
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### Strategic Design: Ubiquitous Language
-#### Stock
-- Metric
-- Symbol
-
-#### Customer
-- Role
-- Identity
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### Strategic Design: User Story + Use Case
-
-<div>
-  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/user story+use cases.jpg" alt="user_story_use_cases">
-</div> 
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### Strategic Design: Domain Events<br/>
-Dispatching events through messaging mechanism
-<div style="text-align: center;">
-  <img style="width:70%;" src="./statics/img/Lazy-Stock-Screener/Domain Events.jpg" alt="domain_events">
-</div> 
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### Tactical Design: Layered Architecture
-<div style="text-align: center;">
-  <img style="width:20%;" src="./statics/img/Lazy-Stock-Screener/Layered Arch.jpg" alt="layered_arch">
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### Tactical Design: Clean Architecture
-
-<div style="display:inline-block;text-align: center;">
-  <img style="width:80%;" src="./statics/img/Lazy-Stock-Screener/Clean Architecture.jpg" alt="clean_architecture">
-  <img style="width:80%;" src="./statics/img/Lazy-Stock-Screener/Clean Architecture Code.jpg" alt="clean_architecture_code">
-</div> 
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-### Tactical Design: Repositories
-<div style="text-align: center;">
-  <img style="width:100%;" src="./statics/img/Lazy-Stock-Screener/Repo.jpg" alt="repo">
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-#### Early Demo: Login Form
-- Without Material UI here
-<div style="display:inline-block; text-align: center;">
-  <video autoplay loop muted preload="auto" style="width:100%;">
-    <source type="video/mp4" src="./statics/img/Lazy-Stock-Screener/Login.mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-#### Early Demo: Access Dashboard with Google Auth
-<div style="display:inline-block; text-align: center;">
-  <video autoplay loop muted preload="auto" style="width:100%;">
-    <source type="video/mp4" src="./statics/img/Lazy-Stock-Screener/Google.mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
-
----
-###### Lazy Stock Screener [[source]](https://github.com/lazy-stock-screener-demo)
-#### Early Demo: Auto Complete
-<video autoplay loop muted preload="auto" style="width:100%;">
-  <source type="video/mp4" src="./statics/img/Lazy-Stock-Screener/autocomplete.mp4">
-  Your browser does not support the video tag.
-</video>
-
-
 
 ---
 ###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)

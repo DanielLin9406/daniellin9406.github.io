@@ -6,7 +6,7 @@ const getPage = () => {
   // #### [l2Title]
   // #### [l2Title]: [l3Title]
   return pageArr.reduce((acc, pageText, i) => {
-    const result = /(?<l1Title>[\w@\s\.\-]*)(\[\[source\]\].*)*###\s*(?<l2Title>[\w/\s]*):*(<p>.*<\/p>)*(####)*\s*(?<l3Title>[\w\s/]*)*:*.*/g.exec(pageText);
+    const result = /(?<l1Title>[\w@\s\.\-]*)(\[\[source\]\].*|\[\[blog\]\].*)*###\s*(?<l2Title>[\w/\s]*):*(<p>.*<\/p>)*(####)*\s*(?<l3Title>[\w\s/]*)*:*.*/g.exec(pageText);
     acc.push({
       pageIndex: i + 2,
       l1Title: result?.groups?.l1Title,
