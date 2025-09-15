@@ -1,0 +1,39 @@
+# 防止搜尋引擎索引
+Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex, nocache"
+
+# 防止快取
+Header always set Cache-Control "no-cache, no-store, must-revalidate"
+Header always set Pragma "no-cache"
+Header always set Expires "0"
+
+# 阻擋常見爬蟲 User-Agent
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} (bot|crawler|spider|scraper|curl|wget|python|requests|scrapy|selenium) [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# 限制請求頻率
+RewriteCond %{HTTP:X-Forwarded-For} !^$
+RewriteCond %{HTTP:X-Forwarded-For} !^[0-9.]+$
+RewriteRule ^(.*)$ - [F,L]
+
+# 阻擋無 Referer 的請求（除了主頁）
+RewriteCond %{HTTP_REFERER} ^$
+RewriteCond %{REQUEST_URI} !^/$
+RewriteCond %{REQUEST_URI} !^/index\.html$
+RewriteRule ^(.*)$ - [F,L]
+
+# 防止直接訪問資源文件
+<FilesMatch "\.(jpg|jpeg|png|gif|css|js|mp4|webm)$">
+    RewriteCond %{HTTP_REFERER} !^https?://daniellin\.app [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://.*\.github\.io [NC]
+    RewriteRule ^(.*)$ - [F,L]
+</FilesMatch>
+
+# 隱藏服務器信息
+ServerTokens Prod
+ServerSignature Off
+
+# 防止點擊劫持
+Header always append X-Frame-Options DENY
+Header always append X-Content-Type-Options nosniff
+

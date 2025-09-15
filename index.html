@@ -7,6 +7,16 @@
     <meta name="keywords" content="Portfolio" />
     <meta name="author" content="Daniel Lin" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <!-- 防止搜尋引擎索引 -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, nocache" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, nocache" />
+    <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, nocache" />
+    
+    <!-- 防止快取 -->
+    <!-- <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" /> -->
     <link rel="icon" href="./statics/img/favicon.png">
     <link rel="stylesheet" href="css/styles.css">
     <meta property="og:title" content="Daniel Lin's Works" />
@@ -84,6 +94,33 @@ class: center, middle
 # Daniel Lin's Works
 
 ---
+###### Quick Summary
+### To whom it may concern
+If you only have limited time to read, please focus on the following:
+- [Work Experience @Pickupp (2021-2023)](./index.html#9)
+  - A 2 years full-stack development experience across diverse technical challenges
+- [LZStock Project (2025)](./index.html#35)
+  - Golang based microservices architecture project with enterprise-grade DDD architecture
+  - A project with CI/CD-ready Kubernetes deployment
+
+---
+###### Company List
+### Company Full Name
+
+##### @Pickupp for PICKUPP PTE LTD (Singapore, Hong Kong, Taiwan, Malaysia)
+Pickupp is a logistics company that redefines the industry with a data-driven approach, providing transparent and customer-centric services and technology to help businesses scale.
+
+##### @PG for Positive Grid Limited (USA)
+Positive Grid is a music technology company that specializes in developing innovative digital amplifiers and effects software for guitarists and bassists, with well-known products like the Spark series smart amp.
+
+##### @Blue for BlueWell Technology Ltd. (Taiwan)
+BlueWell is a privately owned software and consultancy outsourcing company based in Taipei offering software development services to clients majorly in Asia since 2013
+
+<img style="width:30%;vertical-align: top;" src="./statics/img/Pickupp/landing.jpg" alt="pickupp_landing">
+<img style="width:30%;vertical-align: top;" src="./statics/img/PG/landing.jpg" alt="pg_landing">
+<img style="width:30%;vertical-align: top;" src="./statics/img/Blue/id.jpg" alt="blue_id">
+
+---
 ###### Skills
 ### Planning <br/>
 
@@ -113,73 +150,119 @@ Feature + Tech
  - Price Dashboard (React+Redux+SASS)
 
 ---
-
 ###### Skills
 ### Back End<br/>
 Feature + Tech + Performance tuning
-#### From Work Experience
- - Feature Toggle Library (Node.js+Golang)
- - gRPC Cache Library (Node.js)
+#### From Work Experience (@Pickupp)
  - Websocket serice (Node.js)
+ - Feature Toggle Library (Node.js+Golang)
  - Log library with asynLocalStorage (Node.js)
  - Migrate to new Order system (Node.js+Golang)
  - Performance tuning with SQL plan (PostgreSQL)
 
 #### From Portfolios
-- LZStock (GoLang+Gorm)
+- LZStock (Golang+Gorm)
 - Price Dashboard (Node.js+Mongoose)
-- Revised Email Sender (Node.js+Mongoose)
+- Email Sender (Node.js+Mongoose)
+
+---
+###### Skills
+### DevOps<br/>
+
+#### From Work Experience (@Pickupp)
+- CI/CD pipelines (Bitbucket+CircleCI+AWS ECR+ AWS EKS)
+- Docker, K8S
+- Grafana+Prometheus
+
+#### From LZStock
+- CI/CD pipelines (Gitlab+CircleCI+Gitlab Container Registry+ Google Cloud GKE)
+- Docker, K8S
 
 ---
 ###### Skills
 ### Data<br/>
 Leverage ETL process
 #### Portfolios
-- SEC Data Pipeline (Pandas+Python)
-<!-- - LZStock (Pandas+Python) -->
+- SEC Data Pipeline (Python+Pandas)
 
 ---
-###### Work Experience @Pickupp
+###### Work Experience @Pickupp (2021-2023)
 ### Summary<br/>
-Filled with fulfilling experiences in 2 years
+
+Gained comprehensive full-stack development experience across diverse technical challenges over 2 years.
 <img style="width:100%;" src="./statics/img/Pickupp/PR.jpg" alt="db_load">
 
 ---
-###### Work Experience @Pickupp
-### Tech Part: Feature Toggle Lib. <br/>
-##### Websocket Service + Feature Toggle:
-
-- Service Dispatchs Event (Node.js/Golang) <br/>
-- -> Message Queue (Nats) <br/>
-- -> Websocket Service (Node.js) <br/>
-- -> Push to Front-End (React)
-
+###### Work Experience @Pickupp (2021-2023)
+### Jobs: Different types of tasks<br/>
+- Tech part
+  - Built websocket service
+  - Built feature toggle library
+  - Built log library with asyncLocalStorage
+- Feature part
+  - Built entire new order service while maintaining backward compatibility
+  - Built new order detail page
+  - Integrate with third party logistic service
+- Task management and team coordination
+  - Provided technical consultation
+  - Muti-culture team cooperation
+  - Managed task priority and guide junior developers
+  - Reviewed PRs and demo features bi-weekly
 
 ---
-###### Work Experience @Pickupp
-### Tech Part: Log Lib.
+###### Work Experience @Pickupp (2021-2023)
+### Tech Part: Websocket Service
+- React client library
+  - Context and Provider pattern with hook to pass down and access connection instance
+  - useCallback to reuse same websocket instance
+- A independent Express service to handle websocket connection
+  - Connected to other services for authentication
+  - Subscribe to Nats JetStream to receive events
+  - Leveraged ES6 Map to store connection object to track each connection
+  - Periodically check connection liveness
 
-Leverage AsyncLocalStorage to create a independent context for a series of asynchronous operations in native way.
+---
+###### Work Experience @Pickupp (2021-2023)
+### Tech Part: Real-time Feature Toggle System <br/>
+- React client library
+  - Context and Provider pattern with hook and React component access feature toggle state
+  - A push method to update feature toggle state via websocket
+  - A sync method without external network call to check particular feature toggle state
+- Golang and Node.js version of feature toggle library
+  - A push method to update feature toggle state via Nats JetStream
+  - A gRPC retry mechanism to prevent network error to setting service
+- A table in DB to store feature toggle state with Date range to check if feature toggle is enabled
+- A UI in admin panel to manage feature toggle period
+
+---
+###### Work Experience @Pickupp (2021-2023)
+### Tech Part: Log Library
+
+- Leverage AsyncLocalStorage to create a independent context for a series of asynchronous operations in native way.
+- Leverage Reflect to intercept function call and log the function name and parameters
 <div style="text-align:center;">
-  <img style="width:80%;" src="./statics/img/Pickupp/logLib.jpg" alt="log_lib">
+  <img style="width:70%;" src="./statics/img/Pickupp/logLib.jpg" alt="log_lib">
 </div>
 
 ---
-###### Work Experience @Pickupp
+###### Work Experience @Pickupp (2021-2023)
 
 ### New Order Service
+#### Tasks
 - Latest Event as Order Status
 - Many Join among Tables
 - Index Missing Hit
-- Performance or SSOT
+- Performance or Single Source of Truth
 - System Migration
-- Event sequence
+- Event Sequence
 - Fault Tolerance
 
-This is everything I did at Pickupp. After returning to school and studying more about system design, I now believe my initial approach could be improved and that there might be a more optimal solution.
+#### Reflections
+That are all the tasks related to new order service I did at Pickupp. However, after returning to school and studying more about system design, I believe my initial approach back then could be improved with at least one of the optimal solution, if there is one, in the following "New Order Service" pages. Otherwise, the task listed in that page is just a showcase.
+
 
 ---
-###### Work Experience @Pickupp
+###### Work Experience @Pickupp (2021-2023)
 ### New Order Service: Latest Event as Order Status
 
 #### Initial Approach: Latest Event
@@ -193,7 +276,7 @@ This is everything I did at Pickupp. After returning to school and studying more
   <img style="width:60%;" src="./statics/img/Pickupp/orderStatusInOrder.jpg" alt="event_sourcing">
 </div>
 ---
-###### Work Experience @Pickupp
+###### Work Experience @Pickupp (2021-2023)
 ### New Order Service: Key Value Pairs in RDB
 
 #### Initial Approach: Key-Value in SQL
@@ -212,29 +295,42 @@ This is everything I did at Pickupp. After returning to school and studying more
 
 
 ---
-###### Work Experience @Pickupp
+###### Work Experience @Pickupp (2021-2023)
 ### New Order Service: Index Missing Hit <br>
-Fix SQL queries without proper indexing
+Fix SQL queries without proper indexing and reducing average active sessions (AAS) by 72% (from 0.9 to 0.25) 
 <img style="width:100%;" src="./statics/img/Pickupp/dbLoad.png" alt="db_load">
 
+Other Indexes that has been used:<br/>
+Composite, Covering (INCLUDE), Partial (WHERE), Unique, GIN , B-tree
+
 ---
-###### Work Experience @Pickupp
+###### Work Experience @Pickupp (2021-2023)
 ### New Order Service: Performance or Single Source of Truth<br/>
-Choice between Performance or Single Source of Truth is always hard.
+
+A difficult choice between performance and data consistency is always hard.
+<br/>
+Do we want to maintain two copy of data for query performance?
+
+My thought: for data that is not frequently updated, yes.
+Like materilized view, we can maintain two copy of data for query performance.
+
 <div style="text-align:center;">
   <img style="width:50%;" src="./statics/img/Pickupp/SSOT.jpg" alt="ssot">
 </div>
 
 ---
-###### Work Experience @Pickupp
+###### Work Experience @Pickupp (2021-2023)
 ### New Order Service: System Migration<br/>
-Build a transformation layer between new and old system
+- Double Write Method
+  - Write to both old and new system
+  - Read from old system
+- Build a transformation layer between new and old system
 <div style="text-align:center;">
   <img style="width:50%;" src="./statics/img/Pickupp/migration.jpg" alt="migration">
 </div>
 
 ---
-###### Work Experience @Pickupp
+###### Work Experience @Pickupp (2021-2023)
 ### New Order Service: Event Sourcing
 #### Initial Approach: 
 <div style="text-align:center;">
@@ -249,16 +345,25 @@ Build a transformation layer between new and old system
   - Raft Node Group
 
 ---
-###### Work Experience @Pickupp
-### Build Order Detail Page<br/>
+###### Work Experience @Pickupp (2021-2023)
+### New Order Detail Page<br/>
 Native Reducer + useContext/useState Hooks
 <div style="text-align:center;">
   <img style="width:60%;" src="./statics/img/Pickupp/orderDetailPage.jpg" alt="order_detail_page">
 </div>
 
 ---
-###### Work Experience @Pickupp
-### Fat Controller<br/>
+###### Work Experience @Pickupp (2021-2023)
+### Feature Part: Third Party Service Integration
+
+#### Status Synchronization Methods
+- Provide a webhook (public endpoint) to the third party logistic service to update order status on our system
+- Actively retrieve API status from them to sync order status on our system
+
+
+---
+###### Work Experience @Pickupp (2021-2023)
+### Existing Tech Debt: Fat Controller<br/>
 #### Initial Approach:
 - gRPC call
 - ORM call
@@ -267,9 +372,10 @@ Native Reducer + useContext/useState Hooks
 
 #### Optimal Approach: 
 - Clean Architecture
+- Already learned as a takeaway and implemented in my LZStock project
 
 ---
-###### Work Experience @PG
+###### Work Experience @PG (2017-2019)
 ### Layout work
 
 <p>Build a brand new website for Positive Grid by a ecommerce solution called Bigcommerce that mainly focus on front-end.</p>
@@ -285,7 +391,7 @@ Native Reducer + useContext/useState Hooks
 </div>
 ---
 
-###### Work Experience @PG
+###### Work Experience @PG (2017-2019)
 ### Layout work
 ##### Demo Page:
 <div style="display:inline-block;">
@@ -297,13 +403,13 @@ Native Reducer + useContext/useState Hooks
 </div>
 
 ---
-###### Work Experience @PG
+###### Work Experience @PG (2017-2019)
 ### Layout work
 ##### Login Page:
 <img style="width:100%;" src="./statics/img/PG/login.png" alt="login">
 
 ---
-###### Work Experience @PG
+###### Work Experience @PG (2017-2019)
 ### Layout work
 ##### Find A Store / Store Page / Cart Mobile:
 <div style="display:inline-block;">
@@ -316,7 +422,7 @@ Native Reducer + useContext/useState Hooks
 </div>
 
 ---
-###### Work Experience @PG
+###### Work Experience @PG (2017-2019)
 ### Git Flow
 
 ##### Situation:
@@ -334,7 +440,7 @@ Native Reducer + useContext/useState Hooks
 <img src="./statics/img/PG/customized-git-workflow.jpg" alt="git-flow">
 
 ---
-###### Work Experience @PG
+###### Work Experience @PG (2017-2019)
 ### Git Flow
 
 ##### Idea:
@@ -355,7 +461,7 @@ Native Reducer + useContext/useState Hooks
 
 ---
 
-###### Work Experience @PG
+###### Work Experience @PG (2017-2019)
 ### Bridged Page between APP and website:
 <p>
   In order to increase purchase, we had to find a way that our customers can access our web store easily inside app. 
@@ -365,7 +471,7 @@ Native Reducer + useContext/useState Hooks
 </video>
 
 ---
-###### Work Experience @PG
+###### Work Experience @PG (2017-2019)
 ### Product Card:
 <p>
   A code which is written in sub-pub pattern to match a maximum height value of individual product item in the same row.
@@ -377,7 +483,7 @@ Native Reducer + useContext/useState Hooks
 </div>
 
 ---
-###### Work Experience @PG
+###### Work Experience @PG (2017-2019)
 ### Promotion Bar
 
 ##### Dynamic render: 
@@ -387,7 +493,7 @@ Native Reducer + useContext/useState Hooks
 </div>
 
 ---
-###### Work Experience @PG
+###### Work Experience @PG (2017-2019)
 ### Price Dashboard
 <p>Marketing team needs a tool that can quickly read, set and update company's product price during every promotion era.</p>
 
@@ -397,8 +503,8 @@ Native Reducer + useContext/useState Hooks
 </div>
 
 ---
-###### Work Experience @Blue
-### Daily front end tasks
+###### Work Experience @Blue (2016-2017)
+### Daily front-end tasks
 <p>One project involves layout design and interactive development for a gaming-type website, covering sections like event pages, deposits and withdrawals, login/logout, game entry, sports news, and more.</p>
 
 #### Promotion system
@@ -406,30 +512,33 @@ Native Reducer + useContext/useState Hooks
 Be assigned as a pioneer to manage the integration task for our latest system among other projects, handling both the front-end implementation and its integration with the back-end. </p>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Enterprise-Grade DDD Architecture
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/introduction" target="_blank">blog</a>]
+### Enterprise-Grade DDD Architecture: Introduction
 
-#### From Strategic Design to Production-Ready Deployment
-- Building Scalable Financial Systems with Domain-Driven Design, Microservices, and Kubernetes Infrastructure
-- Spent 100 Days to build on this project <br/>(Mainly during April 2025 - August 2025)
-<div style="display:inline-block;text-align: center;width:100%">
-  <img style="width:50%;" src="./statics/img/LZStock/gitlab100days.jpg" alt="gitlab100days">
+- Building Scalable Financial Systems with Domain-Driven Design (DDD) from strategic design to production-ready deployment
+- Mainly during April 2025 - August 2025 (~100 days)
+<div style="display:inline-block;text-align: center;width:100%;margin-top:10px;">
+  <img style="width:55%;" src="./statics/img/LZStock/gitlab100days.jpg" alt="gitlab100days">
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Enterprise-Grade DDD Architecture
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
+### Enterprise-Grade DDD Architecture: Technical Achievements
 
-#### Abilitys to be demonstrated:
-- Strategic Domain Modeling & Bounded Context Design
-- Tactical DDD Implementation with Golang
-- Microservices Architecture & Inter-Service Communication
-- Production Kubernetes Deployment with CI/CD
-- Real-World Financial Application Case Study
+- **Strategic Domain Modeling**: Designed 15 bounded contexts with proper context mapping
+- **Tactical DDD with Golang**: Implemented Aggregates, Entities, Value Objects, and Repository patterns
+- **Microservices Architecture**: Built 6 (of 15) independent services communicating via gRPC and NATS messaging
+- **Production K8S Deployment**: Containerized services with Helm charts, CircleCI and GKE.
+- **Real Financial Application** (for now): 
+  - Stock screener with dashboard management, watchlist tracking
+  - Autocomplete search with company ticker
+  - Real-time price update (mocked source data)
+  - User profile management
+
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Outlines: DDD Core + Extended Architecture Layers
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
+### Develop Flow: DDD Core + Extended Architecture Layers
 - Business Analysis & Use Case Development (Pre-DDD)
 - Strategic Design (DDD Core)
 - Tactical Design (DDD Core)
@@ -437,15 +546,15 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 - Infrastructure Architecture (Beyond DDD)
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Outlines: DDD Core + Extended Architecture Layers
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
+### Develop Flow: DDD Core + Extended Architecture Layers
 <div style="display:inline-block;text-align: center;">
   <img style="width:90%;" src="./statics/img/LZStock/DDD Strategic Modeling - DDD Core + Extended Architecture Layers.jpg" alt="DDD_Core_+_Extended_Architecture_Layers">
 </div>
 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Requirements Analysis: Create Dashboard Use Case P1
 
 <div style="display:inline-block;text-align: center;">
@@ -453,7 +562,7 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 </div> 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Requirements Analysis: Create Dashboard Use Case P2
 
 <div style="display:inline-block;text-align: center;">
@@ -461,14 +570,14 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 </div> 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Strategic Design: System Context Diagram
 <div>
   <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - System Context Diagram.jpg" alt="system_context_diagram">
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Strategic Design: How to Proceed?
 #### Start from Big Ball of Mud (Bottom-Up)
 - Big Ball of Mud -> Domain Model
@@ -477,49 +586,49 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 - Form Domain Model Directly
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Strategic Design (Bottom-Up): Big Ball of Mud
 <div>
   <img style="width:100%;" src="./statics/img/LZStock/Big Ball of Mud.jpg" alt="big_ball_of_mud">
 </div> 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Strategic Design (Bottom-Up): Bounded Contexts
 <div>
   <img style="width:100%;" src="./statics/img/LZStock/Bounded Contexts.jpg" alt="bounded_contexts">
 </div> 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Strategic Design (Bottom-Up): Context Mapping
 <div>
   <img style="width:100%;" src="./statics/img/LZStock/Context Mapping.jpg" alt="context_mapping">
 </div> 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Strategic Design (Top-Down): Domain Model
 <div style="display:inline-block;text-align: center;">
   <img style="width:75%;" src="./statics/img/LZStock/DDD Strategic Modeling - Domain.jpg" alt="domain_and_sub_domain">
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Strategic Design (Top-Down): Bounded Context and Context Mapping
 <div style="display:inline-block;text-align: center;">
   <img style="width:75%;" src="./statics/img/LZStock/DDD Strategic Modeling - SubDomain to BC and Context Mapping.jpg" alt="sub_domain_to_bc_and_context_mapping">
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Strategic Design (Top-Down): With Ubiquitous Language
 <div style="display:inline-block;text-align: center;">
   <img style="width:75%;" src="./statics/img/LZStock/DDD Strategic Modeling - BC.jpg" alt="domain_and_sub_domain">
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Strategic Design (Top-Down): Context Mapping Types
 
 | Abbreviation | Full Name | Communication Method | Purpose |
@@ -530,14 +639,14 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 | **ACL** | Anti-Corruption Layer | gRPC | Translation layer to protect domain model |
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/ddd/domain-object-design" target="_blank">blog</a>]
 ### Tactical Design: Domain Model Design
 <div style="text-align: center;">
   <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Domain Model Design.jpg" alt="domain_model_design">
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/ddd/domain-object-design" target="_blank">blog</a>]
 ### Tactical Design: Scope for Domain Object Validation
 <div style="text-align: center;">
   <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Domain Object.jpg" alt="domain_object">
@@ -545,50 +654,28 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/ddd/domain-object-design" target="_blank">blog</a>]
 ### Tactical Design: Validation Layer & Business Rules
 <div style="text-align: center;">
   <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Validation & Business Rules.jpg" alt="domain_model_design">
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Tactical Design: Dashboard Aggregate
-<div style="text-align: center;">
-  <img style="width:50%;" src="./statics/img/LZStock/Code Example AG.jpg" alt="code_example_ag">
-</div>
-
----
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Tactical Design: Entity
-<div style="display:inline-block;text-align: center;">
-  <img style="width:37%;vertical-align:top;" src="./statics/img/LZStock/Code Example Entity p1.jpg" alt="code_example_entity_p1">
-  <img style="width:60%;vertical-align:top;" src="./statics/img/LZStock/Code Example Entity p2.jpg" alt="code_example_entity_p2">  
-</div>
-
----
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Tactical Design: Value Object
-<div style="text-align: center;">
-  <img style="width:70%;" src="./statics/img/LZStock/Code Example Value Object.jpg" alt="code_example_value_object">
-</div>
-
----
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Application Architecture: UI Design
 <div>
   <img style="width:100%;" src="./statics/img/LZStock/New UI Design.jpg" alt="ui-design">
 </div> 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/front-end-development/react-project" target="_blank">blog</a>]
 ### Application Architecture: Front End Structure
 <div style="display:inline-block;text-align: center;">
   <img style="width:60%;" src="./statics/img/LZStock/DDD Strategic Modeling - Front End Flow.jpg" alt="front_end_flow">
 </div> 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/golang-project" target="_blank">blog</a>]
 ### Application Architecture: Clean Architecture
 
 <div style="display:inline-block;text-align: center;">
@@ -596,103 +683,119 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 </div> 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/golang-project" target="_blank">blog</a>]
 ### Application Architecture: Back End Service Structure
 <div>
   <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Back End Flow.jpg" alt="back_end_flow">
 </div> 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Application Architecture: Back End Use Case Code
-<div style="display:inline-block;text-align: center;">
-  <img style="width:70%;" src="./statics/img/LZStock/Code Example UseCase p1.jpg" alt="back_end_flow_usecase_p1">
-  <img style="width:45%;" src="./statics/img/LZStock/Code Example UseCase p2.jpg" alt="back_end_flow_usecase_p2">
-</div> 
-
----
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Application Architecture: Back End Repository Code
-<div style="display:inline-block;text-align: center;">
-  <img style="width:65%;" src="./statics/img/LZStock/Code Example AG Repository.jpg" alt="back_end_flow_ag_repository">
-</div> 
-
----
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Application Architecture: Back End Worker Structure
-<div>
-  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Worker Flow.jpg" alt="back_end_flow_worker">
-</div> 
-
----
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Application Architecture: Back End Gateway Structure
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/networking-protocols/router" target="_blank">blog</a>]
+### Application Architecture: Gateway Structure
 <div style="display:inline-block;text-align: center;">
   <img style="width:60%;" src="./statics/img/LZStock/DDD Strategic Modeling - Gateway Flow.jpg" alt="back_end_flow_gateway">
 </div>
+- <a href="https://blog.lzstock.app/blog/networking-protocols/router" target="_blank">Gateway RouterStructure</a>
+- <a href="https://blog.lzstock.app/blog/networking-protocols/websocket" target="_blank">Websocket Service</a>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Application Architecture: Testing Focus
-<div style="display:inline-block;text-align: center;">
-  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Testing Focus.jpg" alt="back_end_flow_testing_focus">
-</div>
-
----
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/triggers" target="_blank">blog</a>]
 ### Application Architecture: Trigger Methods
 <div style="display:inline-block;text-align: center;">
   <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Trigger Method.jpg" alt="back_end_flow_trigger_method">
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/background-tasks" target="_blank">blog</a>]
+### Application Architecture: Background Task
+<div style="display:inline-block;text-align: center;">
+  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Worker Flow.jpg" alt="back_end_flow_background_task">
+</div>
+
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
+### Application Architecture: Data Query
+- <a href="https://blog.lzstock.app/blog/database-design-opt/design-pagination-strategies" target="_blank">Pagination Strategies</a>
+- <a href="https://blog.lzstock.app/blog/back-end-development/prevent-n-1" target="_blank">Avoid N+1 Problem</a>
+- <a href="https://blog.lzstock.app/blog/back-end-development/auto-complete-search-tree" target="_blank">Autocomplete Search</a>
+
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/stateful-session-manager" target="_blank">blog</a>]
+### Application Architecture: Concurrency
+- <a href="https://blog.lzstock.app/blog/back-end-development/stateful-session-manager" target="_blank">Stateful Session Manager</a>
+
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/error-handling" target="_blank">blog</a>]
 ### Application Architecture: Error Chain
 <div style="display:inline-block;text-align: center;">
   <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Error Chain.jpg" alt="back_end_flow_error_chain">
 </div>
 
+
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Application Architecture: Error Chain Code
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/testing-strategies/test" target="_blank">blog</a>]
+### Application Architecture: Testing Focus
 <div style="display:inline-block;text-align: center;">
-  <img style="width:80%;" src="./statics/img/LZStock/Code Example ErrorChain1.jpg" alt="back_end_flow_error_chain_code_1">
-  <img style="width:40%; vertical-align:top;" src="./statics/img/LZStock/Code Example ErrorChain2.jpg" alt="back_end_flow_error_chain_code_2">
-  <img style="width:58%; vertical-align:top;" src="./statics/img/LZStock/Code Example ErrorChain3.jpg" alt="back_end_flow_error_chain_code_3">
-  <img style="width:50%;" src="./statics/img/LZStock/Code Example ErrorChain4.jpg" alt="back_end_flow_error_chain_code_4">
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Testing Focus.jpg" alt="back_end_flow_testing_focus">
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
+### Application Architecture: Security
+- <a href="https://blog.lzstock.app/blog/security/cors" target="_blank">CORS middleware</a>
+- <a href="https://blog.lzstock.app/blog/security/route-based-access-control" target="_blank">Route-based access control</a>
+
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Infrastructure Architecture: Service Communication
 <div style="display:inline-block;text-align: center;">
   <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Services Communication.jpg" alt="infrastructure_service_communication">
 </div> 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/monitoring-obs/service-registry" target="_blank">blog</a>]
 ### Infrastructure Architecture: Service Registry
 <div style="display:inline-block;text-align: center;">
   <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Service Registry.jpg" alt="infrastructure_service_registry">
 </div> 
 
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/networking-protocols/nats-jetstream" target="_blank">blog</a>]
+### Infrastructure Architecture: Event Streaming Setup
+<div style="display:inline-block;text-align: center;">
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Event Streaming.jpg" alt="infrastructure_service_registry">
+</div> 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Infrastructure Architecture: Running on K8S Cluster
 <div style="display:inline-block;text-align: center;">
   <img style="width:100%;" src="./statics/img/LZStock/K8S Pod.jpg" alt="infrastructure_k8s_cluster">
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
-### Infrastructure Architecture: Complete Architecture (For Now)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
+### Infrastructure Architecture: Complete Architecture
 <div style="display:inline-block;text-align: center;">
   <img style="width:88%;" src="./statics/img/LZStock/DDD Strategic Modeling - Complete Deployment.jpg" alt="infrastructure_complete_deployment">
 </div> 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
+### Infrastructure Architecture: DB Deployment and Connection
+<div style="display:inline-block;text-align: center;">
+  <img style="width:100%;" src="./statics/img/LZStock/K8S DB deployment.jpg" alt="infrastructure_k8s_db_deployment">
+</div>
+
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
+### Infrastructure Architecture: Module Deployment
+<div style="display:inline-block;text-align: center;">
+  <img style="width:110%;" src="./statics/img/LZStock/K8S module deployment.jpg" alt="infrastructure_k8s_module_deployment">
+</div>
+
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 #### First Stage Demo: Auto Signin After Signup
 <div style="display:inline-block; text-align: center;">
   <video autoplay loop muted preload="auto" style="width:100%;">
@@ -702,7 +805,7 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 #### First Stage Demo: Create Dashboard and Watchlist
 <div style="display:inline-block; text-align: center;">
   <video autoplay loop muted preload="auto" style="width:100%;">
@@ -712,7 +815,7 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 #### First Stage Demo: Add Company into Watchlist
 <div style="display:inline-block; text-align: center;">
   <video autoplay loop muted preload="auto" style="width:100%;">
@@ -722,7 +825,7 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 #### First Stage Demo: CreateMultiple Watchlists
 <div style="display:inline-block; text-align: center;">
   <video autoplay loop muted preload="auto" style="width:100%;">
@@ -733,7 +836,7 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 #### First Stage Demo: Autocomplete Search
 <div style="display:inline-block; text-align: center;">
   <video autoplay loop muted preload="auto" style="width:100%;">
@@ -743,7 +846,7 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 #### First Stage Demo: Update User Profile
 <div style="display:inline-block; text-align: center;">
   <video autoplay loop muted preload="auto" style="width:100%;">
@@ -753,7 +856,7 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 </div>
 
 ---
-###### LZStock [[blog]](https://blog.lzstock.app)
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 #### First Stage Demo: Logout and Signin Again
 <div style="display:inline-block; text-align: center;">
   <video autoplay loop muted preload="auto" style="width:100%;">
@@ -763,27 +866,23 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 </div>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### First Full-Stack Project
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo UI: Part 1
 <p>This is my first one full-stack project</p>
----
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### UI: Part 1
-<p>By the way, I also do the design job since it was an internal tool.</p>
 <div>
   <img style="width:100%;" src="./statics/img/Price-Dashboard/price-dashboard-preview-1.png" alt="price-dashboard-preview-1">
 </div> 
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### UI: Part 2
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo UI: Part 2
 <div>
   <img style="width:100%;" src="./statics/img/Price-Dashboard/price-dashboard-preview-2.png" alt="price-dashboard-preview-2">
 </div> 
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-### Features:
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Features
 <p style="margin-bottom:0;margin-bottom:0.2rem;">
   - The state is always up-to-date with backend even when create/update/delete operation has been triggered.
 </p>  
@@ -798,159 +897,121 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 </p>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Demo: Auto sign in:
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo
+#### Auto sign in
 <video autoplay muted preload="auto" style="width:100%;">
   <source type="video/mp4" src="./statics/img/Price-Dashboard/auto-sign-in.mp4">
 </video>
 
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Demo: Create a promotion:
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo
+#### Create a promotion
 
 <video autoplay loop muted preload="auto" style="width:100%;">
   <source type="video/mp4" src="./statics/img/Price-Dashboard/create-promotion.mp4">
 </video>
 ---
 
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Demo: Update a promotion:
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo
+#### Update a promotion
 <video autoplay loop muted preload="auto" style="width:100%;">
   <source type="video/mp4" src="./statics/img/Price-Dashboard/update-promotion.mp4">
 </video>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Demo: Remove a promotion:
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo
+#### Remove a promotion
 <video autoplay loop muted preload="auto" style="width:100%;">
   <source type="video/mp4" src="./statics/img/Price-Dashboard/remove-promotion.mp4">
 </video>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Demo: Create a promotion and push it on live:
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo
+#### Create a promotion and push it on live
 <video autoplay loop muted preload="auto" style="width:100%;">
   <source type="video/mp4" src="./statics/img/Price-Dashboard/create-promotion-go-live.mp4">
 </video>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Demo: Create a promotion and push it on live while there is another promotion on live:
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo
+#### Create a promotion and push it on live while there is another promotion on live
 <video autoplay loop muted preload="auto" style="width:100%;">
   <source type="video/mp4" src="./statics/img/Price-Dashboard/create-promotion-go-live-replace.mp4">
 </video>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Demo: Price updated when different products in bundles:
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Demo
+#### Price updated when different products in bundles
 <video autoplay loop muted preload="auto" style="width:100%;">
   <source type="video/mp4" src="./statics/img/Price-Dashboard/price-update-in-bundle.mp4">
 </video>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Tech: Front End (Web service):
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Tech
+#### Front End (Web service)
 
-- Structure:
-<p style="margin-top:0;margin-bottom:0.2rem;">
-  - Take advantage of the power of Webpack for packaging web service in dev and prod. environment instead of directly using CRA.
-</p>
-<p style="margin-top:0;margin-bottom:0.2rem;">
-  - React-Redux best practice (e.g. layout, route and page as component for more flexibility.)
-</p>
-<p style="margin-top:0;">  
-  - Separate Redux's mapStateToProps and mapDispatchToProps from every component in order to make it easy to understand.
-</p>
+##### Structure
+- Take advantage of the power of Webpack for packaging web service in dev and prod. environment instead of directly using CRA.
+- React-Redux best practice (e.g. layout, route and page as component for more flexibility.)
+- Separate Redux's mapStateToProps and mapDispatchToProps from every component in order to make it easy to understand.
 
-- Design pattern:
-<p style="margin-top:0;margin-bottom:0.2rem;">  
-  - Implement React's design pattern such as compound, render-props and context api to build reuseable and clear component.
-</p>
-<p style="margin-top:0;">  
-  - Use module pattern for Redux.
-</p>
-
-- API:
-<p style="margin-top:0;margin-bottom:0.2rem;">
-  - Auto sign in with Credential Management API.
-</p>
-<p style="margin-top:0;">
-  - Encapsulate axios
-</p>
-
-- Server:
-<p style="margin-top:0;margin-bottom:0.2rem;">  
-  - Use nginx as static file server in production environment.
-</p>
-<p style="margin-top:0;">  
-  - JSON-server for serving a mock data.
-</p>
+##### Web Server
+- Use nginx as static file server in production environment.
+- JSON-server for serving a mock data.
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Tech: Back End (User / Promotions / Prices / Upgrade-rules Services):
-- Auth:
-<p style="margin-top:0;">
-  - Google OAuth 2.0
-</p>
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Tech
+#### Back End (User / Promotions / Prices / Upgrade-rules Services)
+##### Auth:
+- Google OAuth 2.0
 
-- Structure:
-<p style="margin-top:0;margin-bottom:0.2rem;">
-  - Best practice of Node/Express with ES6 syntax(e.g. self-contained components as file structure, bind API at router level).
-</p>
-<p style="margin-top:0;">
-  - Every route has implemented Redis as cache server to reduce DB's query operation.
-</p>
 
-- Cache:
-<p style="margin-top:0;">
-  - Thanks to Redis, no extra DB query command is executed when post/update/delete router has been called and still can return a full list of promotion.
-</p>
+##### Structure:
+- Best practice of Node/Express with ES6 syntax(e.g. self-contained components as file structure, bind API at router level).
+- Every route has implemented Redis as cache server to reduce DB's query operation.
 
-- Proxy:
-<p style="margin-top:0;">
-  - Use NGINX as a reverse proxy.
-</p>
+
+##### Cache:
+- Thanks to Redis, no extra DB query command is executed when post/update/delete router has been called and still can return a full list of promotion.
+
+##### Proxy:
+- Use NGINX as a reverse proxy.
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-#### Tech: DevOps
-- Container
-<p style="margin-top:0;margin-bottom:0.2rem;">
-  - Use Docker-compose to run dev on local
-</p>
-<p style="margin-top:0;margin-bottom:0.2rem;">
-  - Multi-container structure
-</p>
-<p style="margin-top:0;margin-bottom:0.2rem;">
-  - Use $(git rev-parse HEAD) to tag container in order to track version.
-</p>
-<p style="margin-top:0;">
-  - K8S
-</p>
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Tech
+#### DevOps
+##### Container
+- Use Docker-compose to run dev on local
+- Multi-container structure
+- Use $(git rev-parse HEAD) to tag container in order to track version.
+- K8S
 
-- CI:
-<p style="margin-top:0;">
-  - Travis
-</p>
+##### CI:
+- Travis
 
-- Cloud:
-<p style="margin-top:0;margin-bottom:0.2rem;">
-  - AWS ECS
-</p>
-<p style="margin-top:0;">
-  - GCP GKE
-</p>
+##### Cloud:
+- AWS ECS
+- GCP GKE
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
 #### Step 1: Business Requirement <br/>
-
+Gather requirements from team leader.
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
 #### Step 2: Build UI
   - Present at least twice your sketch and features to team leader in order to prevent misunderstandings:
@@ -960,7 +1021,7 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
 #### Step 2: Build Data Structure:
 - According to sketch, build a redux data structure 
@@ -970,7 +1031,7 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 </div>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
 #### Step 2: Planning Sequence Diagrams
 
@@ -989,7 +1050,7 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 </div>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
 #### Step 3: Implement entry point:
 - Back-end API
@@ -1003,7 +1064,7 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 - Front-end with mock data server
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
 #### Step 3: Develop back end API:
 
@@ -1019,7 +1080,7 @@ Although complexity of individual API may be different from case to case, I take
 </p>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
 #### Step 3: Connect backEnd API to DB:
 
@@ -1043,7 +1104,7 @@ Although complexity of individual API may be different from case to case, I take
 </p>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
 #### Step 3: Develop front end data model
 
@@ -1064,7 +1125,7 @@ Although complexity of individual API may be different from case to case, I take
 </p>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
 #### Step 3: Develop front end UI from the bottom up
 <p>
@@ -1091,7 +1152,7 @@ Although complexity of individual API may be different from case to case, I take
 
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
 #### Step 3: Dockerize your application
 <p>
@@ -1103,7 +1164,7 @@ Although complexity of individual API may be different from case to case, I take
 
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
 #### Step 4: Functional Test Phase
 <p>
@@ -1111,7 +1172,7 @@ Although complexity of individual API may be different from case to case, I take
 </p>
 
 ---
-###### Price Dashboard [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Developing Process
 #### Step 5: Deployment Phase
 <p>
@@ -1122,8 +1183,9 @@ Although complexity of individual API may be different from case to case, I take
 </p>
 
 ---
-###### Financial Data Pipeline [[source]](https://github.com/DanielLin9406/worker-financialReportScreenr/tree/master/companyScreener)
+###### Financial Data Pipeline (2020) [[source]](https://github.com/DanielLin9406/worker-financialReportScreenr/tree/master/companyScreener)
 ### Company Screener
+##### Input and Output
 - Input are three financial report files exported from morningstar and location is under ~/FinancialData/{ticker}
 - output is custom report on Google Excel.
 
@@ -1132,8 +1194,9 @@ Although complexity of individual API may be different from case to case, I take
 </div>
 
 ---
-###### Financial Data Pipeline [[source]](https://github.com/DanielLin9406/worker-financialReportScreenr/tree/master/secFinancialReportScraper)
+###### Financial Data Pipeline (2020) [[source]](https://github.com/DanielLin9406/worker-financialReportScreenr/tree/master/secFinancialReportScraper)
 ### SEC Financial Report Scraper
+##### Input and Output
 - Input is a ticker, date of that stock.
 - Output is custom report on Google Excel.
 
@@ -1142,7 +1205,7 @@ Although complexity of individual API may be different from case to case, I take
 </div>
 
 ---
-###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
+###### Email Sender (2019) [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
 ### First full stack attempts
 
 [Email Sender by Stepher Grinder](https://github.com/StephenGrider/FullstackReactCode)
@@ -1152,7 +1215,7 @@ Although complexity of individual API may be different from case to case, I take
 </div>
 
 ---
-###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
+###### Email Sender (2019) [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
 ### Refractor Front End<br/>
 
 |                             |   Original        | Revised            |
@@ -1167,7 +1230,7 @@ Although complexity of individual API may be different from case to case, I take
 | Static file server in prod. |         X          | Express            | 
 
 ---
-###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
+###### Email Sender (2019) [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
 ### Refractor Back End<br/>
 
 |                             | Original           | Revised            |
@@ -1182,7 +1245,7 @@ Although complexity of individual API may be different from case to case, I take
 | API + Connection type |         Restful        | Restful+Graphql+Websocket            | 
 
 ---
-###### Revised Email Sender [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
+###### Email Sender (2019) [[source]](https://github.com/DanielLin9406/fullstack-emailSender-upgraded)
 ### DevOps and CI <br/>
 
 |                      | Original           | Revised            |
@@ -1194,7 +1257,7 @@ Although complexity of individual API may be different from case to case, I take
 
 
 ---
-###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
+###### Personal Website (2019)[[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
 ### Introduction<br/>
 #### With modern packing tool, webpack.
 <div>
@@ -1202,19 +1265,19 @@ Although complexity of individual API may be different from case to case, I take
 </div>
 
 ---
-###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
+###### Personal Website (2019)[[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
 ### Front-End<br/>
 ##### Multi pug template<br/>
 <img style="width:100%;" src="./statics/img/Persional-Website/multi-pug.png" alt="multi-pug-template">
 
 ---
-###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
+###### Personal Website (2019)[[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
 ### Front-End<br/>
 ##### Dynamic import
 <img style="width:100%;" src="./statics/img/Persional-Website/webpack-dynamic-import.png" alt="webpack-dynamic-import">
 
 ---
-###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
+###### Personal Website (2019)[[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
 ### Front-End<br/>
 ##### Webpack plugin:
 <div style="text-align: center;">
@@ -1222,7 +1285,7 @@ Although complexity of individual API may be different from case to case, I take
 </div>
 
 ---
-###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
+###### Personal Website (2019)[[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
 ### Front-End<br/>
 <span style="font-size:1rem;">Please ignore a awful color which is way much deviated from the original one.</span>
 ##### Layout and animations
@@ -1232,7 +1295,7 @@ Although complexity of individual API may be different from case to case, I take
 </video>
 
 ---
-###### Personal Website [[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
+###### Personal Website (2019)[[source]](https://github.com/DanielLin9406/frontend-mixDanStudio)
 ### Back-End<br/>
 Use API keys and OAuth2.0 to authorized user.
 ##### Google Sheet API
@@ -1242,17 +1305,18 @@ Use API keys and OAuth2.0 to authorized user.
 </video>
 
 ---
-###### Crawler [[source]](https://github.com/DanielLin9406/crawler-python-voicetube)
+###### VoiceTube Crawler (2019) [[source]](https://github.com/DanielLin9406/crawler-python-voicetube)
 ### Introduction
+
+####From web html to .csv file
 A simple python crawler transfer a given HTML file into a .csv file.
-##### From web html -> Excel:
 
 <div>
   <img style="width:48%;vertical-align: middle;" src="./statics/img/Crawler/from.png" alt="from.png">
   <img style="width:48%;vertical-align: middle;" src="./statics/img/Crawler/Dist.png" alt="Dist.png">
 </div> 
 <br/>
-##### Tech Details:
+#### Tech Details
 
 <p style="margin-top:0;;margin-bottom:0.2rem;">
   - Python 3
@@ -1268,7 +1332,7 @@ A simple python crawler transfer a given HTML file into a .csv file.
 </p> 
 
 ---
-###### Crawler [[source]](https://github.com/DanielLin9406/crawler-python-voicetube)
+###### VoiceTube Crawler (2019) [[source]](https://github.com/DanielLin9406/crawler-python-voicetube)
 ### Refractor python code to a well-organized structure:
 <div>
   <img style="width:48%;" src="./statics/img/Crawler/python-before.png" alt="python-before.png">

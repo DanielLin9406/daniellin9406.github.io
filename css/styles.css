@@ -219,3 +219,29 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #e8e8e8;
 }
+
+/* 防止選取和拖拽 */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+/* 防止打印 */
+@media print {
+  body {
+    display: none !important;
+  }
+}
+
+/* 隱藏滾動條但保持功能 */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}

@@ -4,9 +4,10 @@ const getPage = () => {
 
   // ### [l1Title]
   // #### [l2Title]
-  // #### [l2Title]: [l3Title]
+  // ### [l2Title]: [l3Title]
   return pageArr.reduce((acc, pageText, i) => {
-    const result = /(?<l1Title>[\w@\s\.\-]*)(\[\[source\]\]\([^)]*\)|\[\[blog\]\]\([^)]*\))*###\s*(?<l2Title>[\w/\s]*):*(<p>.*<\/p>)*(####)*\s*(?<l3Title>[\w\s/]*)*:*.*/g.exec(pageText);
+    const result = /(?<l1Title>[\w@\s\.\-\(\)\d]*)(\[\[source\]\]\([^)]*\)|\[\[blog\]\]\([^)]*\)|\[<a href=".*" target="_blank">[^<]+<\/a>\])*###\s*(?<l2Title>[\w/\s-]*):*(<p>.*<\/p>)*(####)*\s*(?<l3Title>[\w\s/]*)*:*.*/g.exec(pageText);
+
     acc.push({
       pageIndex: i + 2,
       l1Title: result?.groups?.l1Title,
@@ -27,18 +28,20 @@ const generateOutline = () => {
   }, {})
   
   const titleArr = Object.keys(titleObj).reduce((acc, ele, index) => {
-    acc.push({
-      pageIndex: titleObj[ele]["pageIndex"],
-      name: ele,
-      parent: titleObj[ele]["parent"],
-    })
+    if (ele && ele !== 'undefined') {
+      acc.push({
+        pageIndex: titleObj[ele]["pageIndex"],
+        name: ele,
+        parent: titleObj[ele]["parent"],
+      })
+    }
     return acc
   }, [{
     pageIndex: undefined,
     name: "root",
     parent: undefined,
   }]);
-  
+
   const idMapping = titleArr.reduce((acc, el, i) => {
     acc[el.name] = i;
     return acc;
@@ -155,12 +158,75 @@ const bindPanelClickEvent = (activePanelArr) => {
   });  
 }
 
+// 基本反爬蟲檢測
+function antiBot() {
+  // 檢測是否為無頭瀏覽器
+  if (navigator.webdriver || 
+      window.navigator.webdriver || 
+      window.callPhantom || 
+      window._phantom ||
+      window.__nightmare ||
+      window.Buffer) {
+    document.body.innerHTML = '<h1>Access Denied</h1>';
+    return false;
+  }
+  
+  // 檢測開發者工具
+  let devtools = {
+    open: false,
+    orientation: null
+  };
+  
+  setInterval(function() {
+    if (window.outerHeight - window.innerHeight > 200 || 
+        window.outerWidth - window.innerWidth > 200) {
+      if (!devtools.open) {
+        devtools.open = true;
+        console.clear();
+        console.log('%c⚠️ Developer Console Detected', 'color: red; font-size: 20px; font-weight: bold;');
+      }
+    } else {
+      devtools.open = false;
+    }
+  }, 500);
+  
+  return true;
+}
+
 function main() {
+  // 執行反爬蟲檢測
+  if (!antiBot()) {
+    return;
+  }
+  
   render(generateOutline(), document.getElementById("navIndex"));
 
   const activePanelArr = [];
   bindAccordionClickEvent(activePanelArr, document.getElementsByClassName("panel"));
   bindPanelClickEvent(activePanelArr);
 }
+
+// 防止右鍵和快捷鍵
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  return false;
+});
+
+document.addEventListener('keydown', function(e) {
+  // 防止 F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S
+  if (e.key === 'F12' || 
+      (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+      (e.ctrlKey && e.key === 'u') ||
+      (e.ctrlKey && e.key === 's')) {
+    e.preventDefault();
+    return false;
+  }
+});
+
+// 防止選取文字
+document.addEventListener('selectstart', function(e) {
+  e.preventDefault();
+  return false;
+});
 
 main();

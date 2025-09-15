@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /
+
+# 允許特定搜尋引擎索引主頁面（如果需要的話）
+# User-agent: Googlebot
+# Allow: /index.html
+# Allow: /css/
+# Allow: /statics/img/favicon.png
+
+# 完全禁止所有爬蟲
+Crawl-delay: 86400
+
+# 網站地圖（如果你有的話）
+# Sitemap: https://daniellin.app/sitemap.xml
