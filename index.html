@@ -99,7 +99,7 @@ class: center, middle
 Here are the highlights that best showcase my experience:
 - [Work Experience @Pickupp (2021-2023)](./index.html#9)
   - A 2 years full-stack development experience across diverse technical challenges
-- [LZStock Project (2025)](./index.html#35)
+- [LZStock Project (2025)](./index.html#37)
   - Golang based microservices architecture project with enterprise-grade DDD architecture
   - A project with CI/CD-ready Kubernetes deployment
 
@@ -200,112 +200,137 @@ Gained comprehensive full-stack development experience across diverse technical 
   - Built feature toggle library (2021-2022)
   - Built log library with asyncLocalStorage (2022-2023)
 - Feature part
-  - Integrate with third party logistic service (2021-2022)
+  - Integrated with several third-party logistic partners (2021-2022)
+  - Built new outsource service, combining all partners (2021-2022)
   - Built new order service with backward compatibility (2022-2023)
   - Built new order detail page (2022-2023)
 - Task management and team coordination
   - Provided technical consultation
-  - Muti-culture team cooperation
+  - Cooperated Muti-culture team 
   - Managed task priority and guide junior developers
   - Reviewed PRs and demo features bi-weekly
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
 ### Tech Part: Websocket Service
-- React client library
-  - Context and Provider pattern with hook to pass down and access connection instance
-  - useCallback to reuse same websocket instance
+- A React client library
+  - Utilized Context/Provider with Hooks to manage and distribute the WebSocket instance
+  - Reused websocket instance via useCallback with sessionToken as dependency 
 - A independent Express service to handle websocket connection
-  - Connected to other services for authentication
-  - Subscribe to Nats JetStream to receive events
-  - Leveraged ES6 Map to store connection object to track each connection
-  - Periodically check connection liveness
+  - Authenticated incoming connection via token
+  - Monitored connection status using a ES6 Map
+  - Proactively checked connection liveness every 30 sec
+  - Triggered by NATS event streams
+  - Built flexible portal-specific grouping, validating incoming requests, and parsing data into customizable formats.
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
-### Tech Part: Real-time Feature Toggle System <br/>
-- React client library
-  - Context and Provider pattern with hook and React component access feature toggle state
-  - A push method to update feature toggle state via websocket
-  - A sync method without external network call to check particular feature toggle state
-- Golang and Node.js version of feature toggle library
-  - A push method to update feature toggle state via Nats JetStream
-  - A gRPC retry mechanism to prevent network error to setting service
-- A table in DB to store feature toggle state with Date range to check if feature toggle is enabled
-- A UI in admin panel to manage feature toggle period
+### Tech Part: Real-time Feature Toggle Library <br/>
+It is a switch, enabling or disabling a feature instantly without needing a new deployment.
+- An admin interface for feature toggle activation period management
+  - Stored state with date range and dispatch event to Nats JetStream when state changes
+  - Supported dual data tracking modes: active polling (fetching) and passive real-time listening via event channels
+  - Achieved instant state resolution locally, eliminating runtime network latency by fetching all states during initialization.
+- A portal library (React)
+  - Utilized Context/Provider with Hooks to access the library globally
+  - Leveraged WebSocket client to listen to real-time state change event
+- Dual-version library implementation (Golang and Node.js)
+  - Built a Golang version of gRPC retry mechanism with active polling
+  - Built multi-region control utilizing context metadata.
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
 ### Tech Part: Log Library
+- Independently researched and leveraged AsyncLocalStorage for non-intrusive context tracking across asynchronous operations in Node.js.
+- Engineered a high-level function tracing library by combining Proxy/Reflect for non-intrusive interception (See below).
 
-- Leverage AsyncLocalStorage to create a independent context for a series of asynchronous operations in native way.
-- Leverage Reflect to intercept function call and log the function name and parameters
 <div style="text-align:center;">
   <img style="width:70%;" src="./statics/img/Pickupp/logLib.jpg" alt="log_lib">
 </div>
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
+### Feature Part: Several Third-Party Logistic Service Integrations
+
+#### Context
+Dispatching orders to third-party logistic services to ehance delivery coverage and efficiency.
+
+#### Order Flow Chain
+- Event-driven Chain
+- Order Service -> Outsource Service -> Third Party Logistic Service
+
+#### How to sync order status?
+- Provided a webhook (public endpoint) to the third-party logistic service
+- Actively fetched their status API periodically
+
+---
+###### Work Experience @Pickupp (2021-2023)
+### Feature Part: Outsource Service
+
+#### Context
+Built an Outsourced Partner Service to centralize integrations, abstracting their individual configurations behind a unified interface.
+
+#### Takeaway
+- Not every partner integration warrants a standalone microservice, especially when they share similar business logic and the integration is lightweight.
+
+
+---
+###### Work Experience @Pickupp (2021-2023)
 
 ### New Order Service
+Backward-Compatible Core Order Service transitioning to Event-Driven Architecture.
+
 #### Tasks
-- Latest Event as Order Status
-- Many Join among Tables
-- Index Missing Hit
-- Performance or Single Source of Truth
-- System Migration
-- Event Sequence
-- Fault Tolerance
+- Event Sourcing
+- DB tuning by analyzing SQL plan
+- Zero-downtime Migration w/ Soft Launch Strategy
+- Latest Event as Order Status -> Could be improved
+- Many Join among Tables -> Could be improved
+- Key Value Pairs in RDB -> Could be improved
+- Unresolved Distributed Transaction -> Could be improved
+- Fat Controller -> Could be improved
 
-#### Reflections
-That are all the tasks related to new order service I did at Pickupp. However, after returning to school and studying more about system design, I believe my initial approach back then could be improved with at least one of the optimal solution, if there is one, in the following "New Order Service" pages. Otherwise, the task listed in that page is just a showcase.
 
+After studying more about system design, I believe my initial approach back then could be improved with at least one of the optimal solution, if there is one, in the following "New Order Service" pages. Otherwise, the task listed in that page is just a showcase.
 
 ---
-###### Work Experience @Pickupp (2021-2023)
-### New Order Service: Latest Event as Order Status
 
-#### Initial Approach: Latest Event
+###### Work Experience @Pickupp (2021-2023)
+### New Order Service: Event Sourcing<br/>
+
+- Built event sourcing pattern to track fine-grained internal status changes
+- Enabled a complete timeline of order status
 <div style="text-align:center;">
-  <img style="width:60%;" src="./statics/img/Pickupp/orderStatusTimeline.jpg" alt="timeline">
+  <img style="width:100%;" src="./statics/img/Pickupp/orderStatusTimeline.jpg" alt="timeline">
 </div>
 
-#### Optimal Approach: Apply Event to Single State
-<img style="width:100%;" src="./statics/img/Pickupp/orderStatus.jpg" alt="event_sourcing">
-<div style="text-align:center;">
-  <img style="width:60%;" src="./statics/img/Pickupp/orderStatusInOrder.jpg" alt="event_sourcing">
-</div>
 ---
 ###### Work Experience @Pickupp (2021-2023)
-### New Order Service: Key Value Pairs in RDB
-
-#### Initial Approach: Key-Value in SQL
+### New Order Service: DB tuning by Analyzing SQL Plan <br>
+- Analyzed SQL plan and updated Index, reducing average active sessions (AAS) to almost zero.
+- Indexes that has been used: Composite, Covering (INCLUDE), Partial (WHERE), Unique, GIN , B-tree
+- SQL plan good sign: Uses Index Scan or Index Only Scan, No Seq Scan (full table scan), No additional Sort operations...
 <div style="text-align:center;">
-  <img style="width:50%;" src="./statics/img/Pickupp/keyValuePair.jpg" alt="key_value_pair">
+  <img style="width:95%;" src="./statics/img/Pickupp/dbLoad.png" alt="db_load">
 </div>
 
-#### Pain points: 
-- Lack of referential integrity constraints
-- Lack of advantages in structured queries
-- Challenges in maintenance and scalability
-  - Application logic may need to be updated if new attributes added or changed
-- Difficulty in reporting and analysis
-- Data redundancy and inconsistency
-- Find item from array instead of key in object
-
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
-### New Order Service: Index Missing Hit <br>
-Fix SQL queries without proper indexing and reducing average active sessions (AAS) by 72% (from 0.9 to 0.25) 
-<img style="width:100%;" src="./statics/img/Pickupp/dbLoad.png" alt="db_load">
+### New Order Service: Zero-downtime Migration w/ Soft Launch Strategy<br/>
+- Four phases migration strategy:
+  - Dual write to old and new system, read from old system
+  - Write to new system, transform to old system, read from old system
+  - Write to new system, transform to old system, read from new system
+  - Write to new system, read from new system, deprecate old system
+- Legacy order data is retained for historical querying and auditing purposes.
+<div style="text-align:left;">
+  <img style="width:100%;" src="./statics/img/Pickupp/zeroDowntimeMigration.jpg" alt="migration">
+</div>
 
-Other Indexes that has been used:<br/>
-Composite, Covering (INCLUDE), Partial (WHERE), Unique, GIN , B-tree
-
----
+<!-- ---
 ###### Work Experience @Pickupp (2021-2023)
-### New Order Service: Performance or Single Source of Truth<br/>
+### New Order Service: Single Source of Truth or Performance<br/>
 
 A difficult choice between performance and data consistency is always hard.
 <br/>
@@ -316,63 +341,94 @@ Like materilized view, we can maintain two copy of data for query performance.
 
 <div style="text-align:center;">
   <img style="width:50%;" src="./statics/img/Pickupp/SSOT.jpg" alt="ssot">
-</div>
+</div> -->
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
-### New Order Service: System Migration<br/>
-- Double Write Method
-  - Write to both old and new system
-  - Read from old system
-- Build a transformation layer between new and old system
+### New Order Service: Latest Event as Order Status
+
+#### Initial Approach: Latest Event
+We calculated the latest event directly from event sourcing table.
 <div style="text-align:center;">
-  <img style="width:50%;" src="./statics/img/Pickupp/migration.jpg" alt="migration">
+  <img style="width:80%;" src="./statics/img/Pickupp/orderStatusTimeline.jpg" alt="timeline">
+</div>
+
+#### Optimal Approach: Apply Event to Single State
+Could query a single status field, updating when status changes
+<div style="display:inline-block; ">
+  <img style="width:48%;vertical-align: top;" src="./statics/img/Pickupp/orderStatusInOrder.jpg" alt="event_sourcing">
+<img style="width:48%;" src="./statics/img/Pickupp/singleOrderStatus.jpg" alt="event_sourcing">
 </div>
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
-### New Order Service: Event Sourcing
-#### Initial Approach: 
+### New Order Service: Many Joins among Tables
+
+If data is not growing fast, e.g. < 10K rows, it is fine.
+
+#### Initial Approach:
+- Six distinct tables were utilized to store order-related data.
+- It required many joins to fetch one complete order data
+
+#### Optimal Approach: The Join/Growth Trade-Off
+- Stable, Slow-growth Tables
+  - Multiple Joins (Prioritize ACID/Normalization)   
+- Fast-growing, Read-heavy Tables (e.g., Orders/History) 
+  - Multiple Joins are Detrimental to Performance.
+  - Implement specialized read solutions, e.g. denormalization, caching, or materialized views.
+
+
+---
+###### Work Experience @Pickupp (2021-2023)
+### New Order Service: Key-value Pairs in RDB
+#### Initial Approach: A Failed Experience.
+We designed and implemented the EAV model for secondary order attributes, ensuring high flexibility and extensibility across different order types.
 <div style="text-align:center;">
-  <img style="width:80%;" src="./statics/img/Pickupp/eventChain.jpg" alt="migration">
+  <img style="width:40%;" src="./statics/img/Pickupp/keyValuePair.jpg" alt="key_value_pair">
 </div>
 
-#### Optimal Approach: Distributed Transaction
-- TC/C or Saga
-  - Rollback
-  - Parallel or Linear Execution (Depends)
-- Fault Tolerance
-  - Raft Node Group
+#### Pain points and should not be used in RDB: 
+- Lack of referential integrity constraints and type safety
+- Added complexity at application level for data retrieval and manipulation
+- Resulting in finding item from array instead of key in map
+- High vertical growth (10+ rows per entity) leads to an extremely fast-growing table and severely reduced query performance.
+- JSONB in PostgreSQL is a better alternative
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
-### New Order Detail Page<br/>
-Native Reducer + useContext/useState Hooks
+### New Order Service: Unresolved Distributed Transaction
+#### Initial Approach
+Implemented an event-driven architecture with Nats JetStream only
 <div style="text-align:center;">
-  <img style="width:60%;" src="./statics/img/Pickupp/orderDetailPage.jpg" alt="order_detail_page">
+  <img style="width:70%;" src="./statics/img/Pickupp/newEventChain.jpg" alt="migration">
 </div>
 
----
-###### Work Experience @Pickupp (2021-2023)
-### Feature Part: Third Party Service Integration
-
-#### Status Synchronization Methods
-- Provide a webhook (public endpoint) to the third party logistic service to update order status on our system
-- Actively retrieve API status from them to sync order status on our system
-
+#### Optimal Approach
+- Robust Messaging (NATS JetStream with built in Raft)
+  - Ensure reliable message persistence.
+- Local Resilience (Retry Queue + Dead Letter Queue (DLQ))
+  - Handle and triage transient failures.
+- Global Coordination (Saga Pattern)
+  - Execute compensating transactions for permanent business failure.
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
 ### Existing Tech Debt: Fat Controller<br/>
 #### Initial Approach:
-- gRPC call
-- ORM call
-- business logic
-- service call
-
+- We have a fat controller that handles multiple layers of logic: gRPC call, ORM call, business logic, service call
+- Not easy to maintain and test
 #### Optimal Approach: 
-- Clean Architecture
-- Already learned as a takeaway and implemented in my LZStock project
+- Clean Architecture (implemented in my LZStock project)
+<div style="display:inline-block;text-align: center;">
+  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Clean Architecture.jpg" alt="clean_architecture">
+</div> 
+---
+###### Work Experience @Pickupp (2021-2023)
+### New Admin Order Detail Page<br/>
+A native Context/Reducer pattern with Hooks API, replacing Redux and Saga approach.
+<div style="text-align:center;">
+  <img style="width:50%;" src="./statics/img/Pickupp/newOrderDetailPage.jpg" alt="order_detail_page">
+</div>
 
 ---
 ###### Work Experience @PG (2017-2019)
@@ -423,55 +479,6 @@ Native Reducer + useContext/useState Hooks
 
 ---
 ###### Work Experience @PG (2017-2019)
-### Git Flow
-
-##### Situation:
-<p style="font-size:1rem;margin-bottom:0;">
-  - Single feature should have their own developing branch.
-</p>
-<p style="font-size:1rem;margin-bottom:0;">
-  - Some features had been developed but not going live soon until the idea has been approved by marketing team member.
-</p>
-<p style="font-size:1rem;margin-bottom:0;">
-  - Website needs to be updated and deployed as fast as possible.
-</p>
-
-
-<img src="./statics/img/PG/customized-git-workflow.jpg" alt="git-flow">
-
----
-###### Work Experience @PG (2017-2019)
-### Git Flow
-
-##### Idea:
-<p style="margin-bottom:0;">
-  - First step is always checkouting a new branch from master.
-</p>
-<p style="margin-bottom:0;">
-  - Run `git rebase prod-branch` before merging feature branch into stage branch or prod. branch. 
-</p>
-<p style="margin-bottom:0;">
-  - Don't directly merge stage branch into prod. branch. 
-</p>
-<p style="margin-bottom:0;">
-  - You can treat stage branch as a pre-prod. branch, but one thing you should be noticed that not all features which has been merged into stage are becoming part of our official release. 
-</p>
-
-<img src="./statics/img/PG/customized-git-workflow.jpg" alt="git-flow">
-
----
-
-###### Work Experience @PG (2017-2019)
-### Bridged Page between APP and website:
-<p>
-  In order to increase purchase, we had to find a way that our customers can access our web store easily inside app. 
-</p>
-<video autoplay muted preload="auto" style="width:100%;">
-  <source type="video/mp4" src="./statics/img/PG/crm.mp4">
-</video>
-
----
-###### Work Experience @PG (2017-2019)
 ### Product Card:
 <p>
   A code which is written in sub-pub pattern to match a maximum height value of individual product item in the same row.
@@ -494,7 +501,44 @@ Native Reducer + useContext/useState Hooks
 
 ---
 ###### Work Experience @PG (2017-2019)
-### Price Dashboard
+### Git Flow
+
+##### Requirements:
+  - Each new feature must be developed on its own dedicated branch.
+  - Some completed features are deployed but remain dormant until approved by the Marketing team.
+  - The priority is to update and deploy the website as quickly as possible.
+
+<img src="./statics/img/PG/customized-git-workflow.jpg" alt="git-flow">
+
+---
+###### Work Experience @PG (2017-2019)
+### Git Flow
+
+##### Simplified Git Workflow for small project:
+  - First step is always checkouting a new branch from master.
+  - Merge feature branch into Prod.
+  - Merge Production branch into Stage branch regularly, but don't merge stage branch into prod. branch.
+  - Staging branch is only for testing purpose. 
+
+
+<img src="./statics/img/PG/customized-git-workflow.jpg" alt="git-flow">
+
+---
+
+###### Work Experience @PG (2017-2019)
+### Bridged Page between APP and website:
+<p>
+  In order to increase purchase, we had to find a way that our customers can access our web store easily inside app. 
+</p>
+<video autoplay muted preload="auto" style="width:100%;">
+  <source type="video/mp4" src="./statics/img/PG/crm.mp4">
+</video>
+
+
+
+---
+###### Work Experience @PG (2017-2019)
+### Internal Price Dashboard
 <p>Marketing team needs a tool that can quickly read, set and update company's product price during every promotion era.</p>
 
 ##### Sketch this project: 
@@ -867,6 +911,21 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 
 ---
 ###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
+### Project Overview
+An internal SPA for the purpose of setting and reading prices in terms of each product in the online shop.
+
+#### Features
+- Supported with create/read/update/delete operation for promotions.
+- Supported auto sign in with Google OAuth 2.0.
+- Visual dashboard for marketing team to manage promotions.
+
+#### What have I learned? (2025 Revision)
+- Should sync with existing product, and leveraging import instead of manually input each campaign
+- Redis is overkill here
+- Should leverage gRPC/tRPC instead of REST for internal communication  
+
+---
+###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
 ### Demo UI: Part 1
 <p>This is my first one full-stack project</p>
 <div>
@@ -880,21 +939,7 @@ Be assigned as a pioneer to manage the integration task for our latest system am
   <img style="width:100%;" src="./statics/img/Price-Dashboard/price-dashboard-preview-2.png" alt="price-dashboard-preview-2">
 </div> 
 
----
-###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
-### Features
-<p style="margin-bottom:0;margin-bottom:0.2rem;">
-  - The state is always up-to-date with backend even when create/update/delete operation has been triggered.
-</p>  
-<p style="margin-bottom:0;margin-bottom:0.2rem;">
-  - Allow user to auto sign in if browser has been permitted to store his/her password.
-</p>
-<p style="margin-bottom:0;margin-bottom:0.2rem;">
-  - Power visual for understanding which promotion is on live and what is next promotion.
-</p>
-<p style="margin-bottom:0;">
-  - You can easily calculate a product price for a user who could has any combination of company's early product before.
-</p>
+
 
 ---
 ###### Price Dashboard (2020) [[source]](https://github.com/DanielLin9406/fullstack-priceDashboard)
