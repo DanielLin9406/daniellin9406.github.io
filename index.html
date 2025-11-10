@@ -257,7 +257,7 @@ Dispatching orders to third-party logistic services to ehance delivery coverage 
 
 #### Order Flow Chain
 - Event-driven Chain
-- Order Service -> Outsource Service -> Third Party Logistic Service
+- Order Service -> [Partner] Service -> Third Party Logistic Service
 
 #### How to sync order status?
 - Provided a webhook (public endpoint) to the third-party logistic service
@@ -268,7 +268,10 @@ Dispatching orders to third-party logistic services to ehance delivery coverage 
 ### Feature Part: Outsource Service
 
 #### Context
-Built an Outsourced Partner Service to centralize integrations, abstracting their individual configurations behind a unified interface.
+Multiple (7+) third-party logistic service integrations with similar business logic (e.g., creating orders, updating trip status, quoting fees) and implementations.
+
+#### Result
+Built a unified Outsourced Service to manage all partner integrations, leveraging interface abstraction to streamline maintenance and reduce the risk of over-engineering.
 
 #### Takeaway
 - Not every partner integration warrants a standalone microservice, especially when they share similar business logic and the integration is lightweight.
