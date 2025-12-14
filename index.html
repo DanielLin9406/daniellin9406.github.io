@@ -331,21 +331,6 @@ After studying more about system design, I believe my initial approach back then
   <img style="width:100%;" src="./statics/img/Pickupp/zeroDowntimeMigration.jpg" alt="migration">
 </div>
 
-<!-- ---
-###### Work Experience @Pickupp (2021-2023)
-### New Order Service: Single Source of Truth or Performance<br/>
-
-A difficult choice between performance and data consistency is always hard.
-<br/>
-Do we want to maintain two copy of data for query performance?
-
-My thought: for data that is not frequently updated, yes.
-Like materilized view, we can maintain two copy of data for query performance.
-
-<div style="text-align:center;">
-  <img style="width:50%;" src="./statics/img/Pickupp/SSOT.jpg" alt="ssot">
-</div> -->
-
 ---
 ###### Work Experience @Pickupp (2021-2023)
 ### New Order Service: Latest Event as Order Status
@@ -599,6 +584,17 @@ Be assigned as a pioneer to manage the integration task for our latest system am
   <img style="width:90%;" src="./statics/img/LZStock/DDD Strategic Modeling - DDD Core + Extended Architecture Layers.jpg" alt="DDD_Core_+_Extended_Architecture_Layers">
 </div>
 
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
+### Project Overview
+Time Flow -> 
+
+| Requirements Analysis | DDD Strategic | DDD Tactical | Application | Infrastructure |
+|--|-------------|-----------|---------------------|
+| Use Case | System Context Diagram | Domain Object Design | Front-end Development | Fault Tolerance |
+| | Domain Model | Domain Object Validation | Back-end Development | Networking and Protocols |
+| | Bounded Context | Relationship between Domain Objects | Database Design | Cloud and DevOps |
+| | Context Mapping | | Security| Monitoring and Observability |
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
@@ -687,7 +683,7 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/ddd/domain-object-design" target="_blank">blog</a>]
-### Tactical Design: Domain Model Design
+### Tactical Design: Domain Object Design
 <div style="text-align: center;">
   <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Domain Model Design.jpg" alt="domain_model_design">
 </div>
@@ -702,14 +698,36 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/ddd/domain-object-design" target="_blank">blog</a>]
-### Tactical Design: Validation Layer & Business Rules
+### Tactical Design: Relationship between Domain Objects
 <div style="text-align: center;">
   <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Validation & Business Rules.jpg" alt="domain_model_design">
 </div>
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
+### Application Architecture: Overview
+
+##### Back-end development:
+
+| API Design | Use Cases & Controllers | Algorithm | Data Query | Concurrency | Error Handling | Testing
+|-------------|-----------|---------------------|-|-|-|
+| Gateway Structure  | Clean Architecture | Autocomplete Search | Pagination Strategies | Session Manager | Error Chain | Testing Strategies
+| | Back-End with DDD and Clean Architecture | | N+1 Problem | | | |
+| | Trigger Methods | | | | | |
+| | Background Tasks |  | | | | |
+| | Pagination Strategies | | | | | ||
+
+##### Database Design, Security and Front-end:
+
+| Database Design | Security | Front-end Design
+|-------------|-----------|-----------|
+|SQL Plan |CORS middleware|UI Design |
+|Index Type|Route-based access control|Front-End Architecture|
+
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Application Architecture: UI Design
+
 <div>
   <img style="width:100%;" src="./statics/img/LZStock/New UI Design.jpg" alt="ui-design">
 </div> 
@@ -722,6 +740,15 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 </div> 
 
 ---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/networking-protocols/router" target="_blank">blog</a>]
+### Application Architecture: Gateway Structure
+<div style="display:inline-block;text-align: center;">
+  <img style="width:60%;" src="./statics/img/LZStock/DDD Strategic Modeling - Gateway Flow.jpg" alt="back_end_flow_gateway">
+</div>
+- <a href="https://blog.lzstock.app/blog/networking-protocols/router" target="_blank">Gateway RouterStructure</a>
+- <a href="https://blog.lzstock.app/blog/networking-protocols/websocket" target="_blank">Websocket Service</a>
+
+---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/golang-project" target="_blank">blog</a>]
 ### Application Architecture: Clean Architecture
 
@@ -731,19 +758,10 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/golang-project" target="_blank">blog</a>]
-### Application Architecture: Back End Service Structure
+### Application Architecture: Back End with Clean Architecture
 <div>
   <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Back End Flow.jpg" alt="back_end_flow">
 </div> 
-
----
-###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/networking-protocols/router" target="_blank">blog</a>]
-### Application Architecture: Gateway Structure
-<div style="display:inline-block;text-align: center;">
-  <img style="width:60%;" src="./statics/img/LZStock/DDD Strategic Modeling - Gateway Flow.jpg" alt="back_end_flow_gateway">
-</div>
-- <a href="https://blog.lzstock.app/blog/networking-protocols/router" target="_blank">Gateway RouterStructure</a>
-- <a href="https://blog.lzstock.app/blog/networking-protocols/websocket" target="_blank">Websocket Service</a>
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/triggers" target="_blank">blog</a>]
@@ -754,22 +772,37 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/background-tasks" target="_blank">blog</a>]
-### Application Architecture: Background Task
+### Application Architecture: Background Tasks
 <div style="display:inline-block;text-align: center;">
   <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Worker Flow.jpg" alt="back_end_flow_background_task">
 </div>
+
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/auto-complete-search-tree" target="_blank">blog</a>]
+### Application Architecture: Autocomplete Search
+###### Ternary Search Tree is an optimized TRIE Data Structure
+
+<div style="display:inline-block;text-align: center;">
+  <img style="width:70%;" src="https://iq.opengenus.org/content/images/2019/12/download--2--2.png" alt="autocomplete_search_tree">
+</div>
+
+<a href="https://iq.opengenus.org/autocomplete-with-ternary-search-tree/" target="_blank">Ref: "Opengenus: autocomplete-with-ternary-search-tree"</a>
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Application Architecture: Data Query
 - <a href="https://blog.lzstock.app/blog/database-design-opt/design-pagination-strategies" target="_blank">Pagination Strategies</a>
 - <a href="https://blog.lzstock.app/blog/back-end-development/prevent-n-1" target="_blank">Avoid N+1 Problem</a>
-- <a href="https://blog.lzstock.app/blog/back-end-development/auto-complete-search-tree" target="_blank">Autocomplete Search</a>
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/stateful-session-manager" target="_blank">blog</a>]
-### Application Architecture: Concurrency
-- <a href="https://blog.lzstock.app/blog/back-end-development/stateful-session-manager" target="_blank">Stateful Session Manager</a>
+### Application Architecture: Concurrency Control Attempt
+- Basic Stateful Session Manager
+- Issue: Always Create a new session if connection reestablished
+- TODO: Revise entire session manager to NATS JetStream based
+<div style="display:inline-block;text-align: center;">
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - SessionManager.jpg" alt="stateful_session_manager">
+</div>
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/error-handling" target="_blank">blog</a>]
@@ -788,29 +821,47 @@ Be assigned as a pioneer to manage the integration task for our latest system am
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
+### Application Architecture: Database Optimization
+- <a href="https://blog.lzstock.app/blog/database-design-opt/use-case-sql-plan-trigger-index" target="_blank">SQL Plan</a>
+- <a href="https://blog.lzstock.app/blog/database-design-opt/index-types-in-practice" target="_blank">Index Type</a>
+
+
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Application Architecture: Security
 - <a href="https://blog.lzstock.app/blog/security/cors" target="_blank">CORS middleware</a>
 - <a href="https://blog.lzstock.app/blog/security/route-based-access-control" target="_blank">Route-based access control</a>
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
-### Infrastructure Architecture: Service Communication
+### Infrastructure Architecture: Overview
+
+
+| Fault Tolerance | Networking and Protocols | Cloud and DevOps | Monitoring and Observability |
+|-------------|-----------|---------------------|-|
+| Retry Strategies  | Service Communication | Kubernetes and Container | Logging |
+| Stateless Service Scaling | Event Streaming Setup | CI/CD Automation | Service Registry |
+
+---
+
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
+### Infrastructure Architecture: Synchronous Service Communication
 <div style="display:inline-block;text-align: center;">
   <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Services Communication.jpg" alt="infrastructure_service_communication">
 </div> 
 
 ---
-###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/monitoring-obs/service-registry" target="_blank">blog</a>]
-### Infrastructure Architecture: Service Registry
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/networking-protocols/nats-jetstream" target="_blank">blog</a>]
+### Infrastructure Architecture: Event Streaming for Async Communication
 <div style="display:inline-block;text-align: center;">
-  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Service Registry.jpg" alt="infrastructure_service_registry">
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Event Streaming.jpg" alt="infrastructure_service_registry">
 </div> 
 
 ---
-###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/networking-protocols/nats-jetstream" target="_blank">blog</a>]
-### Infrastructure Architecture: Event Streaming Setup
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/monitoring-obs/service-registry" target="_blank">blog</a>]
+### Infrastructure Architecture: Service Registry with Health Check
 <div style="display:inline-block;text-align: center;">
-  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Event Streaming.jpg" alt="infrastructure_service_registry">
+  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Service Registry.jpg" alt="infrastructure_service_registry">
 </div> 
 
 ---
