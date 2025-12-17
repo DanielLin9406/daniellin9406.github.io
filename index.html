@@ -591,10 +591,10 @@ Time Flow ->
 
 | Requirements Analysis | DDD Strategic | DDD Tactical | Application | Infrastructure |
 |--|-------------|-----------|---------------------|
-| Use Case | System Context Diagram | Domain Object Design | Front-end Development | Fault Tolerance |
-| | Domain Model | Domain Object Validation | Back-end Development | Networking and Protocols |
-| | Bounded Context | Relationship between Domain Objects | Database Design | Cloud and DevOps |
-| | Context Mapping | | Security| Monitoring and Observability |
+| Use Case | System Context Diagram | Domain Object Design | Front-end Development | **Fault Tolerance** |
+| | Domain Model | **Domain Object Responsibility** | **Back-end Development** | **Networking and Protocols** |
+| | Bounded Context | Relationship between Domain Objects | **Database Design** | Cloud and DevOps |
+| | Context Mapping | | Security| **Monitoring and Observability** |
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
@@ -690,7 +690,7 @@ Time Flow ->
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/ddd/domain-object-design" target="_blank">blog</a>]
-### Tactical Design: Scope for Domain Object Validation
+### Tactical Design: Domain Object Scope Hielarithy
 <div style="text-align: center;">
   <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Domain Object.jpg" alt="domain_object">
 </div>
@@ -698,7 +698,7 @@ Time Flow ->
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/ddd/domain-object-design" target="_blank">blog</a>]
-### Tactical Design: Relationship between Domain Objects
+### Tactical Design: Domain Object Validation Scopes and Responsibilities
 <div style="text-align: center;">
   <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Validation & Business Rules.jpg" alt="domain_model_design">
 </div>
@@ -711,7 +711,7 @@ Time Flow ->
 
 | API Design | Use Cases & Controllers | Algorithm | Data Query | Concurrency | Error Handling | Testing
 |-------------|-----------|---------------------|-|-|-|
-| Gateway Structure  | Clean Architecture | Autocomplete Search | Pagination Strategies | Session Manager | Error Chain | Testing Strategies
+| API Gateway Architecture  | Clean Architecture | Autocomplete Search | Pagination Strategies | Session Manager | Error Chain | Testing Strategies
 | | Back-End with DDD and Clean Architecture | | N+1 Problem | | | |
 | | Trigger Methods | | | | | |
 | | Background Tasks |  | | | | |
@@ -740,41 +740,51 @@ Time Flow ->
 </div> 
 
 ---
-###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/networking-protocols/router" target="_blank">blog</a>]
-### Application Architecture: Gateway Structure
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/networking-protocols/api-gateway" target="_blank">blog</a>]
+### Application Architecture: API Gateway Architecture
 <div style="display:inline-block;text-align: center;">
   <img style="width:60%;" src="./statics/img/LZStock/DDD Strategic Modeling - Gateway Flow.jpg" alt="back_end_flow_gateway">
 </div>
-- <a href="https://blog.lzstock.app/blog/networking-protocols/router" target="_blank">Gateway RouterStructure</a>
-- <a href="https://blog.lzstock.app/blog/networking-protocols/websocket" target="_blank">Websocket Service</a>
+
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/networking-protocols/websocket" target="_blank">blog</a>]
+### Application Architecture: Websocket Integration
+
+- Utilized the errgroup package to concurrently execute and coordinate multiple goroutines
+- Listened to gRPC stream closing, WebSocket client disconnection, and context cancellation
+
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/golang-project" target="_blank">blog</a>]
 ### Application Architecture: Clean Architecture
-
+- Layer and Duty Description
 <div style="display:inline-block;text-align: center;">
-  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Clean Architecture.jpg" alt="clean_architecture">
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Clean Architecture-2.jpg" alt="clean_architecture">
 </div> 
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/golang-project" target="_blank">blog</a>]
 ### Application Architecture: Back End with Clean Architecture
 <div>
-  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Back End Flow.jpg" alt="back_end_flow">
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Back End Flow-2.jpg" alt="back_end_flow">
 </div> 
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/triggers" target="_blank">blog</a>]
 ### Application Architecture: Trigger Methods
+##### Invocation Rule of Thumb:
+- Controller: The single entry point for External or Traced Internal Events.
+- Usecase: Entry point for Untraced, Complex Logic (Event/Worker).
+- Repository: Entry point for Untraced, Simple CRUD (Event/Worker).
 <div style="display:inline-block;text-align: center;">
-  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Trigger Method.jpg" alt="back_end_flow_trigger_method">
+  <img style="width:65%;" src="./statics/img/LZStock/DDD Strategic Modeling - Trigger Method-2.jpg" alt="back_end_flow_trigger_method">
 </div>
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/background-tasks" target="_blank">blog</a>]
 ### Application Architecture: Background Tasks
 <div style="display:inline-block;text-align: center;">
-  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Worker Flow.jpg" alt="back_end_flow_background_task">
+  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Worker Flow-2.jpg" alt="back_end_flow_background_task">
 </div>
 
 ---
