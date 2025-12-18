@@ -826,60 +826,73 @@ Time Flow ->
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/testing-strategies/test" target="_blank">blog</a>]
 ### Application Architecture: Testing Focus
 <div style="display:inline-block;text-align: center;">
-  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Testing Focus.jpg" alt="back_end_flow_testing_focus">
+  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Testing Focus-2.jpg" alt="back_end_flow_testing_focus">
 </div>
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Application Architecture: Database Optimization
-- <a href="https://blog.lzstock.app/blog/database-design-opt/use-case-sql-plan-trigger-index" target="_blank">SQL Plan</a>
+- <a href="https://blog.lzstock.app/blog/database-design-opt/use-case-sql-plan-trigger-index" target="_blank">Leveraging SQL Execution Plans for Query Tuning</a>
 - <a href="https://blog.lzstock.app/blog/database-design-opt/index-types-in-practice" target="_blank">Index Type</a>
 
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Application Architecture: Security
-- <a href="https://blog.lzstock.app/blog/security/cors" target="_blank">CORS middleware</a>
-- <a href="https://blog.lzstock.app/blog/security/route-based-access-control" target="_blank">Route-based access control</a>
+- <a href="https://blog.lzstock.app/blog/security/cors" target="_blank">A CORS middleware</a>
+- <a href="https://blog.lzstock.app/blog/security/route-based-access-control" target="_blank">An authentication middleware</a>
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Infrastructure Architecture: Overview
 
 
-| Fault Tolerance | Networking and Protocols | Cloud and DevOps | Monitoring and Observability |
-|-------------|-----------|---------------------|-|
-| Retry Strategies  | Service Communication | Kubernetes and Container | Logging |
-| Stateless Service Scaling | Event Streaming Setup | CI/CD Automation | Service Registry |
+| Fault Tolerance | High Availability and Scalability | Networking and Protocols | Cloud and DevOps | Monitoring and Observability |
+|-------------|----------|-----------|---------------------|-|
+| Retry Strategies | Synchronous Communication| Service Communication | Kubernetes and Container | Logging |
+|  | Stateful Service Scaling | Async Communication | CI/CD Automation | Health Check and Liveness Probe |
+
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/system-design/retry-strategy" target="_blank">blog</a>]
+### Infrastructure Architecture: Fault Tolerance
+- <a href="https://blog.lzstock.app/blog/system-design/retry-strategy" target="_blank">Retry Strategy</a>
+
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/cloud-devops/stateless-service-hz-vc-scaling" target="_blank">blog</a>]
+### Infrastructure Architecture: High Availability and Scalability
+#### Stateless Service Scaling
+<div style="display:inline-block;text-align: center;">
+  <img style="width:70%;" src="./statics/img/LZStock/K8S Pod.jpg" alt="infrastructure_k8s_cluster">
+</div>
+#### Stateful Service Scaling
+- Postgre: Leveraged Cloud SQL on GCP
+- self-hosted Redis(TODO): Redis Cluster
+- Self-host Nats: Cluster mode already 
 
 ---
 
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
-### Infrastructure Architecture: Synchronous Service Communication
+### Infrastructure Architecture: Synchronous Communication
 <div style="display:inline-block;text-align: center;">
   <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Services Communication.jpg" alt="infrastructure_service_communication">
 </div> 
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/networking-protocols/nats-jetstream" target="_blank">blog</a>]
-### Infrastructure Architecture: Event Streaming for Async Communication
+### Infrastructure Architecture: Async Communication
 <div style="display:inline-block;text-align: center;">
   <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Event Streaming.jpg" alt="infrastructure_service_registry">
 </div> 
-
+3
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/monitoring-obs/service-registry" target="_blank">blog</a>]
-### Infrastructure Architecture: Service Registry with Health Check
+### Infrastructure Architecture: Health Check and Liveness Probe 
+
+#### Service Registry with Health Check
 <div style="display:inline-block;text-align: center;">
   <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Service Registry.jpg" alt="infrastructure_service_registry">
 </div> 
 
----
-###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/cloud-devops/stateless-service-hz-vc-scaling" target="_blank">blog</a>]
-### Infrastructure Architecture: Running on K8S Cluster
-<div style="display:inline-block;text-align: center;">
-  <img style="width:100%;" src="./statics/img/LZStock/K8S Pod.jpg" alt="infrastructure_k8s_cluster">
-</div>
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
