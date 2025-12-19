@@ -94,7 +94,7 @@ class: center, middle
 # Daniel Lin's Works
 
 ---
-###### Executive Summary
+###### In a Hurry
 ### Key Highlights<br/>
 Here are the highlights that best showcase my experience:
 - [Work Experience @Pickupp (2021-2023)](./index.html#9)
@@ -408,7 +408,7 @@ Implemented an event-driven architecture with Nats JetStream only
 #### Optimal Approach: 
 - Clean Architecture (implemented in my LZStock project)
 <div style="display:inline-block;text-align: center;">
-  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Clean Architecture.jpg" alt="clean_architecture">
+  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Clean Architecture-2.jpg" alt="clean_architecture">
 </div> 
 ---
 ###### Work Experience @Pickupp (2021-2023)
@@ -806,12 +806,13 @@ Time Flow ->
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/back-end-development/stateful-session-manager" target="_blank">blog</a>]
-### Application Architecture: Concurrency Control Attempt
-- Basic Stateful Session Manager
-- Issue: Always Create a new session if connection reestablished
-- TODO: Revise entire session manager to NATS JetStream based
+### Application Architecture: Thread-safe session management
+
 <div style="display:inline-block;text-align: center;">
-  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - SessionManager.jpg" alt="stateful_session_manager">
+  <img style="width:70%;" src="./statics/img/LZStock/DDD Strategic Modeling - SessionManager.jpg" alt="thread_safe_session_management">
+</div>
+<div style="display:inline-block;text-align: center;">
+  <img style="width:40%;" src="./statics/img/LZStock/DDD Strategic Modeling - Sequence Diagram.jpg" alt="session_management_sequence_diagram">
 </div>
 
 ---
@@ -849,18 +850,23 @@ Time Flow ->
 
 | Fault Tolerance | High Availability and Scalability | Networking and Protocols | Cloud and DevOps | Monitoring and Observability |
 |-------------|----------|-----------|---------------------|-|
-| Retry Strategies | Synchronous Communication| Service Communication | Kubernetes and Container | Logging |
-|  | Stateful Service Scaling | Async Communication | CI/CD Automation | Health Check and Liveness Probe |
+| **Retry Strategies** | Synchronous Communication| Service Communication | **Cloud Deployment Workflow** | Logging |
+| **Service Registry** | Stateful Service Scaling | Async Communication | CI/CD Automation | **Health Check and Liveness Probe** |
 
 ---
-###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/system-design/retry-strategy" target="_blank">blog</a>]
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Infrastructure Architecture: Fault Tolerance
 - <a href="https://blog.lzstock.app/blog/system-design/retry-strategy" target="_blank">Retry Strategy</a>
+- <a href="https://blog.lzstock.app/blog/system-design/service-registry" target="_blank">Service Registry</a>
+
+<div style="display:inline-block;text-align: center;">
+  <img style="width: 60%;" src="./statics/img/LZStock/DDD Strategic Modeling - Service Registry.jpg" alt="infrastructure_service_registry">
+</div> 
 
 ---
-###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/cloud-devops/stateless-service-hz-vc-scaling" target="_blank">blog</a>]
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Infrastructure Architecture: High Availability and Scalability
-#### Stateless Service Scaling
+#### [Stateless Service Scaling](https://blog.lzstock.app/blog/cloud-devops/stateless-service-hz-vc-scaling)
 <div style="display:inline-block;text-align: center;">
   <img style="width:70%;" src="./statics/img/LZStock/K8S Pod.jpg" alt="infrastructure_k8s_cluster">
 </div>
@@ -872,27 +878,29 @@ Time Flow ->
 ---
 
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
-### Infrastructure Architecture: Synchronous Communication
+### Infrastructure Architecture: Service Communication
 <div style="display:inline-block;text-align: center;">
   <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Services Communication.jpg" alt="infrastructure_service_communication">
 </div> 
 
 ---
-###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/networking-protocols/nats-jetstream" target="_blank">blog</a>]
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Infrastructure Architecture: Async Communication
 <div style="display:inline-block;text-align: center;">
-  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Event Streaming.jpg" alt="infrastructure_service_registry">
-</div> 
-3
+  <img style="width:100%;" src="./statics/img/LZStock/DDD Strategic Modeling - Event Streaming-2.jpg" alt="infrastructure_event_streaming">
+</div>
+
 ---
-###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/monitoring-obs/service-registry" target="_blank">blog</a>]
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
+### Infrastructure Architecture: Cloud and DevOps 
+
+- <a href="https://blog.lzstock.app/blog/cloud-devops/cloud-deployment-workflow" target="_blank">Cloud Deployment Workflow</a>
+
+---
+###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
 ### Infrastructure Architecture: Health Check and Liveness Probe 
 
-#### Service Registry with Health Check
-<div style="display:inline-block;text-align: center;">
-  <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Service Registry.jpg" alt="infrastructure_service_registry">
-</div> 
-
+- <a href="https://blog.lzstock.app/blog/monitoring-obs/health-check-liveness" target="_blank">Liveness server with health check</a>
 
 ---
 ###### LZStock (2025) [<a href="https://blog.lzstock.app/blog/what-I-built" target="_blank">blog</a>]
