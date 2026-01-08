@@ -278,12 +278,22 @@ Built a unified Outsourced Service to manage all partner integrations, leveragin
 #### Takeaway
 - Not every partner integration warrants a standalone microservice, especially when they share similar business logic and the integration is lightweight.
 
+---
+###### Work Experience @Pickupp (2021-2023)
+
+### New Order Service
+- Backward-Compatible Core Order Service transitioning to Event-Driven Architecture.
+- Orchestrated an 8-pod service cluster handling 1,200 RPS at peak load, maintaining a stable P95 latency of `<` 100ms with optimized resource efficiency.
+<div style="text-align:center;">
+  <img style="width:75%;" src="./statics/img/Pickupp/order-metric-8-pods.jpg" alt="order_metric_8_pods">
+</div>
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
 
 ### New Order Service
-Backward-Compatible Core Order Service transitioning to Event-Driven Architecture.
+After studying more about system design, I believe my initial approach back then could be improved with at least one of the optimal solution, if there is one, in the following "New Order Service" pages. Otherwise, the task listed in that page is just a showcase.
+
 
 #### Tasks
 - Event Sourcing
@@ -296,7 +306,6 @@ Backward-Compatible Core Order Service transitioning to Event-Driven Architectur
 - Fat Controller -> Could be improved
 
 
-After studying more about system design, I believe my initial approach back then could be improved with at least one of the optimal solution, if there is one, in the following "New Order Service" pages. Otherwise, the task listed in that page is just a showcase.
 
 ---
 
@@ -388,14 +397,12 @@ We designed and implemented the EAV model for secondary order attributes, ensuri
 ###### Work Experience @Pickupp (2021-2023)
 ### New Order Service: Unresolved Distributed Transaction
 #### Initial Approach
-Implemented an event-driven architecture with Nats JetStream only
+Implemented an event-driven architecture with Nats JetStream (with built in Raft), ensuring reliable message persistence.
 <div style="text-align:center;">
   <img style="width:70%;" src="./statics/img/Pickupp/newEventChain.jpg" alt="migration">
 </div>
 
 #### Optimal Approach
-- Robust Messaging (NATS JetStream with built in Raft)
-  - Ensure reliable message persistence.
 - Local Resilience (Retry Queue + Dead Letter Queue (DLQ))
   - Handle and triage transient failures.
 - Global Coordination (Saga Pattern)
