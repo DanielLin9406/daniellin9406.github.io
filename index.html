@@ -199,12 +199,11 @@ Gained comprehensive full-stack development experience across diverse technical 
 ### Jobs: Different types of tasks<br/>
 - Tech part
   - Built websocket service (2021-2022)
-  - Built feature toggle library (2021-2022)
-  - Built log library with asyncLocalStorage (2022-2023)
+  - Built feature toggle SDK (2021-2022)
+  - Built log library (2022-2023)
+  - Built new unified outsource service (3PL Integration) (2021-2022)
 - Feature part
-  - Integrated with several third-party logistic partners (2021-2022)
-  - Built new outsource service, combining all partners (2021-2022)
-  - Built new order service with backward compatibility (2022-2023)
+  - Built Backbone service with backward compatibility (2022-2023)
   - Built new order detail page (2022-2023)
 - Task management and team coordination
   - Provided technical consultation
@@ -215,214 +214,216 @@ Gained comprehensive full-stack development experience across diverse technical 
 ---
 ###### Work Experience @Pickupp (2021-2023)
 ### Tech Part: Websocket Service
-- A React client library
-  - Utilized Context/Provider with Hooks to manage and distribute the WebSocket instance
-  - Reused websocket instance via useCallback with sessionToken as dependency 
-- A independent Express service to handle websocket connection
-  - Authenticated incoming connection via token
-  - Monitored connection status using a ES6 Map
-  - Proactively checked connection liveness every 30 sec
-  - Triggered by NATS event streams
-  - Built flexible portal-specific grouping, validating incoming requests, and parsing data into customizable formats.
+- Decoupled Architecture
+	- Engineered an independent Express-based WebSocket gateway
+	- Integrated with NATS event streams
+- Connection Resource Management
+	- Leveraged an ES6 Map for connection tracking, 
+	- Utilizing proactive 30s pingpong heartbeats and 'close' event listeners
+- Resilient React Client
+	- Provided a custom client library with Hooks using Context/Provider and useCallback for reusing WebSocket instance with sessionToken as dependency.
+	- Retry mechanism 
+- Robust Security & Logic
+	- Implemented token-based authentication 
+	- Implemented a declarative configuration for dynamic grouping, payload validation, and portal-specific data transformation.
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
-### Tech Part: Real-time Feature Toggle Library <br/>
-It is a switch, enabling or disabling a feature instantly without needing a new deployment.
-- An admin interface for feature toggle activation period management
-  - Stored state with date range and dispatch event to Nats JetStream when state changes
-  - Supported dual data tracking modes: active polling (fetching) and passive real-time listening via event channels
-  - Achieved instant state resolution locally, eliminating runtime network latency by fetching all states during initialization.
-- A portal library (React)
-  - Utilized Context/Provider with Hooks to access the library globally
-  - Leveraged WebSocket client to listen to real-time state change event
-- Dual-version library implementation (Golang and Node.js)
-  - Built a Golang version of gRPC retry mechanism with active polling
-  - Built multi-region control utilizing context metadata.
+### Tech Part: Real-time Feature Toggle SDK <br/>
+A switch, enabling or disabling a feature instantly without needing a new deployment.
+- High-Performance Client SDKs: 
+	- Built libraries for React, Golang, and Node.js with local state resolution
+	- Built a React SDK utilizing Context API and custom hooks for global state management.
+	- Optimized payload by tag-based filtering (e.g., 'release', 'developing') to limit query scope.
+- Hybrid Sync Strategy: 
+	- Polling-first baseline for guaranteed eventual consistency.
+	- Real-time enhancement via NATS JetStream and WebSockets.
+- Resilience: 
+	- Custom gRPC retry mechanism for Go and Node.js.
+
+---
+###### Work Experience @Pickupp (2021-2023)
+### Tech Part: Outsource Service
+- Provider-Agnostic Infrastructure & Extension-Oriented Design
+  - Architected a unified microservice to consolidate disparate 3PL partner integrations.
+  - Standardized core actions (e.g., Update Trip Status, Quote Fee, Get Order) via a standardized controller.
+  - Leveraged declarative configuration for common flows while opening for vendor-dependent logic (e.g., Create Order).
+- Hybrid Data Modeling (JSONB)
+  - Standardized common logistics fields (status, order number) for optimized indexing.
+  - Utilized JSONB storage for raw partner messages to ensure data fidelity and flexibility.
+- Status Synchronization Strategy & Event-Driven Order Chain
+  - Combined Push (Webhooks) Pull (Polling) based updates on Partner
+  - Designed a decoupled flow: Order → Outsource → 3PL Provider
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
 ### Tech Part: Log Library
-- Independently researched and leveraged AsyncLocalStorage for non-intrusive context tracking across asynchronous operations in Node.js.
-- Engineered a high-level function tracing library by combining Proxy/Reflect for non-intrusive interception (See below).
+- Asynchronous Context Tracking
+  - Leveraged AsyncLocalStorage for non-intrusive metadata propagation
+- Aspect-Oriented Interception
+  - Engineered a high-level function tracing library utilizing Proxy and Reflect without modifying business logic.
 
 <div style="text-align:center;">
-  <img style="width:70%;" src="./statics/img/Pickupp/logLib.jpg" alt="log_lib">
-</div>
-
----
-###### Work Experience @Pickupp (2021-2023)
-### Feature Part: Several Third-Party Logistic Service Integrations
-
-#### Context
-Dispatching orders to third-party logistic services to ehance delivery coverage and efficiency.
-
-#### Order Flow Chain
-- Event-driven Chain
-- Order Service -> [Partner] Service -> Third Party Logistic Service
-
-#### How to sync order status?
-- Provided a webhook (public endpoint) to the third-party logistic service
-- Actively fetched their status API periodically
-
----
-###### Work Experience @Pickupp (2021-2023)
-### Feature Part: Outsource Service
-
-#### Context
-Multiple (7+) third-party logistic service integrations with similar business logic (e.g., creating orders, updating trip status, quoting fees) and implementations.
-
-#### Result
-Built a unified Outsourced Service to manage all partner integrations, leveraging interface abstraction to streamline maintenance and reduce the risk of over-engineering.
-
-#### Takeaway
-- Not every partner integration warrants a standalone microservice, especially when they share similar business logic and the integration is lightweight.
-
----
-###### Work Experience @Pickupp (2021-2023)
-
-### New Order Service
-- Backward-Compatible Core Order Service transitioning to Event-Driven Architecture.
-- Orchestrated an 8-pod service cluster handling 1,200 RPS at peak load, maintaining a stable P95 latency of `<` 100ms with optimized resource efficiency.
-<div style="text-align:center;">
-  <img style="width:75%;" src="./statics/img/Pickupp/order-metric-8-pods.jpg" alt="order_metric_8_pods">
+  <img style="width:55%;" src="./statics/img/Pickupp/logLib.jpg" alt="log_lib">
 </div>
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
 
-### New Order Service
-After studying more about system design, I believe my initial approach back then could be improved with at least one of the optimal solution, if there is one, in the following "New Order Service" pages. Otherwise, the task listed in that page is just a showcase.
+### Backbone Service: Strategic Transformation
+- Core of Event-Driven Architecture (EDA)
+  - Decoupled "Old Order Service" into Backbone and Last-leg services; delegated dispatching and trip logic.
+  - Refined scope: Focused on Order, Parcel, Waypoint, and Append-only Tracking Timeline.
+	- System Hub: Leveraged durable messaging to synchronize Wallet, Warehouse, and Outsource modules.
+	- Read-Oriented Service: Optimized for high-frequency queries (e.g., `getOrder`, `getOrders`).
+- Migration Strategy and Adapter Wrapper
+  - Backward-compatible adapters to transform data between the input source and the backbone, and from the backbone into the legacy order system.
+  - Zero-Downtime Migration
+---
+###### Work Experience @Pickupp (2021-2023)
 
+### Backbone Service: Deep Dive in Technical Execution
 
-#### Tasks
-- Event Sourcing
-- DB tuning by analyzing SQL plan
-- Zero-downtime Migration w/ Soft Launch Strategy
-- Latest Event as Order Status -> Could be improved
-- Many Join among Tables -> Could be improved
-- Key Value Pairs in RDB -> Could be improved
-- Unresolved Distributed Transaction -> Could be improved
-- Fat Controller -> Could be improved
-
-
+- High-Availability & Scale Engineering
+  - Benefit of EDA
+  - Query Optimization: Approaches we had and Lesson Learned
+  - Zero-downtime Migration w/ Soft Launch Strategy
+- Engineering Retrospective (Technical Debt Management)
+  - Order Status Retrieval (Fixed)
+  - The Joins vs. Scale Trade-off (Fixed)
+  - The EAV Model Trap (Fixed)
+  - Distributed Transaction Resilience
+  - Decoupling the "Fat Controller"
 
 ---
 
 ###### Work Experience @Pickupp (2021-2023)
-### New Order Service: Event Sourcing<br/>
+### Backbone Service: Benefit of EDA<br/>
+- Elastic Scaling: Decoupled consumption allows downstream services (Wallet, Warehouse) to handle spikes via Load Leveling without stressing the Backbone.
+- Data Integrity & Traceability: Append-only event streams provide a naturally immutable audit trail for the entire order lifecycle, simplifying complex dispute resolutions.
 
-- Built event sourcing pattern to track fine-grained internal status changes
-- Enabled a complete timeline of order status
-<div style="text-align:center;">
-  <img style="width:100%;" src="./statics/img/Pickupp/orderStatusTimeline.jpg" alt="timeline">
+<div style="display:inline-block;">
+  <img style="width:39%;" src="./statics/img/Pickupp/order-metric-8-pods.jpg" alt="order_metric_8_pods">
+  <img style="width:60%;vertical-align: top;" src="./statics/img/Pickupp/orderStatusTimeline.jpg" alt="timeline">
 </div>
 
+
 ---
 ###### Work Experience @Pickupp (2021-2023)
-### New Order Service: DB tuning by Analyzing SQL Plan <br>
-- Analyzed SQL plan and updated Index, reducing average active sessions (AAS) to almost zero.
-- Indexes that has been used: Composite, Covering (INCLUDE), Partial (WHERE), Unique, GIN , B-tree
-- SQL plan good sign: Uses Index Scan or Index Only Scan, No Seq Scan (full table scan), No additional Sort operations...
+### Backbone Service: Query Optimization & Scalability<br>
+
+- Performance Engineering (Then)
+	- Issue Identification: Utilized AWS Performance Insights to pinpoint high-latency SQL and analyzed execution plans for optimization.
+	- Indexing Strategy: Optimized query by implementing targeted indexes
+	- Load Distribution: Leveraged RDS Read Replicas (1 Main, 2 Replicas) 
+- Strategic Evolution (Now)
+  - Moving toward Denormalization and optimized schemas to reduce complex join overhead. 
+  - Evaluating Database Partitioning for long growing table like event sourcing table
+  - Leveraging Sharding when single database won't work
+  - Leveraging Redis for sub-millisecond hot-path queries and ElasticSearch for complex, multi-dimensional searches across millions of records.
+
+---
+###### Work Experience @Pickupp (2021-2023)
+### Backbone Service: Index Optimization to Reduce AAS<br>
+
 <div style="text-align:center;">
   <img style="width:95%;" src="./statics/img/Pickupp/dbLoad.png" alt="db_load">
 </div>
 
-
 ---
+
 ###### Work Experience @Pickupp (2021-2023)
-### New Order Service: Zero-downtime Migration w/ Soft Launch Strategy<br/>
-- Four phases migration strategy:
-  - Dual write to old and new system, read from old system
-  - Write to new system, transform to old system, read from old system
-  - Write to new system, transform to old system, read from new system
-  - Write to new system, read from new system, deprecate old system
-- Legacy order data is retained for historical querying and auditing purposes.
+### Backbone Service: Zero-downtime Migration w/ Soft Launch Strategy<br/>
+
+- Four phases Migration
+  - Phase 1: Dual-write; Read from Legacy (Baseline consistency check).
+  - Phase 2: Write to New Service; Async-sync to Legacy; Read from Legacy.
+  - Phase 3: Primary Write to New Service; Read from New Service.
+  - Phase 4: Full Cutover & Legacy Deprecation.
+
 <div style="text-align:left;">
   <img style="width:100%;" src="./statics/img/Pickupp/zeroDowntimeMigration.jpg" alt="migration">
 </div>
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
-### New Order Service: Latest Event as Order Status
+### Backbone Retrospective: Order Status Retrieval (Fixed)
 
-#### Initial Approach: Latest Event
-We calculated the latest event directly from event sourcing table.
+#### Initial Approach: Calculated order status on-the-fly
+As the event table grew to millions of rows, the `ORDER BY created_at DESC LIMIT 1` queries became extremely expensive, even with indexing.
 <div style="text-align:center;">
   <img style="width:80%;" src="./statics/img/Pickupp/orderStatusTimeline.jpg" alt="timeline">
 </div>
 
-#### Optimal Approach: Apply Event to Single State
-Could query a single status field, updating when status changes
+#### Optimal Approach: Single State model
+The latest status is now applied and persisted to a dedicated field in the orders table.
 <div style="display:inline-block; ">
   <img style="width:48%;vertical-align: top;" src="./statics/img/Pickupp/orderStatusInOrder.jpg" alt="event_sourcing">
-<img style="width:48%;" src="./statics/img/Pickupp/singleOrderStatus.jpg" alt="event_sourcing">
+  <img style="width:48%;" src="./statics/img/Pickupp/singleOrderStatus.jpg" alt="event_sourcing">
 </div>
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
-### New Order Service: Many Joins among Tables
+### Backbone Retrospective: The Join vs. Growth Trade-off (Fixed)
 
-If data is not growing fast, e.g. < 10K rows, it is fine.
+#### Initial Approach: Strict Normalization
+- Architecture: Data spread across 6 distinct tables to ensure strict ACID compliance.
+- Challenge: Fetching a single "Complete Order" required expensive 6-way joins, which became a bottleneck as the dataset matured.
 
-#### Initial Approach:
-- Six distinct tables were utilized to store order-related data.
-- It required many joins to fetch one complete order data
-
-#### Optimal Approach: The Join/Growth Trade-Off
-- Stable, Slow-growth Tables
-  - Multiple Joins (Prioritize ACID/Normalization)   
-- Fast-growing, Read-heavy Tables (e.g., Orders/History) 
-  - Multiple Joins are Detrimental to Performance.
-  - Implement specialized read solutions, e.g. denormalization, caching, or materialized views.
-
+#### Optimal Approach: The Join/Growth Trade-Off 
+- Stable Data (`<`10K rows): 
+  - Maintain Normalization; joins are acceptable for consistency and storage efficiency.
+- Fast-growing Data (Orders/History): 
+  - Shift to Denormalized Read Models. Implemented specialized read solutions (Materialized Views/JSONB caching) to flatten complex relationships.
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
-### New Order Service: Key-value Pairs in RDB
-#### Initial Approach: A Failed Experience.
-We designed and implemented the EAV model for secondary order attributes, ensuring high flexibility and extensibility across different order types.
-<div style="text-align:center;">
-  <img style="width:40%;" src="./statics/img/Pickupp/keyValuePair.jpg" alt="key_value_pair">
-</div>
-
-#### Pain points and should not be used in RDB: 
-- Lack of referential integrity constraints and type safety
-- Added complexity at application level for data retrieval and manipulation
-- Resulting in finding item from array instead of key in map
-- High vertical growth (10+ rows per entity) leads to an extremely fast-growing table and severely reduced query performance.
-- JSONB in PostgreSQL is a better alternative
-
----
-###### Work Experience @Pickupp (2021-2023)
-### New Order Service: Unresolved Distributed Transaction
+### Backbone Retrospective: The EAV Model Trap (Fixed)
 #### Initial Approach
-Implemented an event-driven architecture with Nats JetStream (with built in Raft), ensuring reliable message persistence.
-<div style="text-align:center;">
-  <img style="width:70%;" src="./statics/img/Pickupp/newEventChain.jpg" alt="migration">
-</div>
+Implemented the EAV (Entity-Attribute-Value) model for secondary attributes to ensure maximum schema flexibility across different order types.
+
+#### Pain Points: The Reality
+- Integrity & Type Safety: Lost database-level constraints and data typing.
+- Performance Degradation: Massive vertical growth (10+ rows per order) led to table bloat and index inefficiency.
+- Application Complexity: Forced to perform data transformation and "array searching" logic in the code.
 
 #### Optimal Approach
-- Local Resilience (Retry Queue + Dead Letter Queue (DLQ))
-  - Handle and triage transient failures.
-- Global Coordination (Saga Pattern)
-  - Execute compensating transactions for permanent business failure.
+- Column-based approach for core fields.
+- Leveraged JSONB in PostgreSQL for semi-structured data, providing a balance between flexibility, GIN indexing, and data integrity.
 
 ---
 ###### Work Experience @Pickupp (2021-2023)
-### Existing Tech Debt: Fat Controller<br/>
-#### Initial Approach:
-- We have a fat controller that handles multiple layers of logic: gRPC call, ORM call, business logic, service call
-- Not easy to maintain and test
-#### Optimal Approach: 
-- Clean Architecture (implemented in my LZStock project)
+### Backbone Retrospective: Distributed Transaction Resilience
+#### Initial Approach
+Leveraged Nats JetStream (Raft-based) to ensure high-availability and persistent message delivery within the Event-driven architecture.
+
+#### The Unresolved Challenge
+While messages were persisted, handling downstream business failures (e.g., payment failure, inventory shortage) remained complex.
+
+#### Optimal Approach
+- Local Resilience: 
+  - Implemented Retry Queues and Dead Letter Queues (DLQ) to triage and recover from transient network/service failures.
+- Global Coordination: 
+  - Transitioning toward the Saga Pattern (Choreography-based) to manage compensating transactions for permanent business logic failures.
+
+---
+###### Work Experience @Pickupp (2021-2023)
+### Backbone Retrospective: Decoupling the "Fat Controller"<br/>
+#### Initial Approach: The Monolithic Controller
+- Anti-pattern: A single controller handled gRPC communication, ORM mapping, business logic, and downstream service calls.
+- Pain Points: Highly coupled code, difficult to unit test, and high maintenance overhead for new features.
+
+#### Optimal Approach: Clean Architecture Implementation
+- Applied these principles in my LZStock (Golang) project.
 <div style="display:inline-block;text-align: center;">
   <img style="width:80%;" src="./statics/img/LZStock/DDD Strategic Modeling - Clean Architecture-2.jpg" alt="clean_architecture">
 </div> 
 ---
 ###### Work Experience @Pickupp (2021-2023)
-### New Admin Order Detail Page<br/>
-A native Context/Reducer pattern with Hooks API, replacing Redux and Saga approach.
+### Backbone Service UI: Admin Order Detail Page<br/>
+- Strategic Shift: Replaced the legacy Redux + Saga architecture with a native Context API / useReducer pattern.
+- Enhanced Scalability: Built a custom Hook-based architecture to encapsulate complex domain logic, ensuring the UI remains thin and reactive.
+
 <div style="text-align:center;">
   <img style="width:50%;" src="./statics/img/Pickupp/newOrderDetailPage.jpg" alt="order_detail_page">
 </div>
