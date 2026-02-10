@@ -247,7 +247,7 @@ tr:hover {
 }
 
 
-p.tech {
+.tech {
   display:inline; 
   color:rgb(74, 74, 74);
   font-size:14px
