@@ -245,3 +245,10 @@ tr:hover {
   width: 0px;
   background: transparent;
 }
+
+
+p.tech {
+  display:inline; 
+  color:rgb(74, 74, 74);
+  font-size:14px
+}
