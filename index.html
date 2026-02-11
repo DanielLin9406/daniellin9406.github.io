@@ -299,7 +299,7 @@ A switch, enabling or disabling a feature instantly without needing a new deploy
 ###### Work Experience @Pickupp (2021-2023)
 ### Backbone Service: Benefit of EDA<br/>
 - Elastic Scaling: Decoupled consumption allows downstream services (Wallet, Warehouse) to handle spikes via Load Leveling without stressing the Backbone.
-- Data Integrity & Traceability: Append-only event streams provide a naturally immutable audit trail for the entire order lifecycle, simplifying complex dispute resolutions.
+- Order Lifecycle & Traceability: The timeline is populated asynchronously via a dedicated service, minimizing latency on the critical path.
 
 <div style="display:inline-block;">
   <img style="width:39%;" src="./statics/img/Pickupp/order-metric-8-pods.jpg" alt="order_metric_8_pods">
@@ -315,7 +315,7 @@ A switch, enabling or disabling a feature instantly without needing a new deploy
 	- Issue Identification: Utilized AWS Performance Insights to pinpoint high-latency SQL and analyzed execution plans for optimization.
 	- Indexing Strategy: Optimized query by implementing targeted indexes
 	- Load Distribution: Leveraged RDS Read Replicas (1 Main, 2 Replicas) 
-- Strategic Evolution (Now)
+- Strategic Evolution (Future Roadmap)
   - Moving toward Denormalization and optimized schemas to reduce complex join overhead. 
   - Evaluating Database Partitioning for long growing table like event sourcing table
   - Leveraging Sharding when single database won't work
@@ -349,9 +349,11 @@ A switch, enabling or disabling a feature instantly without needing a new deploy
 ### Backbone Retrospective: Order Status Retrieval (Fixed)
 
 #### Initial Approach: Calculated order status on-the-fly
-As the event table grew to millions of rows, the `ORDER BY created_at DESC LIMIT 1` queries became extremely expensive, even with indexing.
+
+We over-prioritized the "Single Source of Truth" principle, attempting to derive all states dynamically from the timeline. We overlooked the operational overhead. Complex status queries at scale created excessive DB load, impacting system responsiveness.
+
 <div style="text-align:center;">
-  <img style="width:80%;" src="./statics/img/Pickupp/orderStatusTimeline.jpg" alt="timeline">
+  <img style="width:60%;" src="./statics/img/Pickupp/orderStatusTimeline.jpg" alt="timeline">
 </div>
 
 #### Optimal Approach: Single State model
@@ -370,7 +372,7 @@ The latest status is now applied and persisted to a dedicated field in the order
 - Challenge: Fetching a single "Complete Order" required expensive 6-way joins, which became a bottleneck as the dataset matured.
 
 #### Optimal Approach: The Join/Growth Trade-Off 
-- Stable Data (`<`10K rows): 
+- Stable Data: 
   - Maintain Normalization; joins are acceptable for consistency and storage efficiency.
 - Fast-growing Data (Orders/History): 
   - Shift to Denormalized Read Models. Implemented specialized read solutions (Materialized Views/JSONB caching) to flatten complex relationships.
@@ -399,7 +401,7 @@ Leveraged Nats JetStream (Raft-based) to ensure high-availability and persistent
 #### The Unresolved Challenge
 While messages were persisted, handling downstream business failures (e.g., payment failure, inventory shortage) remained complex.
 
-#### Optimal Approach
+#### Optimal Approach (Future Roadmap)
 - Local Resilience: 
   - Implemented Retry Queues and Dead Letter Queues (DLQ) to triage and recover from transient network/service failures.
 - Global Coordination: 
